@@ -1,0 +1,55 @@
+@CHARSET "ISO-8859-1";"WebContent/main.css"
+
+html {
+	background-color: white;
+}
+
+body {
+    font-family:sans-serif;
+	margin-top: 0px;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-left: auto;
+	width:1250px;
+}
+
+.banner{
+    background-color: #FFE615;
+    min-height: 70px;
+    overflow: hidden;
+    list-style: none;
+}
+
+.banner img{
+    float:left;
+}
+.banner a{
+    text-decoration:none;
+}
+
+.page {
+	background-color: #EEEEEE;
+}
+
+p {
+  font-size:14px;
+}
+
+h1{
+    margin:.5em 3em;
+    color: black;
+    width:50%;
+    overflow:hidden;
+    float:left;
+}
+
+.h2 {
+	font-size: 18px;
+	font-weight: bold;
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+.main {
+	margin: 8px;
+}
