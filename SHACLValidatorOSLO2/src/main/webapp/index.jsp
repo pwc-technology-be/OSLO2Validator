@@ -38,8 +38,6 @@
 			          </tr>
 			       </table>
 			    </form>
-			    
-			    //value="${files.shapes}"
 
             <p>Last updated: 2017-08-11</p>
         </div>

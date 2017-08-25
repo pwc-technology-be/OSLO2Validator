@@ -44,8 +44,7 @@ public class validateServlet extends HttpServlet {
 ////		String dataString = readFile(request.getPart("data"));
 //		String shapesString = readFile(request.getPart("shapes"));
         
-//        ValidatorFiles files = new ValidatorFiles(dataURIString, shapesString);
-        
+//        ValidatorFiles files = new ValidatorFiles("hallo", "hallo2");
 //        request.setAttribute("files", files);
 		
 		InputStream fileContentData = request.getPart("data").getInputStream();
@@ -59,12 +58,13 @@ public class validateServlet extends HttpServlet {
 		Resource report = ValidationUtil.validateModel(dataModel, dataModel, true);
 		
 		String reportString = ModelPrinter.get().print(report.getModel());
+		System.out.println(reportString);
 		
 		ValidationReport validationReport = new ValidationReport(reportString);
 		request.setAttribute("validation", validationReport);
 		
         // Forward to /WEB-INF/views/validatedView.jsp
-	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/validatedView.jsp");
+	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/validatedView.jsp");
 	    dispatcher.forward(request, response);
 	}
 	
