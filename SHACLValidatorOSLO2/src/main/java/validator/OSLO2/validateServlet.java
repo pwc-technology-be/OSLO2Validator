@@ -53,9 +53,12 @@ public class validateServlet extends HttpServlet {
 		Model dataModel = JenaUtil.createMemoryModel();
 		dataModel.read(fileContentData, "urn:dummy", FileUtils.langTurtle);
 		
+		Model shapesModel = JenaUtil.createMemoryModel();
+		shapesModel.read(fileContentShapes, "urn:dummy", FileUtils.langTurtle);
+		
 		// Perform the validation of everything, using the data model
 		// also as the shapes model - you may have them separated
-		Resource report = ValidationUtil.validateModel(dataModel, dataModel, true);
+		Resource report = ValidationUtil.validateModel(dataModel, shapesModel, true);
 		
 		String reportString = ModelPrinter.get().print(report.getModel());
 		System.out.println(reportString);
