@@ -38,39 +38,29 @@ public class validateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
 		response.setContentType("text/html;charset=UTF-8");
 		
+		// Get data to validate from file
 		InputStream fileContentData = request.getPart("data").getInputStream();
-		InputStream fileContentShapes = request.getPart("shapes").getInputStream();
-		
 		Model dataModel = JenaUtil.createMemoryModel();
 		dataModel.read(fileContentData, "urn:dummy", FileUtils.langTurtle);
 		
+		// Get rules for validation from file
+		InputStream fileContentShapes = request.getPart("shapes").getInputStream();
 		Model shapesModel = JenaUtil.createMemoryModel();
 		shapesModel.read(fileContentShapes, "urn:dummy", FileUtils.langTurtle);
 		
 		// Perform the validation of data, using the shapes model
 		Resource report = ValidationUtil.validateModel(dataModel, shapesModel, true);
+		String result = ModelPrinter.get().print(report.getModel());
+
+		// Create the validationReport, including the result, the data validated, and the rules used during validation
+		ValidationReport validationReport = new ValidationReport(result, fileContentData.toString(), 
+				fileContentShapes.toString());
 		
-		String reportString = ModelPrinter.get().print(report.getModel());
-//		
-//		ValidatorFiles files = new ValidatorFiles();
-//		files.setdata(fileContentData.toString());
-//		files.setshapes(fileContentShapes.toString());
-//		
-////		request.setAttribute("files", files);
-//		
-//		ValidationReport validationReport = new ValidationReport();
-//		validationReport.setReport(reportString);
-//		// Store info to the request attribute before forwarding
-//		request.setAttribute("resultstring", reportString);
-//		
-//		System.out.println(validationReport.getReport());
-		
-		request.setAttribute("message", reportString);
+		// Store info to the request attribute before forwarding
+		request.setAttribute("report", validationReport);
 		
         // Forward to /WEB-INF/views/validatedView.jsp
 	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
@@ -82,9 +72,6 @@ public class validateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-//		request.setAttribute("message", "test 26/09/2017");
-//
-//		request.getRequestDispatcher("/result.jsp").forward(request, response);
 	}
 
 }

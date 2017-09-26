@@ -1,22 +1,42 @@
 package validator.OSLO2;
 
 public class ValidationReport {
-	private String report;
+	private String result;
+	private String data;
+	private String shapes;
 	
 	public ValidationReport() {
 		 
 	   }
 	
-	   public ValidationReport(String report) {
-	       this.report = report;
+	   public ValidationReport(String result, String data, String shapes) {
+	       this.result = result;
+	       this.data = data;
+	       this.shapes = shapes;
 	   }
 	 
-	   public String getReport() {
-	       return report;
+	   public String getResult() {
+	       return result;
 	   }
 	 
-	   public void setReport(String report) {
-	       this.report = report;
+	   public void setResult(String result) {
+	       this.result = result;
+	   }
+	   
+	   public String getData() {
+	       return data;
+	   }
+	 
+	   public void setData(String data) {
+	       this.data = data;
+	   }
+	   
+	   public String getShapes() {
+	       return shapes;
+	   }
+	 
+	   public void setShapes(String shapes) {
+	       this.shapes = shapes;
 	   }
 	 
 }
