@@ -6,16 +6,16 @@ public class ValidationReport {
 	public ValidationReport() {
 		 
 	   }
-	 
+	
 	   public ValidationReport(String report) {
 	       this.report = report;
 	   }
 	 
-	   public String getreport() {
+	   public String getReport() {
 	       return report;
 	   }
 	 
-	   public void setreport(String report) {
+	   public void setReport(String report) {
 	       this.report = report;
 	   }
 	 

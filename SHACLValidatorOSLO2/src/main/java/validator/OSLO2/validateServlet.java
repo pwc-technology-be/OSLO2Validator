@@ -22,6 +22,7 @@ import org.apache.jena.util.FileUtils;
 /**
  * Servlet implementation class validateServlet
  */
+@WebServlet
 @MultipartConfig
 public class validateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +38,9 @@ public class validateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 		response.setContentType("text/html;charset=UTF-8");
 		
 		InputStream fileContentData = request.getPart("data").getInputStream();
@@ -52,13 +56,24 @@ public class validateServlet extends HttpServlet {
 		Resource report = ValidationUtil.validateModel(dataModel, shapesModel, true);
 		
 		String reportString = ModelPrinter.get().print(report.getModel());
-		System.out.println(reportString);
+//		
+//		ValidatorFiles files = new ValidatorFiles();
+//		files.setdata(fileContentData.toString());
+//		files.setshapes(fileContentShapes.toString());
+//		
+////		request.setAttribute("files", files);
+//		
+//		ValidationReport validationReport = new ValidationReport();
+//		validationReport.setReport(reportString);
+//		// Store info to the request attribute before forwarding
+//		request.setAttribute("resultstring", reportString);
+//		
+//		System.out.println(validationReport.getReport());
 		
-		ValidationReport validationReport = new ValidationReport(reportString);
-		request.setAttribute("validation", validationReport);
+		request.setAttribute("message", reportString);
 		
         // Forward to /WEB-INF/views/validatedView.jsp
-	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/validatedView.jsp");
+	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
 	    dispatcher.forward(request, response);
 	}
 
@@ -67,6 +82,9 @@ public class validateServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
+//		request.setAttribute("message", "test 26/09/2017");
+//
+//		request.getRequestDispatcher("/result.jsp").forward(request, response);
 	}
 
 }

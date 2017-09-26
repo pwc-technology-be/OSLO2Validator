@@ -26,11 +26,10 @@ public class HomeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		// Forward to /WEB-INF/views/homeView.jsp
 		// (Users can not access directly into JSP pages placed in WEB-INF)
-		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("index.jsp");
+		RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
         
        dispatcher.forward(request, response);
 	}

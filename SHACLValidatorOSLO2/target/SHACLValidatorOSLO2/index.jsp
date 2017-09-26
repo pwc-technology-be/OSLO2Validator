@@ -15,7 +15,6 @@
               <h1> OSLO&#178; Validator </h1>
         </div>
 
-
         <div class="main">
         	    <form method="POST" action="validate" enctype="multipart/form-data">
 			       <table border="0">
