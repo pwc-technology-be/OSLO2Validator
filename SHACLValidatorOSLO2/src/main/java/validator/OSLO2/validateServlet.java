@@ -41,6 +41,25 @@ public class validateServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html;charset=UTF-8");
 		
+		// validate the data and write to validationReport
+		ValidationReport validationReport = validate(request);
+		
+		// Store validationReport to the request attribute before forwarding
+		request.setAttribute("report", validationReport);
+		
+        // Forward to /WEB-INF/views/validatedView.jsp
+	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
+	    dispatcher.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
+	private ValidationReport validate (HttpServletRequest request) throws ServletException, IOException {
 		// Get data to validate from file
 		InputStream fileContentData = request.getPart("data").getInputStream();
 		Model dataModel = JenaUtil.createMemoryModel();
@@ -59,19 +78,7 @@ public class validateServlet extends HttpServlet {
 		ValidationReport validationReport = new ValidationReport(result, fileContentData.toString(), 
 				fileContentShapes.toString());
 		
-		// Store info to the request attribute before forwarding
-		request.setAttribute("report", validationReport);
-		
-        // Forward to /WEB-INF/views/validatedView.jsp
-	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
-	    dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		return validationReport;
 	}
 
 }
