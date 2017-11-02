@@ -14,6 +14,7 @@
         	<section class="region">
 				<div class="layout layout--wide" id="form">
 	        	    <form method="POST" action="validate" enctype="multipart/form-data">
+	        	    	OSLO² applicatie profiel:
 	        	    	<select name="shapes">
 	        	    		<option>Generiek - not implemented</option>
 	        	    		<option>Adres - not implemented</option>
@@ -27,21 +28,23 @@
 				             <td><input type='file' accept='text/ttl' name="data" id="data" /></td>
 				          </tr>
 				          <tr>
-				             <td>Data file URL:</td>
+<!-- 				             <td>Data file URL:</td>
 				             <td><input type='text' name="dataURI"/></td>
-				          </tr>
+				          </tr> -->
 <!-- 				          <tr>
 				             <td>Shapes file:</td>
 				             <td><input type='file' accept='text/ttl' name="shapes" id="shapes" /></td>
 				          </tr> -->
 				          <tr>
 				             <td colspan="2">                  
-				                 <input type="submit" value="Upload" name="upload" id="upload" />
+				                 <input type="submit" value="valideer" name="upload" id="upload" />
 				             </td>
 				          </tr>
 				       	</table>
 				    </form>
-
+					
+					</br>
+					</br>
             		<p>Last updated: 2017-11-02</p>
         		</div>
         	</section>
