@@ -14,7 +14,14 @@
         	<section class="region">
 				<div class="layout layout--wide" id="form">
 	        	    <form method="POST" action="validate" enctype="multipart/form-data">
-				       <table border="0">
+	        	    	<select name="shapes">
+	        	    		<option>Generiek - not implemented</option>
+	        	    		<option>Adres - not implemented</option>
+	        	    		<option>Organisatie - not implemented</option>
+	        	    		<option>Persoon</option>
+	        	    		<option>Dienst - not implemented</option>
+	        	    	</select>
+				       	<table border="0">
 				          <tr>
 				             <td>Data file:</td>
 				             <td><input type='file' accept='text/ttl' name="data" id="data" /></td>
@@ -23,19 +30,19 @@
 				             <td>Data file URL:</td>
 				             <td><input type='text' name="dataURI"/></td>
 				          </tr>
-				          <tr>
+<!-- 				          <tr>
 				             <td>Shapes file:</td>
 				             <td><input type='file' accept='text/ttl' name="shapes" id="shapes" /></td>
-				          </tr>
+				          </tr> -->
 				          <tr>
 				             <td colspan="2">                  
 				                 <input type="submit" value="Upload" name="upload" id="upload" />
 				             </td>
 				          </tr>
-				       </table>
+				       	</table>
 				    </form>
 
-            		<p>Last updated: 2017-09-28</p>
+            		<p>Last updated: 2017-11-02</p>
         		</div>
         	</section>
         </div>

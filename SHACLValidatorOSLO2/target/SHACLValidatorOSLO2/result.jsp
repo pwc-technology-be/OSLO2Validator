@@ -7,43 +7,36 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link rel="stylesheet" type="text/css" href="main.css">
-		<title>Validated</title>
 	</head>
 	<body>
-	    <div class="page">
 	
-	        <div class="banner">
-	              <a id="logobanner" href="#"><img src="icon.png" width="70" height="70" float="left" alt="Logo OH Vlaanderen" /></a>
-	              <h1> OSLO&#178; Validator </h1>
-	        </div>
+		<jsp:include page="header.jsp"></jsp:include>
 	
-	        <div class="main">
-	        
-	        	<div class="width-2">
-	        		<h2>Gevalideerde data</h2>
-	        		<pre>
-						<c:out value="${report.data != null ? report.data : 'no report found'}"/>
-					</pre>
-	        	</div>
-	        	
-	        	<div class="width-2">
-	        		<h2>Regels gebruikt tijdens validatie</h2>
-	        		<pre>
-						<c:out value="${report.shapes != null ? report.shapes : 'no report found'}"/>
-					</pre>
-	        	</div>
-	        	
-	        	<div>
-	        		<h2>Validatie rapport</h2>
-	        		<pre>
-						<c:out value="${report.result != null ? report.result : 'no report found'}"/>
-					</pre>
-	        	</div>
-
-				
+			<div class="main-content" id="main" itemprop="mainContentOfPage" role="main" tabindex="-1">
+				<section class="region">
+					<div class="layout layout--wide" id="resultaat">
+		        	
+<%-- 		        		<h2 class="h2">Shapes</h2>
+		        		<pre>
+							<c:out value="${report.shapes != null ? report.shapes : 'no report found'}"/>
+						</pre> 
+						
+						<h2 class="h2">Data</h2>
+		        		<pre>
+							<c:out value="${report.data != null ? report.shapes : 'no report found'}"/>
+						</pre>--%>
+		        		
+		        		<h2 class="h2">Validatie rapport</h2>
+		        		<pre>
+							<c:out value="${report.result != null ? report.result : 'no report found'}"/>
+						</pre>
+					
+					</div>
+				</section>
 			</div>
 		</div>
+		
+		<jsp:include page="footer.jsp"></jsp:include>
 		
 	</body>
 </html>

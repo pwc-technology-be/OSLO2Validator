@@ -16,7 +16,17 @@
 				<section class="region">
 					<div class="layout layout--wide" id="resultaat">
 		        	
-		        		<h2>Validatie rapport</h2>
+<%-- 		        		<h2 class="h2">Shapes</h2>
+		        		<pre>
+							<c:out value="${report.shapes != null ? report.shapes : 'no report found'}"/>
+						</pre> 
+						
+						<h2 class="h2">Data</h2>
+		        		<pre>
+							<c:out value="${report.data != null ? report.shapes : 'no report found'}"/>
+						</pre>--%>
+		        		
+		        		<h2 class="h2">Validatie rapport</h2>
 		        		<pre>
 							<c:out value="${report.result != null ? report.result : 'no report found'}"/>
 						</pre>
