@@ -1,11 +1,9 @@
 package validator.OSLO2;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -40,8 +38,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
-import org.apache.jena.query.ResultSet;
-import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileUtils;
@@ -54,9 +50,7 @@ import org.apache.jena.util.FileUtils;
 @MultipartConfig
 public class validateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	String username;
-	String password;
-	String databaseURL;
+	Configuration config = new Configuration();
        
 	
 	
@@ -66,28 +60,6 @@ public class validateServlet extends HttpServlet {
 	public validateServlet() {
         super();
     }
-
-	
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getConfigurationValues();
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setContentType("text/html;charset=UTF-8");
-		
-		// validate the data and write to validationReport
-		ValidationReport validationReport = validate(request);
-		
-		// Store validationReport to the request attribute before forwarding
-		request.setAttribute("report", validationReport);
-		
-        // Forward to /WEB-INF/views/validatedView.jsp
-	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
-	    dispatcher.forward(request, response);
-	}
 	
 	
 
@@ -99,41 +71,146 @@ public class validateServlet extends HttpServlet {
 	}
 	
 	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Get configuration
+		getConfigurationValues();
+		
+		// Validate the data and write to validationReport
+		ValidationReport validationReport = validate(request);
+		
+		// Store validationReport to the request attribute before forwarding
+		request.setAttribute("report", validationReport);
+		
+        // Forward to /WEB-INF/views/validatedView.jsp
+	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
+	    dispatcher.forward(request, response);
+	}
+	
+	
+	
+    /**
+     * Load the configuration settings from the config.properties file.
+     */
+    private void getConfigurationValues() {
+	    InputStream inputStream = null;
+		
+		try {
+			Properties prop = new Properties();
+			String propFileName = "/config.properties";
+ 
+//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
+			inputStream = validateServlet.class.getResourceAsStream(propFileName);
+			prop.load(inputStream);
+ 
+			this.config.setUsername(prop.getProperty("username"));
+			this.config.setPassword(prop.getProperty("password"));
+			this.config.setDatabaseUploadURL(prop.getProperty("databaseUploadURL"));
+			this.config.setDatabaseSPARQLURL(prop.getProperty("databaseSPARQLURL"));
+			this.config.setSPARQLURL(prop.getProperty("SPARQLURL"));
+ 
+		}	catch (Exception e) {
+			e.printStackTrace();
+			// Throw Exception using SOAP Fault Message 
+			
+			throw new RuntimeException("Configuration not loaded");
+		} 
+		finally {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				// Throw Exception using SOAP Fault Message 
+				
+				throw new RuntimeException("Configuration not loaded");
+			}
+		}
+		return;
+		
+	}
+
+	
+	
 	
 	/**
      * Validate the data and return the validationReport
      * @param request The information provided with the request.
+	 * @throws ServletException 
+	 * @throws IOException 
      */
-	private ValidationReport validate (HttpServletRequest request) throws ServletException, IOException {
-		// Get data to validate from file
-		InputStream fileContentData = request.getPart("data").getInputStream();
-		// Upload the file to the database using a HTTP POST request.
-		String dataString = IOUtils.toString(fileContentData);
-		httpPOST(dataString, getDatabaseURL(), "001", getUsername(), getPassword());
-		Model dataModel = JenaUtil.createMemoryModel();
-		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), "urn:dummy", FileUtils.langTurtle);
+	private ValidationReport validate (HttpServletRequest request) throws IOException, ServletException {
+		//Get option selected in the drop down
+		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream());
+				
+		// Get data to validate from file, and combine with the vocabulary
+		Model dataModel = getDataModel(shapesOption, request.getPart("data").getInputStream());
 		
-		
-//		String data = executeSPARQLquery("http://localhost:8890/sparql", "SELECT ?s ?p ?o WHERE { GRAPH <http://localhost:8890/persoonL> { ?s ?p ?o }}");
-		
-		// Get rules for validation from file. Get value from dropdown and corresponding shapes file from server.
-		InputStream shapesStream = request.getPart("shapes").getInputStream();
-		String shapesOption = IOUtils.toString(shapesStream);				
-		String shapes = getText("http://52.50.205.146:8890/SHACLvalidatorOSLO2/" + shapesOption +"-SHACL.ttl");
-		Model shapesModel = JenaUtil.createMemoryModel();
-		shapesModel.read(IOUtils.toInputStream(shapes, "UTF-8"), null, FileUtils.langTurtle);
+		// Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
+		Model shapesModel = getShapesModel(shapesOption, request.getPart("shapes").getInputStream());
 		
 		// Perform the validation of data, using the shapes model. Do not validate any shapes inside the data model.
 		Resource report = ValidationUtil.validateModel(dataModel, shapesModel, false);
 		String result = ModelPrinter.get().print(report.getModel());
 
 		// Create the validationReport, including the result, the data validated, and the rules used during validation
-		ValidationReport validationReport = new ValidationReport(result, fileContentData.toString(), 
-				shapes);
+		ValidationReport validationReport = new ValidationReport(result, "fileContentData", "shapes");
 		
 		return validationReport;
 	}
 	
+	/**
+     * Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
+     * @param shapesOption Option selected in the drop down
+     * @param shapesStream The information provided with the request.
+	 * @throws IOException 
+     */
+	private Model getShapesModel(String shapesOption, InputStream shapesStream) throws IOException{
+		// Get the corresponding SHACL file from the server
+		String shapes = getText("http://52.50.205.146:8890/SHACLvalidatorOSLO2/" + shapesOption +"-SHACL.ttl");
+		// Create Model
+		Model shapesModel = JenaUtil.createMemoryModel();
+		shapesModel.read(IOUtils.toInputStream(shapes, "UTF-8"), null, FileUtils.langTurtle);
+		
+		return shapesModel;
+	}
+	
+	/**
+     * Get data to validate from file, and combine with the vocabulary
+     * @param fileContentData The information provided with the request.
+	 * @throws IOException 
+     */
+	private Model getDataModel(String shapesOption, InputStream fileContentData) throws IOException{
+		// Upload the file to the database using a HTTP POST request.
+		String dataString = IOUtils.toString(fileContentData);
+		httpPOST(dataString, config.getDatabaseUploadURL(), "data", config.getUsername(), config.getPassword());
+		
+		// Get SPARQL query as String. SPARQL Query to request the data and vocabulary (combined)
+		String rules = getText(config.getSPARQLURL());
+		// Fill in the graph URI's in the FROM statement of the SPARQL query.
+		rules = fillInGraphURIs("data", shapesOption + "Vocabularium", rules);
+		
+		// Get data back, combined with the vocabulary
+		Model data = executeSPARQLquery(config.getDatabaseSPARQLURL(), rules);
+
+		return data;
+	}
+	
+	
+	/**
+     * Fill in the Graph URI in the rules file.
+     * @param graphData The graph URI to be filled in (of the data graph).
+     * @param graphVoc The graph URI to be filled in(of the vocabulary graph).
+     * @param Rules The SPARQL query in which the session ID should be filled in.
+     */
+    private String fillInGraphURIs(String graphData, String graphVoc, String rules) {
+ 
+		rules = rules.replaceAll("<graphURI1>", "<http://" + graphVoc + ">");
+		rules = rules.replaceAll("<graphURI2>", "<http://" + graphData + ">");
+		return rules;
+		
+	}
 	
 	
 	
@@ -214,28 +291,12 @@ public class validateServlet extends HttpServlet {
      * @param databaseURI The server against which to perform the query.
      * @param rules The SPARQL query.
      */
-	private String executeSPARQLquery(String databaseURI, String rules) {
+	private Model executeSPARQLquery(String databaseURI, String rules) {
 		// Execute SPARQL query
         QueryExecution qe = QueryExecutionFactory.sparqlService(databaseURI, rules);
-    	ResultSet results = qe.execSelect();
-    	
-        String result = new String();
-        System.out.println(result);
-		ByteArrayOutputStream stream = new ByteArrayOutputStream();
-		try {
-			// Get output as CSV in a String
-       		ResultSetFormatter.outputAsCSV(stream, results);
-        	result = stream.toString("UTF-8");  
-		} catch (Exception e) {
-        	e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("SPARQL query did not succeed");
-        } finally {
-            qe.close();
-        }
-		return result; 	
-		
+    	Model results = qe.execConstruct();
+
+		return results;	
 	}
 	
 	
@@ -275,82 +336,5 @@ public class validateServlet extends HttpServlet {
         return response.toString();
         
     }
-    
-    
-    
-    
-	/**
-     * Get the current date and time.
-     */
-	private XMLGregorianCalendar getXMLGregorianCalendarDateTime() throws DatatypeConfigurationException {
-        GregorianCalendar calendar = new GregorianCalendar();
-        return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
-        
-    }
-    
-    
-    
-    
-    /**
-     * Load the configuration settings from the config.properties file.
-     */
-    private void getConfigurationValues() {
-	    InputStream inputStream = null;
-		
-		try {
-			Properties prop = new Properties();
-			String propFileName = "/config.properties";
- 
-//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			inputStream = validateServlet.class.getResourceAsStream(propFileName);
-			prop.load(inputStream);
- 
-			setUsername(prop.getProperty("username"));
-			setPassword(prop.getProperty("password"));
-			setDatabaseURL(prop.getProperty("databaseURL"));
- 
-		}	catch (Exception e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("Configuration not loaded");
-		} 
-		finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Throw Exception using SOAP Fault Message 
-				
-				throw new RuntimeException("Configuration not loaded");
-			}
-		}
-		return;
-		
-	}
-    
-	private void setUsername(String username) {
-		this.username = username;
-	}
-	
-	private String getUsername() {
-		return this.username;
-	}
-	
-	private void setPassword(String password) {
-		this.password = password;
-	}
-	
-	private String getPassword() {
-		return this.password;
-	}
-	
-	private void setDatabaseURL(String databaseURL) {
-		this.databaseURL = databaseURL;
-	}
-	
-	private String getDatabaseURL() {
-		return this.databaseURL;
-	}
 
 }
