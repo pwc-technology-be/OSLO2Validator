@@ -143,9 +143,10 @@ public class validateServlet extends HttpServlet {
 	private ValidationReport validate (HttpServletRequest request) throws IOException, ServletException {
 		//Get option selected in the drop down
 		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream());
-				
+		
 		// Get data to validate from file, and combine with the vocabulary
-		Model dataModel = getDataModel(shapesOption, request.getPart("data").getInputStream());
+		Model dataModel = getDataModel(shapesOption, request.getPart("data").getInputStream(), 
+				request.getPart("dataURI").getInputStream());
 		
 		// Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
 		Model shapesModel = getShapesModel(shapesOption, request.getPart("shapes").getInputStream());
@@ -179,11 +180,20 @@ public class validateServlet extends HttpServlet {
 	/**
      * Get data to validate from file, and combine with the vocabulary
      * @param fileContentData The information provided with the request.
+     * @param fileContentDataURI The information provided with the request.
 	 * @throws IOException 
      */
-	private Model getDataModel(String shapesOption, InputStream fileContentData) throws IOException{
+	private Model getDataModel(String shapesOption, InputStream fileContentData, InputStream fileContentDataURI) throws IOException{
+		String dataString;
+		
+		// Check whether a file or a URI was provided.
+		if (IOUtils.toString(fileContentData).isEmpty()) {
+			dataString = getText(IOUtils.toString(fileContentDataURI));
+		} else {
+			dataString = IOUtils.toString(fileContentData);
+		}
+		
 		// Upload the file to the database using a HTTP POST request.
-		String dataString = IOUtils.toString(fileContentData);
 		httpPOST(dataString, config.getDatabaseUploadURL(), "data", config.getUsername(), config.getPassword());
 		
 		// Get SPARQL query as String. SPARQL Query to request the data and vocabulary (combined)

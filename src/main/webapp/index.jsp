@@ -14,7 +14,9 @@
         	<section class="region">
 				<div class="layout layout--wide" id="form">
 	        	    <form method="POST" action="validate" enctype="multipart/form-data">
-	        	    	OSLO² applicatie profiel:
+	        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
+	        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
+	        	    	</br>
 	        	    	<select name="shapes">
 	        	    		<option>Generiek - not implemented</option>
 	        	    		<option>Adres - not implemented</option>
@@ -22,21 +24,23 @@
 	        	    		<option>Persoon</option>
 	        	    		<option>Dienst - not implemented</option>
 	        	    	</select>
+		        	    	</p>
+		        	    	</br>
+	        	    	<h2 class="h2">Data</h2>
+	        	    	Geef hieronder ofwel een URL mee waarop de data gepubliceerd staat, ofwel een bestand. Indien u beide invult, zal enkel het bestand gevalideerd worden.
 				       	<table border="0">
 				          <tr>
 				             <td>Data file:</td>
 				             <td><input type='file' accept='text/ttl' name="data" id="data" /></td>
 				          </tr>
 				          <tr>
-<!-- 				             <td>Data file URL:</td>
-				             <td><input type='text' name="dataURI"/></td>
-				          </tr> -->
-				          <tr>
-				             <td colspan="2">                  
-				                 <input type="submit" value="valideer" name="upload" id="upload" />
-				             </td>
+				          	<td>Data URL: </td>
+				          	<td><input type='text' name="dataURI" id="dataURI"/></td>
 				          </tr>
 				       	</table>
+				       	</p>
+				       	</br>
+				       	 <input type="submit" value="valideer" name="upload" id="upload" onClick="checkIt()" />
 				    </form>
 					
 					</br>
