@@ -142,7 +142,7 @@ public class validateServlet extends HttpServlet {
      */
 	private ValidationReport validate (HttpServletRequest request) throws IOException, ServletException {
 		//Get option selected in the drop down
-		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream());
+		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream(), "UTF-8");
 		
 		// Get data to validate from file, and combine with the vocabulary
 		Model dataModel = getDataModel(shapesOption, request.getPart("data").getInputStream(), 
@@ -185,12 +185,15 @@ public class validateServlet extends HttpServlet {
      */
 	private Model getDataModel(String shapesOption, InputStream fileContentData, InputStream fileContentDataURI) throws IOException{
 		String dataString;
+		String file = IOUtils.toString(fileContentData, "UTF-8");
 		
 		// Check whether a file or a URI was provided.
-		if (IOUtils.toString(fileContentData).isEmpty()) {
-			dataString = getText(IOUtils.toString(fileContentDataURI));
+		if (file.isEmpty()) {
+			// If URI
+			dataString = getText(IOUtils.toString(fileContentDataURI, "UTF-8"));
 		} else {
-			dataString = IOUtils.toString(fileContentData);
+			// If file
+			dataString = file;
 		}
 		
 		// Upload the file to the database using a HTTP POST request.
@@ -234,8 +237,8 @@ public class validateServlet extends HttpServlet {
      */
 	private static void httpPOST(String file, String databaseURL, String sessionID, String username, String password) {
 		String url = null;
+		System.out.println(file);
 		try {
-			System.out.println(databaseURL + username + password + sessionID);
 			// Set credentials for server
 			CredentialsProvider credsProvider = new BasicCredentialsProvider();
 			credsProvider.setCredentials(
@@ -275,6 +278,7 @@ public class validateServlet extends HttpServlet {
 	        
 			// Execute the POST and print the response if not successful.
 			CloseableHttpResponse response = client.execute(request);   // IOException
+			System.out.println(response.getStatusLine().getStatusCode());
 			if (! (response.getStatusLine().getStatusCode() == 200 || response.getStatusLine().getStatusCode() == 201 )) {
 				// Throw Exception using SOAP Fault Message 
 					throw new RuntimeException("Upload of the file did not succeed");
