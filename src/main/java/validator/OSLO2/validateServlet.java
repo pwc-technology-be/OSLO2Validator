@@ -7,7 +7,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.GregorianCalendar;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
@@ -17,13 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.topbraid.shacl.util.ModelPrinter;
-import org.topbraid.shacl.validation.ValidationUtil;
-import org.topbraid.spin.util.JenaUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
@@ -41,6 +36,9 @@ import org.apache.jena.query.QueryExecutionFactory;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.util.FileUtils;
+import org.topbraid.shacl.util.ModelPrinter;
+import org.topbraid.shacl.validation.ValidationUtil;
+import org.topbraid.spin.util.JenaUtil;
 
 
 /**
@@ -197,12 +195,15 @@ public class validateServlet extends HttpServlet {
 		}
 		
 		// Upload the file to the database using a HTTP POST request.
-		httpPOST(dataString, config.getDatabaseUploadURL(), "data", config.getUsername(), config.getPassword());
+		String sessionID = String.valueOf( new Timestamp( (new Date()).getTime() ).getTime() );
+		httpPOST(dataString, config.getDatabaseUploadURL(), sessionID, config.getUsername(), config.getPassword());
 		
 		// Get SPARQL query as String. SPARQL Query to request the data and vocabulary (combined)
 		String rules = getText(config.getSPARQLURL());
 		// Fill in the graph URI's in the FROM statement of the SPARQL query.
-		rules = fillInGraphURIs("data", shapesOption + "Vocabularium", rules);
+		rules = fillInGraphURIs(sessionID, shapesOption + "Vocabularium", rules);
+		
+		System.out.println(rules);
 		
 		// Get data back, combined with the vocabulary
 		Model data = executeSPARQLquery(config.getDatabaseSPARQLURL(), rules);
@@ -220,7 +221,7 @@ public class validateServlet extends HttpServlet {
     private String fillInGraphURIs(String graphData, String graphVoc, String rules) {
  
 		rules = rules.replaceAll("<graphURI1>", "<http://" + graphVoc + ">");
-		rules = rules.replaceAll("<graphURI2>", "<http://" + graphData + ">");
+		rules = rules.replaceAll("<graphURI2>", "<http://OSLOvalidator/" + graphData + ">");
 		return rules;
 		
 	}
@@ -237,7 +238,6 @@ public class validateServlet extends HttpServlet {
      */
 	private static void httpPOST(String file, String databaseURL, String sessionID, String username, String password) {
 		String url = null;
-		System.out.println(file);
 		try {
 			// Set credentials for server
 			CredentialsProvider credsProvider = new BasicCredentialsProvider();
@@ -266,7 +266,7 @@ public class validateServlet extends HttpServlet {
 //				databaseURL = databaseURL.substring(0, databaseURL.length() - 1);
 //			}
 			
-			url = databaseURL + sessionID;
+			url = databaseURL + "OSLOvalidator/" + sessionID;
 			HttpPost request = new HttpPost(url);
 //			request.setConfig(config);
 			
