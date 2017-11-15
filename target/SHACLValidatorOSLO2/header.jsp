@@ -8,7 +8,7 @@
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
-	<link href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet">
+ 	<link href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet">
 	<link href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet">
 	<link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/icon-highres-precomposed.png" rel="icon" sizes="192x192">
 	<link href="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/touch-icon-iphone-precomposed.png" rel="apple-touch-icon">

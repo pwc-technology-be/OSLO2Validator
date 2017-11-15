@@ -4,7 +4,7 @@
 	<groupId>validator.OSLO2</groupId>
 	<artifactId>SHACLValidatorOSLO2</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>SHACLValidatorOSLO2 Maven Webapp</name>
 	<url>http://maven.apache.org</url>
  	<repositories>
@@ -13,6 +13,7 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
+	
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,5 +64,14 @@
 	</dependencies>
 	<build>
 		<finalName>SHACLValidatorOSLO2</finalName>
+		<plugins>
+		    <plugin>
+		        <artifactId>maven-compiler-plugin</artifactId>
+		        <configuration>
+		            <source>1.7</source>
+		            <target>1.7</target>
+		        </configuration>
+		    </plugin>
+		</plugins>
 	</build>
 </project>

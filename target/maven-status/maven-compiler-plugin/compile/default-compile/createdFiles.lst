@@ -1,0 +1,5 @@
+validator\OSLO2\Configuration.class
+validator\OSLO2\ValidationReport.class
+validator\OSLO2\ValidationResult.class
+validator\OSLO2\validateServlet.class
+validator\OSLO2\HomeServlet.class

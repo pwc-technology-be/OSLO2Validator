@@ -13,39 +13,76 @@
         <div class="main-content" id="main" itemprop="mainContentOfPage" role="main" tabindex="-1">
         	<section class="region">
 				<div class="layout layout--wide" id="form">
-	        	    <form method="POST" action="validate" enctype="multipart/form-data">
-	        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
-	        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
-	        	    	</br>
-	        	    	<select name="shapes">
-	        	    		<option>Generiek - not implemented</option>
-	        	    		<option>Adres - not implemented</option>
-	        	    		<option>Organisatie - not implemented</option>
-	        	    		<option>Persoon</option>
-	        	    		<option>Dienst - not implemented</option>
-	        	    	</select>
-		        	    	</p>
-		        	    	</br>
-	        	    	<h2 class="h2">Data</h2>
-	        	    	Geef hieronder ofwel een URL mee waarop de data gepubliceerd staat, ofwel een bestand. Indien u beide invult, zal enkel het bestand gevalideerd worden.
-				       	<table border="0">
-				          <tr>
-				             <td>Data file:</td>
-				             <td><input type='file' accept='text/ttl' name="data" id="data" /></td>
-				          </tr>
-				          <tr>
-				          	<td>Data URL: </td>
-				          	<td><input type='text' name="dataURI" id="dataURI"/></td>
-				          </tr>
-				       	</table>
-				       	</p>
-				       	</br>
-				       	 <input type="submit" value="valideer" name="upload" id="upload" onClick="checkIt()" />
-				    </form>
+				
+					<div class="grid" data-tabs data-tabs-responsive-label="Navigatie">
+				          <div class="col--1-1">
+				            <div class="tabs__wrapper">
+				              <ul class="tabs" data-tabs-list>
+				                <li class="tab tab--active">
+				                  <a class="tab__link" id="tab-2-nummer-1" href="#" data-tab>Valideer via opladen van bestand</a>
+				                </li>
+				                <li class="tab">
+				                  <a class="tab__link" id="tab-2-nummer-2" href="#" data-tab>Valideer via URL</a>
+				                </li>
+				              </ul>
+				            </div>
+				          </div>
+				          
+				          <section class="col--1-1 tab__pane" data-tab-pane>
+				            <h1 class="h1">Valideer via opladen van bestand</h1>
+				            <div class="typography">
+				              	<!--Put Content for first tab here-->
+				        		 <form method="POST" action="validate" enctype="multipart/form-data">
+				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
+				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
+				        	    	</br>
+				        	    	<select name="shapes">
+				        	    		<option>Generiek - not implemented</option>
+				        	    		<option>Adres - not implemented</option>
+				        	    		<option>Organisatie - not implemented</option>
+				        	    		<option>Persoon</option>
+				        	    		<option>Dienst - not implemented</option>
+				        	    	</select>
+				        	    	<h2 class="h2">Data</h2>
+							       	Selecteer hieronder het bestand dat u wil valideren.</br>
+							        <input type='file' accept='text/ttl' name="data" id="data" />
+							        <h2 class="h2">Valideer</h2>
+							       	<input type="submit" value="Klik hier om te valideren" name="upload" id="upload" onClick="checkIt()" />
+							    </form>
+				            </div>
+				          </section>
+				
+				          <section class="col--1-1 tab__pane" data-tab-pane>
+				            <h1 class="h1">Valideer via URL</h1>
+				            <div class="typography">
+				              	<!--Put Content for second tab here-->
+				        		<form method="POST" action="validate" enctype="multipart/form-data">
+				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
+				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
+				        	    	</br>
+				        	    	<select name="shapes">
+				        	    		<option>Generiek - not implemented</option>
+				        	    		<option>Adres - not implemented</option>
+				        	    		<option>Organisatie - not implemented</option>
+				        	    		<option>Persoon</option>
+				        	    		<option>Dienst - not implemented</option>
+				        	    	</select>
+				        	    	<h2 class="h2">Data</h2>
+				        	    	Geef hieronder de URL op waarop de data gepubliceerd is die u wilt valideren.</br>
+							       	<input type='text' name="dataURI" id="dataURI"/>
+							       	<h2 class="h2">Valideer</h2>
+							       	<input type="submit" value="Klik hier om te valideren" name="upload" id="upload" onClick="checkIt()" />
+							    </form>
+				            </div>
+				          </section>
+				
+				        </div>
 					
 					</br>
 					</br>
-            		<p>Last updated: 2017-11-13</p>
+            		<p>Last updated: 2017-11-15</p>
+            		
+            		
         		</div>
         	</section>
         </div>
