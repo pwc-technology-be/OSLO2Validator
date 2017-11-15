@@ -1,16 +1,20 @@
 package validator.OSLO2;
 
+import java.util.List;
+
 public class ValidationReport {
 	private String result;
 	private String data;
 	private String shapes;
+	private List<ValidationResult> validationResultList;
 	
 		
 	public ValidationReport() {
 		 
 	}
 	
-	public ValidationReport(String result, String data, String shapes) {
+	public ValidationReport(List<ValidationResult> validationResultList, String result, String data, String shapes) {
+		this.validationResultList = validationResultList;
 		this.result = result;
 		this.data = data;
 		this.shapes = shapes;
@@ -38,6 +42,14 @@ public class ValidationReport {
  
 	public void setShapes(String shapes) {
 		this.shapes = shapes;
+	}
+
+	public List<ValidationResult> getValidationResultList() {
+		return validationResultList;
+	}
+
+	public void setValidationResultList(List<ValidationResult> validationResultList) {
+		this.validationResultList = validationResultList;
 	}
 	 
 }
