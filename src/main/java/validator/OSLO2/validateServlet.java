@@ -45,7 +45,6 @@ import org.topbraid.spin.util.JenaUtil;
 @MultipartConfig
 public class validateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Configuration config = new Configuration();
        
 	
 	
@@ -70,9 +69,6 @@ public class validateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Get configuration
-		getConfigurationValues();
-		
 		// Validate the data and write to validationReport
 		ValidationReport validationReport = validate(request);
 		
@@ -84,46 +80,6 @@ public class validateServlet extends HttpServlet {
 	    dispatcher.forward(request, response);
 	}
 	
-	
-	
-    /**
-     * Load the configuration settings from the config.properties file.
-     */
-    private void getConfigurationValues() {
-	    InputStream inputStream = null;
-		
-		try {
-			Properties prop = new Properties();
-			String propFileName = "/config.properties";
- 
-			inputStream = validateServlet.class.getResourceAsStream(propFileName);
-			prop.load(inputStream);
- 
-			this.config.setUsername(prop.getProperty("username"));
-			this.config.setPassword(prop.getProperty("password"));
-			this.config.setDatabaseUploadURL(prop.getProperty("databaseUploadURL"));
-			this.config.setDatabaseSPARQLURL(prop.getProperty("databaseSPARQLURL"));
-			this.config.setSPARQLURL(prop.getProperty("SPARQLURL"));
- 
-		}	catch (Exception e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("Configuration not loaded");
-		} 
-		finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Throw Exception using SOAP Fault Message 
-				
-				throw new RuntimeException("Configuration not loaded");
-			}
-		}
-		return;
-		
-	}
 
 	
 	
