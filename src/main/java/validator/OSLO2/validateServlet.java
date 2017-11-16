@@ -160,8 +160,7 @@ public class validateServlet extends HttpServlet {
 		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, FileUtils.langTurtle);
 		
 		// Upload the correct vocabulary to the model
-		InputStream is = validateServlet.class.getResourceAsStream("/" + shapesOption + "-vocabularium.ttl");
-		String vocStr = FileUtils.readWholeFileAsUTF8(is);
+		String vocStr = getText("http://52.50.205.146:8890/SHACLvalidatorOSLO2/" + shapesOption + "-vocabularium.ttl");
 		dataModel.read(IOUtils.toInputStream(vocStr, "UTF-8"), null, FileUtils.langTurtle);
 
 		return dataModel;
