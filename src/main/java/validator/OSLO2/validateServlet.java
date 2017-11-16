@@ -45,6 +45,7 @@ import org.topbraid.spin.util.JenaUtil;
 @MultipartConfig
 public class validateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Configuration config = new Configuration();
        
 	
 	
@@ -69,6 +70,9 @@ public class validateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Get configuration
+		getConfigurationValues();
+		
 		// Validate the data and write to validationReport
 		ValidationReport validationReport = validate(request);
 		
@@ -160,7 +164,7 @@ public class validateServlet extends HttpServlet {
 		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, FileUtils.langTurtle);
 		
 		// Upload the correct vocabulary to the model
-		String vocStr = getText("http://52.50.205.146:8890/SHACLvalidatorOSLO2/" + shapesOption + "-vocabularium.ttl");
+		String vocStr = getText(config.getServer() + shapesOption + "-vocabularium.ttl");
 		dataModel.read(IOUtils.toInputStream(vocStr, "UTF-8"), null, FileUtils.langTurtle);
 
 		return dataModel;
@@ -179,7 +183,7 @@ public class validateServlet extends HttpServlet {
      */
 	private Model getShapesModel(String shapesOption, InputStream shapesStream) throws IOException{
 		// Get the corresponding SHACL file from the server
-		String shapes = getText("http://52.50.205.146:8890/SHACLvalidatorOSLO2/" + shapesOption +"-SHACL.ttl");
+		String shapes = getText(config.getServer() + shapesOption +"-SHACL.ttl");
 		// Create Model
 		Model shapesModel = JenaUtil.createMemoryModel();
 		shapesModel.read(IOUtils.toInputStream(shapes, "UTF-8"), null, FileUtils.langTurtle);
@@ -354,8 +358,41 @@ public class validateServlet extends HttpServlet {
 	
 	
 	
-	
-	
+	/**
+     * Load the configuration settings from the config.properties file.
+     */
+    private void getConfigurationValues() {
+	    InputStream inputStream = null;
+		
+		try {
+			Properties prop = new Properties();
+			String propFileName = "/config.properties";
+ 
+//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
+			inputStream = validateServlet.class.getResourceAsStream(propFileName);
+			prop.load(inputStream);
+ 
+			this.config.setServer(prop.getProperty("server"));
+ 
+		}	catch (Exception e) {
+			e.printStackTrace();
+			// Throw Exception using SOAP Fault Message 
+			
+			throw new RuntimeException("Configuration not loaded");
+		} 
+		finally {
+			try {
+				inputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+				// Throw Exception using SOAP Fault Message 
+				
+				throw new RuntimeException("Configuration not loaded");
+			}
+		}
+		return;
+		
+	}
 	
     
     
