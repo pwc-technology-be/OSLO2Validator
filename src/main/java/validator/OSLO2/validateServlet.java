@@ -80,7 +80,7 @@ public class validateServlet extends HttpServlet {
 		request.setAttribute("report", validationReport);
 		
         // Forward to /WEB-INF/views/validatedView.jsp
-	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/result.jsp");
+	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/result.jsp");
 	    dispatcher.forward(request, response);
 	}
 	

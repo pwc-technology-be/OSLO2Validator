@@ -20,7 +20,10 @@
   	<servlet-name>validateServlet</servlet-name>
   	<url-pattern>/validate</url-pattern>
   </servlet-mapping>
+  
   <welcome-file-list>
- 	<welcome-file>index.jsp</welcome-file>     
-  </welcome-file-list>
+ 
+   <welcome-file>home</welcome-file>
+    
+ </welcome-file-list>
 </web-app>
