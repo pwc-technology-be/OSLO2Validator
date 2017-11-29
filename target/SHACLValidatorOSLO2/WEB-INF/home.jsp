@@ -32,6 +32,7 @@
 				          </div>
 				          
 				          <section class="col--1-1 tab__pane" data-tab-pane>
+				  
 				            <h1 class="h1">Valideer via opladen van bestand</h1>
 				            <div class="typography">
 				              	<!--Put Content for first tab here-->
@@ -79,7 +80,7 @@
 					
 					</br>
 					</br>
-            		<p>Last updated: 2017-11-16</p>
+            		<p>Last updated: 2017-11-29</p>
             		
             		
         		</div>

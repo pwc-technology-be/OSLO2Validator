@@ -2,14 +2,18 @@ package validator.OSLO2;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -21,7 +25,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -33,6 +39,9 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
+import org.apache.tika.Tika;
+import org.apache.tika.detect.TypeDetector;
+import org.apache.tika.mime.MimeTypes;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
@@ -106,15 +115,7 @@ public class validateServlet extends HttpServlet {
 		// Get data to validate from file, and combine with the vocabulary
 		// Check whether a file or a URI was provided.
 		Model dataModel = JenaUtil.createMemoryModel();
-		if (request.getPart("data") == null) {
-			// If URI
-			dataModel = getDataModel(shapesOption, null, 
-					request.getPart("dataURI").getInputStream(), shapesModel);
-		} else {
-			// If file
-			dataModel = getDataModel(shapesOption, request.getPart("data").getInputStream(), 
-					null, shapesModel);
-		}
+		dataModel = getDataModel(shapesOption, request, shapesModel);
 		
 		// Perform the validation of data, using the shapes model. Do not validate any shapes inside the data model.
 		Resource resource = ValidationUtil.validateModel(dataModel, shapesModel, false);
@@ -144,24 +145,32 @@ public class validateServlet extends HttpServlet {
      * @param fileContentDataURI 
      * 			The information provided with the request.
 	 * @throws IOException 
+	 * @throws ServletException 
      */
-	private Model getDataModel(String shapesOption, InputStream fileContentData, InputStream fileContentDataURI, Model shapesModel) throws IOException{
+	private Model getDataModel(String shapesOption, HttpServletRequest request, Model shapesModel) throws IOException, ServletException{
 		String dataString;
+		String fileName;
+		String extension;
 		
-		// Check whether a file or a URI was provided.
-		if (fileContentData == null) {
+		// Check whether a file or a URI was provided. And determine it's extension.
+		if (request.getPart("data") == null) {
 			// If URI
-			dataString = getText(IOUtils.toString(fileContentDataURI, "UTF-8"));
+			dataString = getText(IOUtils.toString(request.getPart("dataURI").getInputStream(), "UTF-8"));
+			String urlString = request.getParameter("dataURI");
+			URL url = new URL(urlString);
+			extension = FilenameUtils.getExtension(url.getPath());			
 		} else {
 			// If file
-			dataString = IOUtils.toString(fileContentData, "UTF-8");
+			dataString = IOUtils.toString(request.getPart("data").getInputStream(), "UTF-8");
+			fileName = getSubmittedFileName(request.getPart("data"));
+			extension = checkForFileLang(fileName);
 		}
 		
 		//Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
 		Model dataModel = JenaUtil.createMemoryModel();
 		Map<String, String> shapesPrefixes = shapesModel.getNsPrefixMap();
 		dataModel.setNsPrefixes(shapesPrefixes);
-		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, FileUtils.langTurtle);
+		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, extension);
 		
 		// Upload the correct vocabulary to the model
 		String vocStr = getText(config.getServer() + shapesOption + "-vocabularium.ttl");
@@ -356,6 +365,45 @@ public class validateServlet extends HttpServlet {
 		return result;
 	}
 	
+	/**
+     * Get the name of the submitted file.
+     */
+	private static String getSubmittedFileName(Part part) {
+	    for (String cd : part.getHeader("content-disposition").split(";")) {
+	        if (cd.trim().startsWith("filename")) {
+	            String fileName = cd.substring(cd.indexOf('=') + 1).trim().replace("\"", "");
+	            return fileName.substring(fileName.lastIndexOf('/') + 1).substring(fileName.lastIndexOf('\\') + 1); // MSIE fix.
+	        }
+	    }
+	    return null;
+	}
+	
+	
+	/**
+	 * Method checks file format simply by mapping the file extensions to expected
+	 * format.</br>
+	 * <ul>
+	 * <li>extension .ttl --> FileUtils.langTurtle.</li>
+	 * <li>extension .rdf --> FileUtils.langXML.</li>
+	 * <li>extension .xml --> FileUtils.langXML.</li>
+	 * <li>extension .jsonld --> JSONLD</li>
+	 * </ul>
+	 * 
+	 * @param filename
+	 * @return String
+	 */
+	private static String checkForFileLang(String filename) {
+
+		if (filename.endsWith(".ttl")) {
+			return FileUtils.langTurtle;
+		} else if (filename.endsWith(".xml") || filename.endsWith(".rdf")) {
+			return FileUtils.langXML;
+		} else if (filename.endsWith(".jsonld")) {
+			return "JSONLD";
+		} else {
+			return "";
+		}
+	}
 	
 	
 	/**
