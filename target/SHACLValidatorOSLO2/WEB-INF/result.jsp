@@ -31,6 +31,10 @@
 				<section class="region">
 					<div class="layout layout--wide">
 					
+						<form action="home">
+							<input type="submit" class="button" value="Terug" />
+						</form>
+					
 				        <div class="grid" data-tabs data-tabs-responsive-label="Navigatie">
 				          <div class="col--1-1">
 				            <div class="tabs__wrapper">

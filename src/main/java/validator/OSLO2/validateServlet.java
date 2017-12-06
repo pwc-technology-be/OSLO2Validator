@@ -29,6 +29,13 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -148,23 +155,40 @@ public class validateServlet extends HttpServlet {
 	 * @throws ServletException 
      */
 	private Model getDataModel(String shapesOption, HttpServletRequest request, Model shapesModel) throws IOException, ServletException{
-		String dataString;
+		String dataString = null;
 		String fileName;
-		String extension;
+		String extension = null;
 		
 		// Check whether a file or a URI was provided. And determine it's extension.
 		if (request.getPart("data") == null) {
-			// If URI
-			dataString = getText(IOUtils.toString(request.getPart("dataURI").getInputStream(), "UTF-8"));
-			String urlString = request.getParameter("dataURI");
-			URL url = new URL(urlString);
-			extension = FilenameUtils.getExtension(url.getPath());			
+			// If URI, do GET
+			HttpResponse httpGetResponse = httpGet(request);
+			HttpEntity resEntityGet = httpGetResponse.getEntity();  
+    	    
+			// If response not null
+			if (resEntityGet != null) {   	        
+    	    	//get the extension from the header
+    	        if (httpGetResponse.getHeaders("Content-Type").length > 0){
+    	        extension = httpGetResponse.getHeaders("Content-Type")[0].getValue();
+    	    	}
+    	        //get the actual dataString
+    	        dataString = EntityUtils.toString(resEntityGet);
+    	    }    	    
+    	    
+    	    // If extension not found in Content-Type header
+    	    if (extension == null) {
+    			String urlString = request.getParameter("dataURI");
+    			URL url = new URL(urlString);
+    			extension = FilenameUtils.getExtension(url.getPath());
+    	    }
+					
 		} else {
 			// If file
 			dataString = IOUtils.toString(request.getPart("data").getInputStream(), "UTF-8");
 			fileName = getSubmittedFileName(request.getPart("data"));
 			extension = checkForFileLang(fileName);
 		}
+		
 		
 		//Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
 		Model dataModel = JenaUtil.createMemoryModel();
@@ -236,6 +260,33 @@ public class validateServlet extends HttpServlet {
 		}
         
         return response.toString();
+        
+    }
+    
+    
+    
+    /**
+     * Perform an HTTP GET and return a file
+     * @param fileURL
+     * 			HTTP URL of the file to download.
+     */
+    private static HttpResponse httpGet(HttpServletRequest request) {
+    	//Initialize variable
+    	HttpResponse responseGet = null;
+    	try {
+    	    HttpClient client = new DefaultHttpClient();
+    	    String getURL = request.getParameter("dataURI");
+    	    HttpGet get = new HttpGet(getURL);
+    	    
+    	    if (request.getPart("headerKey") != null) {
+    	    get.setHeader(request.getParameter("headerKey"), request.getParameter("headerValue"));
+    	    }
+    	    responseGet = client.execute(get);
+    	} catch (Exception e) {
+    	    e.printStackTrace();
+    	}
+    	
+		return responseGet;
         
     }
 
@@ -398,7 +449,7 @@ public class validateServlet extends HttpServlet {
 			return FileUtils.langTurtle;
 		} else if (filename.endsWith(".xml") || filename.endsWith(".rdf")) {
 			return FileUtils.langXML;
-		} else if (filename.endsWith(".jsonld")) {
+		} else if (filename.endsWith(".jsonld") || filename.endsWith(".json")) {
 			return "JSONLD";
 		} else {
 			return "";

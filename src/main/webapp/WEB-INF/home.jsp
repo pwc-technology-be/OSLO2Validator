@@ -7,10 +7,28 @@
 <html lang="nl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="js/jquery-1.3.2.js" type="text/javascript"></script>
+        
 	<script>
-/* 		function maxOne {
+		$(document).ready(function () {
+		       
+		  		console.log('hola');
+			var target = document.getElementById("doc_container");
 			
-		} */
+			var observer = new MutationObserver(function(mutations) {
+				if($("#deactivate").css('display') == "none"){
+					$("#deactivate").css('display', 'block');
+				} else {
+					$("#deactivate").css('display', 'none');
+				}
+			});
+			 
+			// configuration of the observer:
+			var config = { attributes: true, childList: true, characterData: true };
+			 
+			// pass in the target node, as well as the observer options
+			observer.observe(target, config);
+		 }); 
 	</script>
 </head>
 <body>
@@ -55,9 +73,9 @@
 							        
 							        <!-- component -->
 							        <div class="upload js-upload"
-							          data-upload-t-close="Sluiten"
+							          data-upload-t-close="Sluiten" id="doc_container"
 							        >
-							          <div class="upload__element" onclick="maxOne">
+							          <div class="upload__element">
 							            <input class="upload__element__input" type="file" id="data" name="data"
 							            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
 							            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld" />
@@ -65,6 +83,7 @@
 							              <i class="vi vi-paperclip"></i><span>Bijlage toevoegen</span>
 							            </label>
 							          </div>
+							          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#99999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
 							        </div>
 							        <!-- end component -->
 							        
@@ -93,7 +112,17 @@
 							       	<!-- input-field component -->          
 						          	<label for="input-field" class="form__label">URI </label>
 						          	<input class="input-field" id="input-field" type="text" placeholder="" name="dataURI" />
-							       	
+						          	
+						          	</br><p></p>
+						          	Geef hieronder eventuele optionele headers mee.
+						          	</br><p></p>
+						          	<!-- input-field component -->          
+							        <label for="input-field" class="form__label">Header key </label>
+							        <input class="input-field" id="input-field" type="text" placeholder="" name="headerKey" />
+							        <!-- input-field component -->          
+						          	<label for="input-field" class="form__label">Header value </label>
+						          	<input class="input-field" id="input-field" type="text" placeholder="" name="headerValue" />
+						          	
 							       	<h2 class="h2">Valideer</h2>
 							       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
 							    </form>
