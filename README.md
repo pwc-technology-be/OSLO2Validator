@@ -36,7 +36,7 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 * /src/main/java/validator/OSLO2/ValidationResult.java - The class file defining the list of all validation results returned to the user through the ValidationReport.
 * /src/main/webapp/WEB-INF/home.jsp - JSP of the home web page.
 * /src/main/webapp/WEB-INF/result.jsp - JSP page of the web page with the results after validation.
-* /src/main/webapp/WEB-INF/web.xml
+* /src/main/webapp/WEB-INF/web.xml - Web Application Deployment Descriptor of the application.
 * /target/apidocs - HTML documentation of the source code.
 * /target/SHACLValidatorOSLO2.war - War file to be deployed on an application server.
 
