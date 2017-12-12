@@ -56,7 +56,7 @@ Choose whether you want to validate an RDF graph by providing the tool with a fi
 
 ### Validating by uploading a file
 
-Choose the application profile against which you want to validate the RDF graph. Next, upload the file by clicking "Bijlage toevoegen" and click the "Klik hier om te valideren" button. The resulting webpage will contain the following tabs of information:
+Choose the application profile against which you want to validate the RDF graph. Next, upload the file by clicking "Bijlage toevoegen" and click the "Klik hier om te valideren" button. The allowed file extension are: ".ttl", ".xml", ".rdf", ".jsonld" and ".json". The resulting webpage will contain the following tabs of information:
 
 * The validation result in TTL format
 * The validation result in table format
@@ -65,7 +65,7 @@ Choose the application profile against which you want to validate the RDF graph.
 
 ### Validating by URI
 
-Choose the application profile against which you want to validate the RDF graph. Next, input the URI in the appropriate text box. When uploading through URI, you are able to provide an optional header for the HTTP GET request through the Header Key and Header Value text box which will retrieve your RDF graph. The resulting webpage will contain the following tabs of information:
+Choose the application profile against which you want to validate the RDF graph. Next, input the URI in the appropriate text box. When uploading through URI, you are able to provide an optional header for the HTTP GET request through the Header Key and Header Value text box which will retrieve your RDF graph. The tool can validate RDF and JSONLD data. The resulting webpage will contain the following tabs of information:
 
 * The validation result in TTL format
 * The validation result in table format
