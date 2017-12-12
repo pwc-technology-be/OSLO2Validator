@@ -4,6 +4,7 @@
 * [Overview](#overview)
 * [Requirements](#requirements)
 * [Source Structure](#source-structure)
+* [Reuse](#reuse)
 * [Usage Instructions](#usage-instructions)
   * [Validating by uploading a file](#validating-by-uploading-a-file)
   * [Validating by URI](#validating-by-uri)
@@ -39,6 +40,14 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 * /src/main/webapp/WEB-INF/web.xml - Web Application Deployment Descriptor of the application.
 * /target/apidocs - HTML documentation of the source code.
 * /target/SHACLValidatorOSLO2.war - War file to be deployed on an application server.
+
+## Reuse
+
+The tool is highly reusable due to the fact that the SHACL rules and vocabularies it uses to validate the RDF Graph are retrieved from a server location which can be specified in the configuration file (also see [Source Structure](#source-structure)). Extra or specified application profiles can thus be easily added by providing the following files on a server location of your choosing:
+ 
+ * options.txt listing all available application profiles to be tested against. This file is used to populate the drop down from which the user can select his/her application profile to validate against (also see [Usage Instructions](#usage-instructions)).
+ * applicationprofilename-SHACL.ttl which specifies the SHACL rules for the corresponding application profile.
+ * applicationprofilename-vocabularium.ttl which specifies the vocabularium terms upon which the application profile was specified.
 
 ## Usage Instructions
 
