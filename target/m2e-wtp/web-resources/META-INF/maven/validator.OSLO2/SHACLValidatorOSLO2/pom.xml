@@ -4,7 +4,7 @@
 	<groupId>validator.OSLO2</groupId>
 	<artifactId>SHACLValidatorOSLO2</artifactId>
 	<packaging>war</packaging>
-	<version>0.1.5-SNAPSHOT</version>
+	<version>0.1.6-SNAPSHOT</version>
 	<name>SHACLValidatorOSLO2 Maven Webapp</name>
 	<url>http://maven.apache.org</url>
  	<repositories>
@@ -80,6 +80,20 @@
 		            <target>1.7</target>
 		        </configuration>
 		    </plugin>
+		    <plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-javadoc-plugin</artifactId>
+		        <version>2.10.4</version>
+		        <configuration></configuration>
+		        <executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>

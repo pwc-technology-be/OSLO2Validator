@@ -115,7 +115,7 @@ public class HomeServlet extends HttpServlet {
 			String propFileName = "/config.properties";
  
 //			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			inputStream = validateServlet.class.getResourceAsStream(propFileName);
+			inputStream = ValidateServlet.class.getResourceAsStream(propFileName);
 			prop.load(inputStream);
  
 			this.config.setServer(prop.getProperty("server"));
