@@ -1,0 +1,19 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<http://data.vlaanderen.be/doc/dienst/00001>
+    <http://purl.org/dc/terms/issued> "2018-03-12T16:08:40Z"^^<http://www.w3.org/2001/XMLSchema#dateTime> ;
+    <http://xmlns.com/foaf/0.1/primaryTopic> <http://data.vlaanderen.be/id/dienst/00001> .
+
+
+<http://data.vlaanderen.be/doc/dienst/00001> 
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/vocab/cpsv#PublicService>;
+    <http://purl.org/dc/terms/title> "mockup publieke service 1"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+    <http://purl.org/dc/terms/title> "alternatieve titel"^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> ;
+    <http://purl.org/dc/terms/description> "Dit is de beschrijving van de mockup publieke service 1."^^<http://www.w3.org/1999/02/22-rdf-syntax-ns#langString> .
+
+
+
+
+<http://data.vlaanderen.be/id/organisatie/0002>
+    <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://www.w3.org/ns/org#Organization>;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "organisatie X"^^<http://www.w3.org/2001/XMLSchema#string> .
