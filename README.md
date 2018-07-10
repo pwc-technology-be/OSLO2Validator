@@ -1,3 +1,8 @@
+Deze repository is een onderdeel van het initiatief **Open Standaarden voor Linkende Organisaties __(OSLO)__**.
+Meer informatie is terug te vinden op de [OSLO productpagina](https://overheid.vlaanderen.be/producten-diensten/OSLO2).
+
+Deze repository bevat de source code voor een tool die toelaat om data te valideren tegen de [OSLO applicatieprofielen](https://data.vlaanderen.be/ns#Applicatieprofielen). Deze validator is beschikbaar via https://data.vlaanderen.be/shacl-validator/ of kan lokaal geïnstalleerd worden met behulp van onderstaande instructies.
+
 # OSLO2Validator
 
  ## Table of Contents
