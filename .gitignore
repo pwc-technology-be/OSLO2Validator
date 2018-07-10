@@ -1,0 +1,18 @@
+# OS Files
+.DS_Store
+.directory
+
+# Compiled classes
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Build binaries
+target/
+*.jar
+*.war
+*.ear
