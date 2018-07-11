@@ -2,21 +2,16 @@ package validator.OSLO2;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,7 +24,8 @@ import javax.servlet.http.Part;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.Header;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -46,13 +42,9 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
-import org.apache.tika.Tika;
-import org.apache.tika.detect.TypeDetector;
-import org.apache.tika.mime.MimeTypes;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
-
 
 /**
  * Servlet implementation class validateServlet
@@ -61,15 +53,21 @@ import org.topbraid.spin.util.JenaUtil;
 @MultipartConfig
 public class ValidateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Configuration config = new Configuration();
-       
-	
-	
+	private static Log logger = LogFactory.getFactory().getInstance(ValidateServlet.class);
+	private Configuration config;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
 	public ValidateServlet() {
         super();
+		try {
+			config = Configuration.loadFromEnvironment();
+			logger.info("Using configuration " + config);
+		} catch (IllegalArgumentException e) {
+			logger.fatal(e.getMessage());
+			System.exit(1);
+		}
     }
 	
 	
@@ -86,9 +84,6 @@ public class ValidateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Get configuration
-		getConfigurationValues();
-		
 		// Validate the data and write to validationReport
 		ValidationReport validationReport = validate(request);
 		
@@ -115,7 +110,7 @@ public class ValidateServlet extends HttpServlet {
 		//Get option selected in the drop down
 		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream(), "UTF-8");
 		
-		// Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
+		// Get rules for validation from file. Get value from drop down and corresponding shapes file from shaclLocation.
 		Model shapesModel = getShapesModel(shapesOption, request.getPart("shapes").getInputStream());
 		
 		
@@ -197,7 +192,7 @@ public class ValidateServlet extends HttpServlet {
 		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, extension);
 		
 		// Upload the correct vocabulary to the model
-		String vocStr = getText(config.getServer() + shapesOption + "-vocabularium.ttl");
+		String vocStr = getText(config.getShaclLocation() + shapesOption + "-vocabularium.ttl");
 		dataModel.read(IOUtils.toInputStream(vocStr, "UTF-8"), null, FileUtils.langTurtle);
 
 		return dataModel;
@@ -207,7 +202,7 @@ public class ValidateServlet extends HttpServlet {
 	
 	
 	/**
-     * Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
+     * Get rules for validation from file. Get value from drop down and corresponding shapes file from shaclLocation.
      * @param shapesOption 
      * 			Option selected in the drop down
      * @param shapesStream 
@@ -215,8 +210,8 @@ public class ValidateServlet extends HttpServlet {
 	 * @throws IOException 
      */
 	private Model getShapesModel(String shapesOption, InputStream shapesStream) throws IOException{
-		// Get the corresponding SHACL file from the server
-		String shapes = getText(config.getServer() + shapesOption +"-SHACL.ttl");
+		// Get the corresponding SHACL file from the shaclLocation
+		String shapes = getText(config.getShaclLocation() + shapesOption +"-SHACL.ttl");
 		// Create Model
 		Model shapesModel = JenaUtil.createMemoryModel();
 		shapesModel.read(IOUtils.toInputStream(shapes, "UTF-8"), null, FileUtils.langTurtle);
@@ -444,7 +439,6 @@ public class ValidateServlet extends HttpServlet {
 	 * @return String
 	 */
 	private static String checkForFileLang(String filename) {
-
 		if (filename.endsWith(".ttl")) {
 			return FileUtils.langTurtle;
 		} else if (filename.endsWith(".xml") || filename.endsWith(".rdf")) {
@@ -455,143 +449,4 @@ public class ValidateServlet extends HttpServlet {
 			return "";
 		}
 	}
-	
-	
-	/**
-     * Load the configuration settings from the config.properties file.
-     */
-    private void getConfigurationValues() {
-	    InputStream inputStream = null;
-		
-		try {
-			Properties prop = new Properties();
-			String propFileName = "/config.properties";
- 
-//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			inputStream = ValidateServlet.class.getResourceAsStream(propFileName);
-			prop.load(inputStream);
- 
-			this.config.setServer(prop.getProperty("server"));
- 
-		}	catch (Exception e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("Configuration not loaded");
-		} 
-		finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Throw Exception using SOAP Fault Message 
-				
-				throw new RuntimeException("Configuration not loaded");
-			}
-		}
-		return;
-		
-	}
-	
-    
-    
-    
-    
-//	/**
-//     * Fill in the Graph URI in the rules file.
-//     * @param graphData The graph URI to be filled in (of the data graph).
-//     * @param graphVoc The graph URI to be filled in(of the vocabulary graph).
-//     * @param Rules The SPARQL query in which the session ID should be filled in.
-//     */
-//    private String fillInGraphURIs(String graphData, String graphVoc, String rules) {
-// 
-//		rules = rules.replaceAll("<graphURI1>", "<http://" + graphVoc + ">");
-//		rules = rules.replaceAll("<graphURI2>", "<http://OSLOvalidator/" + graphData + ">");
-//		return rules;
-//		
-//	}
-	
-	
-//	/**
-//     * Perform SPARQL query on the file to validate it.
-//     * @param databaseURI The server against which to perform the query.
-//     * @param rules The SPARQL query.
-//     */
-//	private Model executeSPARQLquery(String databaseURI, String rules) {
-//		// Execute SPARQL query
-//        QueryExecution qe = QueryExecutionFactory.sparqlService(databaseURI, rules);
-//    	Model results = qe.execConstruct();
-//
-//		return results;	
-//	}
-	
-	
-//	/**
-//  * Upload the file to the server via a HTTP POST request
-//  * @param file The file as a string.
-//  * @param database The server to which the file should be uploaded.
-//  * @param SessionID The session ID. This will also determine the graph URI.
-//  * @param username The user name of the server.
-//  * @param password The password of the server.
-//  */
-//	private static void httpPOST(String file, String databaseURL, String sessionID, String username, String password) {
-//		String url = null;
-//		try {
-//			// Set credentials for server
-//			CredentialsProvider credsProvider = new BasicCredentialsProvider();
-//			credsProvider.setCredentials(
-//               new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, "SPARQL"),
-//               new UsernamePasswordCredentials(username, password));
-//			
-//			// Create HTTP client
-//			CloseableHttpClient client = HttpClients.custom()
-//	                  .setDefaultCredentialsProvider(credsProvider)
-//	                  .build();
-//			
-////			// Proxy settings for debugging purposes. Does not need to be enabled for final version.
-////			URI proxyURI = new URI("http://localhost:8888");
-////			URI targetURI = new URI("http://localhost:8890");
-//			
-////			HttpHost proxy = new HttpHost(proxyURI.getHost(), proxyURI.getPort(), proxyURI.getScheme());
-////			HttpHost target = new HttpHost(targetURI.getHost(), targetURI.getPort(), targetURI.getScheme());
-////			
-////			RequestConfig config = RequestConfig.custom()
-////                 .setProxy(proxy)
-////                 .build();
-//			
-////			// configure the url to upload to and create POST request
-////			if ( databaseURL.substring(databaseURL.length() - 1).equalsIgnoreCase("/")) {
-////				databaseURL = databaseURL.substring(0, databaseURL.length() - 1);
-////			}
-//			
-//			url = databaseURL + "OSLOvalidator/" + sessionID;
-//			HttpPost request = new HttpPost(url);
-////			request.setConfig(config);
-//			
-//			// Set the content and headers of the POST
-//			HttpEntity entity = new ByteArrayEntity(file.getBytes("UTF-8"));   // Encoding
-//			request.setEntity(entity);
-//			request.setHeader(HttpHeaders.ACCEPT, "*/*");
-//			request.setHeader(HttpHeaders.EXPECT, "100-continue");
-//	        
-//			// Execute the POST and print the response if not successful.
-//			CloseableHttpResponse response = client.execute(request);   // IOException
-//			if (! (response.getStatusLine().getStatusCode() == 200 || response.getStatusLine().getStatusCode() == 201 )) {
-//				// Throw Exception using SOAP Fault Message 
-//					throw new RuntimeException("Upload of the file did not succeed");
-//			}
-//			client.close();    // IO Exception
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//			// Throw Exception using SOAP Fault Message 
-//			
-//			throw new RuntimeException("Upload of the file did not succeed");
-//		}  catch (IOException e) {
-//			e.printStackTrace();
-//			// Throw Exception using SOAP Fault Message 
-//			
-//			throw new RuntimeException("Upload of the file did not succeed");
-//		}
-//	}
-
 }

@@ -34,7 +34,6 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 
 ## Source Structure
 
-* /src/main/resources/config.properties - File containing the server address containing the SHACL and vocabulary files.
 * /src/main/resources/defaultquery.rq - File containing the query used during formatting of the validation result.
 * /src/main/java/validator/OSLO2/HomeServlet.java - The home servlet of the web application.
 * /src/main/java/validator/OSLO2/ValidateServlet.java - The servlet receiving the user input and taking care of the validation process.
@@ -43,12 +42,10 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 * /src/main/webapp/WEB-INF/home.jsp - JSP of the home web page.
 * /src/main/webapp/WEB-INF/result.jsp - JSP page of the web page with the results after validation.
 * /src/main/webapp/WEB-INF/web.xml - Web Application Deployment Descriptor of the application.
-* /target/apidocs - HTML documentation of the source code.
-* /target/SHACLValidatorOSLO2.war - War file to be deployed on an application server.
 
 ## Reuse
 
-The tool is highly reusable due to the fact that the SHACL rules and vocabularies it uses to validate the RDF Graph are retrieved from a server location which can be specified in the configuration file (also see [Source Structure](#source-structure)). Extra or specified application profiles can thus be easily added by providing the following files on a server location of your choosing:
+The tool is highly reusable due to the fact that the SHACL rules and vocabularies it uses to validate the RDF Graph are retrieved from a shaclLocation location which can be specified in the SHACL_LOCATION environment variable
  
  * options.txt listing all available application profiles to be tested against. This file is used to populate the drop down from which the user can select his/her application profile to validate against (also see [Usage Instructions](#usage-instructions)).
  * applicationprofilename-SHACL.ttl which specifies the SHACL rules for the corresponding application profile.
