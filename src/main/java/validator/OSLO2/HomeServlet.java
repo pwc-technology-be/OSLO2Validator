@@ -1,16 +1,19 @@
 package validator.OSLO2;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +30,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getFactory().getInstance(HomeServlet.class);
 	private Configuration config;
+	private LoadingCache<String, List<String>> cache;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,21 +44,35 @@ public class HomeServlet extends HttpServlet {
         	logger.fatal(e.getMessage());
         	System.exit(1);
 		}
+		cache = CacheBuilder.newBuilder()
+            .refreshAfterWrite(1, TimeUnit.HOURS)
+            .maximumSize(1)
+            .build(new CacheLoader<String, List<String>>() {
+                @Override
+                public List<String> load(String s) throws Exception {
+                    if (!"options".equals(s)) throw new IllegalArgumentException("Only options is supported as a key");
+                    Scanner scanner = new Scanner(new URL(config.getShaclLocation() + "options.txt").openStream());
+                    scanner.useDelimiter("\n");
+                    ArrayList<String> options = new ArrayList<>();
+                    while (scanner.hasNext()) {
+                        options.add(scanner.next().trim());
+                    }
+                    options.removeAll(Collections.singletonList(""));
+                    return options;
+                }
+            });
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Get drop down values from file
-		// TODO: cache this
-		String options = getText(config.getShaclLocation() + "options.txt");
-		// Split the string on newline character, add to ArrayList and remove empty lines
-    	List<String> optionsList = Arrays.asList(options.split("[\\n\\r]"));
-    	optionsList.removeAll(Collections.singletonList(""));
-    	
     	// Set attribute
-    	request.setAttribute("options", optionsList);
+        try {
+			request.setAttribute("options", cache.get("options"));
+		} catch (ExecutionException e) {
+        	throw new IOException(e.getCause());
+		}
     	
 		// Forward to /WEB-INF/views/homeView.jsp
 		// (Users can not access directly into JSP pages placed in WEB-INF)
@@ -69,42 +87,4 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-    
-    
-    /**
-     * Downloads the content of a file to a string from a URL.
-     * @param fileURL
-     * 			HTTP URL of the file to download.
-     */
-    private static String getText(String fileURL) {
-    	// Initialise variables
-    	String ls = System.getProperty("line.separator");
-        URL website;
-        URLConnection connection;
-        BufferedReader in;
-        StringBuilder response = new StringBuilder();
-        String inputLine;
-        
-		try {
-			// Set up connection
-			website = new URL(fileURL);
-			connection = website.openConnection();
-			// Read file and append per line
-			in = new BufferedReader(
-			                        new InputStreamReader(
-			                            connection.getInputStream()));
-			while ((inputLine = in.readLine()) != null) {
-			    response.append(inputLine);
-				response.append(ls);
-			}
-			in.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			throw new RuntimeException("Download of the file did not succeed");
-		}
-        
-        return response.toString();
-        
-    }
 }
