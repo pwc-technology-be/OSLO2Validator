@@ -16,3 +16,7 @@ target/
 *.jar
 *.war
 *.ear
+
+# IDE files
+.idea/
+*.iml
