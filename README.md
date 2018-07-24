@@ -28,13 +28,14 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 
 ## Requirements
 
-* Eclipse JEE Neon
 * JDK 8 (minimum)
 * Tomcat 7 (minimum)
 
 ## Source Structure
 
 * /src/main/resources/defaultquery.rq - File containing the query used during formatting of the validation result.
+* /src/main/java/validator/OSLO2/APModel.java - Data model of an application profile configuration entry
+* /src/main/java/validator/OSLO2/Configuration.java - Data class responsible for loading and validating all configuration
 * /src/main/java/validator/OSLO2/HomeServlet.java - The home servlet of the web application.
 * /src/main/java/validator/OSLO2/ValidateServlet.java - The servlet receiving the user input and taking care of the validation process.
 * /src/main/java/validator/OSLO2/ValidationReport.java - The class file defining the elements returned to the user.
@@ -43,13 +44,26 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 * /src/main/webapp/WEB-INF/result.jsp - JSP page of the web page with the results after validation.
 * /src/main/webapp/WEB-INF/web.xml - Web Application Deployment Descriptor of the application.
 
-## Reuse
+## Configuration
 
-The tool is highly reusable due to the fact that the SHACL rules and vocabularies it uses to validate the RDF Graph are retrieved from a shaclLocation location which can be specified in the SHACL_LOCATION environment variable
- 
- * options.txt listing all available application profiles to be tested against. This file is used to populate the drop down from which the user can select his/her application profile to validate against (also see [Usage Instructions](#usage-instructions)).
- * applicationprofilename-SHACL.ttl which specifies the SHACL rules for the corresponding application profile.
- * applicationprofilename-vocabularium.ttl which specifies the vocabularium terms upon which the application profile was specified.
+The tool is highly reusable due to the fact that the SHACL rules and vocabularies it uses to validate the RDF Graph are retrieved from a location which can be specified in the AP_CONFIG environment variable
+
+The configuration file takes the following form:
+```json
+{
+  "adres-register": {
+    "location": "http://data.vlaanderen.be/shacl/Adresregister-SHACL.ttl",
+    "dependencies": ["http://data.vlaanderen.be/ns/adres.ttl"]
+  },
+  "dienst": {
+    "location": "http://data.vlaanderen.be/shacl/Dienst-SHACL.ttl",
+    "dependencies": ["http://data.vlaanderen.be/ns/dienst.ttl"]
+  }
+}
+```
+
+* *location*: A URL to a turtle file containing the SHACL description of the application profile
+* *dependencies*: An array of URLs with additional terms that need to be loaded along with the SHACL file (typically a vocabulary)
 
 ## Usage Instructions
 
@@ -76,4 +90,4 @@ Choose the application profile against which you want to validate the RDF graph.
 
 ## License
 
-This software is released with the MIT license.
+This software is released with the EUPL 1.2 license.

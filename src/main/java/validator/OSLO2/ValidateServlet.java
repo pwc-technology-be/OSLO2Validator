@@ -9,6 +9,7 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -74,8 +75,10 @@ public class ValidateServlet extends HttpServlet {
                 public List<Model> load(String s) throws Exception {
                     Model shaclModel = JenaUtil.createMemoryModel();
                     Model vocModel = JenaUtil.createMemoryModel();
-                    shaclModel.read(config.getShaclLocation() + s + "-SHACL.ttl", "TURTLE");
-                    vocModel.read(config.getShaclLocation() + s + "-vocabularium.ttl", "TURTLE");
+					Map<String, APModel> aps = config.getApplicationProfiles();
+					APModel ap = aps.get(s);
+					shaclModel.read(ap.getLocation(), "TURTLE");
+					ap.getDependencies().forEach(voc -> vocModel.read(voc, "TURTLE"));
                     return Arrays.asList(shaclModel, vocModel);
                 }
             });
@@ -107,6 +110,7 @@ public class ValidateServlet extends HttpServlet {
 
 	/**
      * Validate the data and return the validationReport
+     * TODO: this should be refactored into its own class. There are requests to have this available as a local cli application
      * @param request 
      * 			The information provided with the request.
 	 * @throws ServletException 

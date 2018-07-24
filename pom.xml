@@ -13,6 +13,9 @@
       <url>https://jitpack.io</url>
     </repository>
   </repositories>
+  <properties>
+    <fasterxml.jackson.version>2.9.5</fasterxml.jackson.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -74,6 +77,12 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>23.6.1-jre</version>
+    </dependency>
+    <!-- Jackson for json config file parsing -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${fasterxml.jackson.version}</version>
     </dependency>
   </dependencies>
   <build>

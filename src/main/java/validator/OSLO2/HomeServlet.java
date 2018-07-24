@@ -1,19 +1,10 @@
 package validator.OSLO2;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,8 +21,7 @@ public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Log logger = LogFactory.getFactory().getInstance(HomeServlet.class);
 	private Configuration config;
-	private LoadingCache<String, List<String>> cache;
-       
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,23 +34,6 @@ public class HomeServlet extends HttpServlet {
         	logger.fatal(e.getMessage());
         	System.exit(1);
 		}
-		cache = CacheBuilder.newBuilder()
-            .refreshAfterWrite(1, TimeUnit.HOURS)
-            .maximumSize(1)
-            .build(new CacheLoader<String, List<String>>() {
-                @Override
-                public List<String> load(String s) throws Exception {
-                    if (!"options".equals(s)) throw new IllegalArgumentException("Only options is supported as a key");
-                    Scanner scanner = new Scanner(new URL(config.getShaclLocation() + "options.txt").openStream());
-                    scanner.useDelimiter("\n");
-                    ArrayList<String> options = new ArrayList<>();
-                    while (scanner.hasNext()) {
-                        options.add(scanner.next().trim());
-                    }
-                    options.removeAll(Collections.singletonList(""));
-                    return options;
-                }
-            });
     }
 
 	/**
@@ -69,7 +42,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	// Set attribute
         try {
-			request.setAttribute("options", cache.get("options"));
+			request.setAttribute("options", config.getApplicationProfiles().keySet());
 		} catch (ExecutionException e) {
         	throw new IOException(e.getCause());
 		}
