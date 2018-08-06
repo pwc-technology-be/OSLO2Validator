@@ -133,7 +133,6 @@
 					
 					</br>
 					</br>
-            		<p>Last updated: 2017-12-06</p>
             		
             		
         		</div>
