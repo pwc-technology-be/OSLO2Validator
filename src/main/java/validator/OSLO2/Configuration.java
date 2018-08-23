@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class Configuration {
-	private String apConfig = "https://data.vlaanderen.be/shacl-validator-config.json";
+	private String apConfig = "https://data.vlaanderen.be/src/shacl-validator-config.json";
 	private static final String AP_CONFIG = "AP_CONFIG";
     private final LoadingCache<String, Map<String, APModel>> cache;
 
@@ -32,7 +32,10 @@ public class Configuration {
 
 	public static Configuration loadFromEnvironment() {
         Configuration config = new Configuration();
-        config.setApConfig(System.getenv(AP_CONFIG));
+
+        String envApConfig = System.getenv(AP_CONFIG);
+        if (envApConfig != null) config.setApConfig(System.getenv(AP_CONFIG));
+
         return config;
     }
 
@@ -50,6 +53,7 @@ public class Configuration {
         if (null == this.apConfig) {
             throw new IllegalArgumentException("apConfig must be a valid local path or remote server");
         }
+        // TODO: do more input validation
         // TODO: eagerly fill the cache with the config
 	}
 
