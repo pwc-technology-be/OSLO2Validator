@@ -1,0 +1,61 @@
+{
+	"@context": {
+		"PersonalProfileDocument": "http://xmlns.com/foaf/0.1/PersonalProfileDocument",
+		"maker": "http://xmlns.com/foaf/0.1/maker",
+		"primaryTopic": "http://xmlns.com/foaf/0.1/primaryTopic",
+
+		"Persoon": "http://www.w3.org/ns/person#Person",
+		"voornaam": "http://xmlns.com/foaf/0.1/givenName",
+		"achternaam": "http://xmlns.com/foaf/0.1/familyName",
+		"volledigeNaam": "http://data.vlaanderen.be/ns/persoon#volledigeNaam",
+		"geslacht": "http://data.vlaanderen.be/ns/persoon#geslacht",
+		"isTeBereikenOp": "http://schema.org/contactPoint",
+		"email": "http://schema.org/email",
+		"telefoon": "http://schema.org/telephone",
+		"heeftGeboorte": "http://data.vlaanderen.be/ns/persoon#heeftGeboorte",
+		"datum": "http://data.vlaanderen.be/ns/persoon#datum",
+		"plaats": "http://data.vlaanderen.be/ns/persoon#plaats",
+		"holdsAccount": "http://xmlns.com/foaf/0.1/holdsAccount",
+
+ 		"OnlineAccount": "http://xmlns.com/foaf/0.1/OnlineAccount",
+		"accountName": "http://xmlns.com/foaf/0.1/accountName",
+		"accountServiceHomepage": "http://xmlns.com/foaf/0.1/accountServiceHomepage"
+	},
+	"@graph": 
+	[
+		{
+			"@id": "http://data.vlaanderen.be/id/profiel/burgerloket/1234",
+			"@type": "PersonalProfileDocument",
+			"maker": { "@id": "https://data.vlaanderen.be/id/persoon/00000014182" },
+			"primaryTopic": { 
+				"@id": "https://data.vlaanderen.be/id/persoon/00000014182", 
+				"@type": "Persoon",
+				"voornaam": "Jan",
+				"achternaam": "Jansens",
+				"volledigeNaam": "Jan Jansens",
+				"geslacht": "Man",
+				"isTeBereikenOp": {
+					"email": ["jan.jansens@gmail.com", "j.jansens@outlook.com"],
+					"telefoon": ["0488010101", "0488020202"]
+				},
+				"heeftGeboorte": {
+					"datum": "1993-09-08",
+					"plaats": "Gent"
+				},	
+				"holdsAccount": [
+					{ 
+						"@id": "https://burgerloket.vlaanderen.be/account/janjansens",
+						"@type": "OnlineAccount",
+						"accountName": "janjansens",
+						"accountServiceHomepage": "https://burgerloket.vlaanderen.be"
+					},
+					{
+						"@type": "OnlineAccount",
+						"accountName": "janjansens",
+						"accountServiceHomepage": "https://antwerpen.be"
+					}
+				]
+			}
+		}
+	]
+}

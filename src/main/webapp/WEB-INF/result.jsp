@@ -7,13 +7,13 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="media/dataTables/demo_page.css" rel="stylesheet" type="text/css" />
-        <link href="media/dataTables/demo_table.css" rel="stylesheet" type="text/css" />
-        <link href="media/dataTables/demo_table_jui.css" rel="stylesheet" type="text/css" />
-        <link href="media/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-       <!--  <link href="media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
-		<script src="js/jquery-1.3.2.js" type="text/javascript"></script>
-        <script src="js/jquery.dataTables.min.js" type="text/javascript"></script>
+		<link href="./media/dataTables/demo_page.css" rel="stylesheet" type="text/css" />
+        <link href="./media/dataTables/demo_table.css" rel="stylesheet" type="text/css" />
+        <link href="./media/dataTables/demo_table_jui.css" rel="stylesheet" type="text/css" />
+        <link href="./media/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+       <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
+		<script src="./js/jquery-1.3.2.js" type="text/javascript"></script>
+        <script src="./js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script>
 	        $(document).ready(function () {
 	            $("#resultaten").dataTable({

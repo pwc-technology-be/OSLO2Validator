@@ -1,15 +1,10 @@
 package validator.OSLO2;
 
-import java.io.BufferedReader;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,32 +19,33 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet
 public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Configuration config = new Configuration();
-       
+	private static Log logger = LogFactory.getFactory().getInstance(HomeServlet.class);
+	private Configuration config;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public HomeServlet() {
         super();
+        try {
+        	config = Configuration.loadFromEnvironment();
+        	logger.info("Using configuration " + config);
+		} catch (IllegalArgumentException e) {
+        	logger.fatal(e.getMessage());
+        	System.exit(1);
+		}
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Get configuration
-		getConfigurationValues();
-		
-    	//Get drop down values from file
-    	ArrayList<String> optionsList = new ArrayList<String>();
-    	String options = getText(config.getServer() + "options.txt");
-		// Split the string on newline character, add to ArrayList and remove empty lines
-    	List<String> linesList = Arrays.asList(options.split("[\\n\\r]"));
-    	optionsList.addAll(linesList);
-    	optionsList.removeAll(Arrays.asList(""));
-    	
-    	//Set attribute
-    	request.setAttribute("options", optionsList);
+    	// Set attribute
+        try {
+			request.setAttribute("options", config.getApplicationProfiles().keySet());
+		} catch (ExecutionException e) {
+        	throw new IOException(e.getCause());
+		}
     	
 		// Forward to /WEB-INF/views/homeView.jsp
 		// (Users can not access directly into JSP pages placed in WEB-INF)
@@ -64,80 +60,4 @@ public class HomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-    
-    
-    /**
-     * Downloads the content of a file to a string from a URL.
-     * @param fileURL
-     * 			HTTP URL of the file to download.
-     */
-    private static String getText(String fileURL) {
-    	// Initialise variables
-    	String ls = System.getProperty("line.separator");
-        URL website = null;
-        URLConnection connection = null;
-        BufferedReader in = null;
-        StringBuilder response = new StringBuilder();
-        String inputLine;
-        
-		try {
-			// Set up connection
-			website = new URL(fileURL);
-			connection = website.openConnection();
-			// Read file and append per line
-			in = new BufferedReader(
-			                        new InputStreamReader(
-			                            connection.getInputStream()));
-			while ((inputLine = in.readLine()) != null) {
-			    response.append(inputLine);
-				response.append(ls);
-			}
-			in.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			throw new RuntimeException("Download of the file did not succeed");
-		}
-        
-        return response.toString();
-        
-    }
-    
-    
-    /**
-     * Load the configuration settings from the config.properties file.
-     */
-    private void getConfigurationValues() {
-	    InputStream inputStream = null;
-		
-		try {
-			Properties prop = new Properties();
-			String propFileName = "/config.properties";
- 
-//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			inputStream = ValidateServlet.class.getResourceAsStream(propFileName);
-			prop.load(inputStream);
- 
-			this.config.setServer(prop.getProperty("server"));
- 
-		}	catch (Exception e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("Configuration not loaded");
-		} 
-		finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Throw Exception using SOAP Fault Message 
-				
-				throw new RuntimeException("Configuration not loaded");
-			}
-		}
-		return;
-		
-	}
-
 }

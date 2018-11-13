@@ -1,22 +1,17 @@
 package validator.OSLO2;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,15 +22,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.jena.atlas.web.ContentType;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
 import org.apache.jena.query.QueryExecutionFactory;
@@ -44,15 +38,12 @@ import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
-import org.apache.tika.Tika;
-import org.apache.tika.detect.TypeDetector;
-import org.apache.tika.mime.MimeTypes;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
-
 
 /**
  * Servlet implementation class validateServlet
@@ -61,17 +52,37 @@ import org.topbraid.spin.util.JenaUtil;
 @MultipartConfig
 public class ValidateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Configuration config = new Configuration();
-       
-	
-	
+	private static Log logger = LogFactory.getFactory().getInstance(ValidateServlet.class);
+	private Configuration config;
+	private LoadingCache<String, List<Model>> cache;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
 	public ValidateServlet() {
         super();
+		try {
+			config = Configuration.loadFromEnvironment();
+			logger.info("Using configuration " + config);
+		} catch (IllegalArgumentException e) {
+			logger.fatal(e.getMessage());
+			System.exit(1);
+		}
+		cache = CacheBuilder.newBuilder()
+            .refreshAfterWrite(1, TimeUnit.HOURS)
+            .build(new CacheLoader<String, List<Model>>() {
+                @Override
+                public List<Model> load(String s) throws Exception {
+                    Model shaclModel = JenaUtil.createMemoryModel();
+                    Model vocModel = JenaUtil.createMemoryModel();
+					Map<String, APModel> aps = config.getApplicationProfiles();
+					APModel ap = aps.get(s);
+					shaclModel.read(ap.getLocation(), "TURTLE");
+					ap.getDependencies().forEach(voc -> vocModel.read(voc, "TURTLE"));
+                    return Arrays.asList(shaclModel, vocModel);
+                }
+            });
     }
-	
 	
 
 	/**
@@ -86,9 +97,6 @@ public class ValidateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// Get configuration
-		getConfigurationValues();
-		
 		// Validate the data and write to validationReport
 		ValidationReport validationReport = validate(request);
 		
@@ -99,13 +107,10 @@ public class ValidateServlet extends HttpServlet {
 	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/result.jsp");
 	    dispatcher.forward(request, response);
 	}
-	
 
-	
-	
-	
 	/**
      * Validate the data and return the validationReport
+     * TODO: this should be refactored into its own class. There are requests to have this available as a local cli application
      * @param request 
      * 			The information provided with the request.
 	 * @throws ServletException 
@@ -114,18 +119,22 @@ public class ValidateServlet extends HttpServlet {
 	private ValidationReport validate (HttpServletRequest request) throws IOException, ServletException {
 		//Get option selected in the drop down
 		String shapesOption = IOUtils.toString(request.getPart("shapes").getInputStream(), "UTF-8");
-		
-		// Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
-		Model shapesModel = getShapesModel(shapesOption, request.getPart("shapes").getInputStream());
-		
-		
+
+		Model shaclModel;
+		Model vocModel;
+		try {
+            List<Model> models = cache.get(shapesOption);
+            shaclModel = models.get(0);
+            vocModel = models.get(1);
+        } catch (ExecutionException e) {
+		    throw new IOException(e.getCause());
+        }
 		// Get data to validate from file, and combine with the vocabulary
 		// Check whether a file or a URI was provided.
-		Model dataModel = JenaUtil.createMemoryModel();
-		dataModel = getDataModel(shapesOption, request, shapesModel);
+		Model dataModel = getDataModel(request, shaclModel, vocModel);
 		
 		// Perform the validation of data, using the shapes model. Do not validate any shapes inside the data model.
-		Resource resource = ValidationUtil.validateModel(dataModel, shapesModel, false);
+		Resource resource = ValidationUtil.validateModel(dataModel, shaclModel, false);
 		Model reportModel = resource.getModel();
 		reportModel.setNsPrefix("sh", "http://www.w3.org/ns/shacl#");
 		
@@ -135,46 +144,43 @@ public class ValidateServlet extends HttpServlet {
 		
 		// Get the data and SHACL as string from their models
 		String data = getStringFromModel(dataModel);
-		String shapes = getStringFromModel(shapesModel);
+		String shapes = getStringFromModel(shaclModel);
 
 		// Create the validationReport, including the result, the data validated, and the rules used during validation
-		ValidationReport validationReport = new ValidationReport(validationResultsList, ttlResult, data, shapes);
-		
-		return validationReport;
+		return new ValidationReport(validationResultsList, ttlResult, data, shapes);
 	}
-	
-	
-	
+
 	/**
      * Get data to validate from file, and combine with the vocabulary
-     * @param fileContentData 
-     * 			The information provided with the request.
-     * @param fileContentDataURI 
-     * 			The information provided with the request.
+     * @param request
+     *          The client http request containing the data to be validated
+     * @param shapesModel
+     * 			The Jena model containing the shacl defintion (needed to set the proper prefixes on the input data)
+     * @param vocModel
+     *          The vocabulary associated with the shacl definition. These terms need to be added to the input data
+     *          for the reasoner to be able to do its job
 	 * @throws IOException 
 	 * @throws ServletException 
      */
-	private Model getDataModel(String shapesOption, HttpServletRequest request, Model shapesModel) throws IOException, ServletException{
-		String dataString = null;
+    private Model getDataModel(HttpServletRequest request, Model shapesModel, Model vocModel)
+            throws IOException, ServletException {
+		InputStream dataStream;
 		String fileName;
-		String extension = null;
+		String extension;
 		
 		// Check whether a file or a URI was provided. And determine it's extension.
 		if (request.getPart("data") == null) {
+		    logger.debug("No payload provided, trying to get data from URL");
 			// If URI, do GET
-			HttpResponse httpGetResponse = httpGet(request);
-			HttpEntity resEntityGet = httpGetResponse.getEntity();  
-    	    
-			// If response not null
-			if (resEntityGet != null) {   	        
-    	    	//get the extension from the header
-    	        if (httpGetResponse.getHeaders("Content-Type").length > 0){
-    	        extension = httpGetResponse.getHeaders("Content-Type")[0].getValue();
-    	    	}
-    	        //get the actual dataString
-    	        dataString = EntityUtils.toString(resEntityGet);
-    	    }    	    
-    	    
+            URLConnection httpCon = new URL(request.getParameter("dataURI")).openConnection();
+            logger.debug("url: " + httpCon.getURL().toString() + ".");
+            if (request.getPart("headerKey") != null && !"".equals(request.getParameter("headerKey"))) {
+                httpCon.setRequestProperty(request.getParameter("headerKey"), request.getParameter("headerValue"));
+            }
+            // TODO: catch the IO exception and render a pretty error page
+            dataStream = httpCon.getInputStream();
+            extension = RDFLanguages.contentTypeToLang(ContentType.create(httpCon.getContentType())).getName();
+
     	    // If extension not found in Content-Type header
     	    if (extension == null) {
     			String urlString = request.getParameter("dataURI");
@@ -184,114 +190,21 @@ public class ValidateServlet extends HttpServlet {
 					
 		} else {
 			// If file
-			dataString = IOUtils.toString(request.getPart("data").getInputStream(), "UTF-8");
+			dataStream = request.getPart("data").getInputStream();
 			fileName = getSubmittedFileName(request.getPart("data"));
 			extension = checkForFileLang(fileName);
 		}
 		
-		
-		//Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
+		// Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
 		Model dataModel = JenaUtil.createMemoryModel();
-		Map<String, String> shapesPrefixes = shapesModel.getNsPrefixMap();
-		dataModel.setNsPrefixes(shapesPrefixes);
-		dataModel.read(IOUtils.toInputStream(dataString, "UTF-8"), null, extension);
-		
-		// Upload the correct vocabulary to the model
-		String vocStr = getText(config.getServer() + shapesOption + "-vocabularium.ttl");
-		dataModel.read(IOUtils.toInputStream(vocStr, "UTF-8"), null, FileUtils.langTurtle);
+		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
+		dataModel.read(dataStream, null, extension);
+		// Add vocabulary terms to the data model
+        dataModel.add(vocModel);
 
 		return dataModel;
 	}
-	
-	
-	
-	
-	/**
-     * Get rules for validation from file. Get value from drop down and corresponding shapes file from server.
-     * @param shapesOption 
-     * 			Option selected in the drop down
-     * @param shapesStream 
-     * 			The information provided with the request.
-	 * @throws IOException 
-     */
-	private Model getShapesModel(String shapesOption, InputStream shapesStream) throws IOException{
-		// Get the corresponding SHACL file from the server
-		String shapes = getText(config.getServer() + shapesOption +"-SHACL.ttl");
-		// Create Model
-		Model shapesModel = JenaUtil.createMemoryModel();
-		shapesModel.read(IOUtils.toInputStream(shapes, "UTF-8"), null, FileUtils.langTurtle);
-		
-		return shapesModel;
-	}
-	
-	
-	
-	/**
-     * Downloads the content of a file to a string from a URL.
-     * @param fileURL
-     * 			HTTP URL of the file to download.
-     */
-    private static String getText(String fileURL) {
-    	// Initialise variables
-    	String ls = System.getProperty("line.separator");
-        URL website = null;
-        URLConnection connection = null;
-        BufferedReader in = null;
-        StringBuilder response = new StringBuilder();
-        String inputLine;
-        
-		try {
-			// Set up connection
-			website = new URL(fileURL);
-			connection = website.openConnection();
-			// Read file and append per line
-			in = new BufferedReader(
-			                        new InputStreamReader(
-			                            connection.getInputStream()));
-			while ((inputLine = in.readLine()) != null) {
-			    response.append(inputLine);
-				response.append(ls);
-			}
-			in.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			throw new RuntimeException("Download of the file did not succeed");
-		}
-        
-        return response.toString();
-        
-    }
-    
-    
-    
-    /**
-     * Perform an HTTP GET and return a file
-     * @param fileURL
-     * 			HTTP URL of the file to download.
-     */
-    private static HttpResponse httpGet(HttpServletRequest request) {
-    	//Initialize variable
-    	HttpResponse responseGet = null;
-    	try {
-    	    HttpClient client = new DefaultHttpClient();
-    	    String getURL = request.getParameter("dataURI");
-    	    HttpGet get = new HttpGet(getURL);
-    	    
-    	    if (request.getPart("headerKey") != null) {
-    	    get.setHeader(request.getParameter("headerKey"), request.getParameter("headerValue"));
-    	    }
-    	    responseGet = client.execute(get);
-    	} catch (Exception e) {
-    	    e.printStackTrace();
-    	}
-    	
-		return responseGet;
-        
-    }
 
-    
-    
 	/**
 	 * Method filters the given result using sparql and provides byte array stream containing the result of
 	 * the sparql query using the provided format. The different formats are created using standard jena
@@ -444,7 +357,7 @@ public class ValidateServlet extends HttpServlet {
 	 * @return String
 	 */
 	private static String checkForFileLang(String filename) {
-
+	    if (filename == null) return "";
 		if (filename.endsWith(".ttl")) {
 			return FileUtils.langTurtle;
 		} else if (filename.endsWith(".xml") || filename.endsWith(".rdf")) {
@@ -455,143 +368,4 @@ public class ValidateServlet extends HttpServlet {
 			return "";
 		}
 	}
-	
-	
-	/**
-     * Load the configuration settings from the config.properties file.
-     */
-    private void getConfigurationValues() {
-	    InputStream inputStream = null;
-		
-		try {
-			Properties prop = new Properties();
-			String propFileName = "/config.properties";
- 
-//			inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propFileName);
-			inputStream = ValidateServlet.class.getResourceAsStream(propFileName);
-			prop.load(inputStream);
- 
-			this.config.setServer(prop.getProperty("server"));
- 
-		}	catch (Exception e) {
-			e.printStackTrace();
-			// Throw Exception using SOAP Fault Message 
-			
-			throw new RuntimeException("Configuration not loaded");
-		} 
-		finally {
-			try {
-				inputStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-				// Throw Exception using SOAP Fault Message 
-				
-				throw new RuntimeException("Configuration not loaded");
-			}
-		}
-		return;
-		
-	}
-	
-    
-    
-    
-    
-//	/**
-//     * Fill in the Graph URI in the rules file.
-//     * @param graphData The graph URI to be filled in (of the data graph).
-//     * @param graphVoc The graph URI to be filled in(of the vocabulary graph).
-//     * @param Rules The SPARQL query in which the session ID should be filled in.
-//     */
-//    private String fillInGraphURIs(String graphData, String graphVoc, String rules) {
-// 
-//		rules = rules.replaceAll("<graphURI1>", "<http://" + graphVoc + ">");
-//		rules = rules.replaceAll("<graphURI2>", "<http://OSLOvalidator/" + graphData + ">");
-//		return rules;
-//		
-//	}
-	
-	
-//	/**
-//     * Perform SPARQL query on the file to validate it.
-//     * @param databaseURI The server against which to perform the query.
-//     * @param rules The SPARQL query.
-//     */
-//	private Model executeSPARQLquery(String databaseURI, String rules) {
-//		// Execute SPARQL query
-//        QueryExecution qe = QueryExecutionFactory.sparqlService(databaseURI, rules);
-//    	Model results = qe.execConstruct();
-//
-//		return results;	
-//	}
-	
-	
-//	/**
-//  * Upload the file to the server via a HTTP POST request
-//  * @param file The file as a string.
-//  * @param database The server to which the file should be uploaded.
-//  * @param SessionID The session ID. This will also determine the graph URI.
-//  * @param username The user name of the server.
-//  * @param password The password of the server.
-//  */
-//	private static void httpPOST(String file, String databaseURL, String sessionID, String username, String password) {
-//		String url = null;
-//		try {
-//			// Set credentials for server
-//			CredentialsProvider credsProvider = new BasicCredentialsProvider();
-//			credsProvider.setCredentials(
-//               new AuthScope(AuthScope.ANY_HOST, AuthScope.ANY_PORT, "SPARQL"),
-//               new UsernamePasswordCredentials(username, password));
-//			
-//			// Create HTTP client
-//			CloseableHttpClient client = HttpClients.custom()
-//	                  .setDefaultCredentialsProvider(credsProvider)
-//	                  .build();
-//			
-////			// Proxy settings for debugging purposes. Does not need to be enabled for final version.
-////			URI proxyURI = new URI("http://localhost:8888");
-////			URI targetURI = new URI("http://localhost:8890");
-//			
-////			HttpHost proxy = new HttpHost(proxyURI.getHost(), proxyURI.getPort(), proxyURI.getScheme());
-////			HttpHost target = new HttpHost(targetURI.getHost(), targetURI.getPort(), targetURI.getScheme());
-////			
-////			RequestConfig config = RequestConfig.custom()
-////                 .setProxy(proxy)
-////                 .build();
-//			
-////			// configure the url to upload to and create POST request
-////			if ( databaseURL.substring(databaseURL.length() - 1).equalsIgnoreCase("/")) {
-////				databaseURL = databaseURL.substring(0, databaseURL.length() - 1);
-////			}
-//			
-//			url = databaseURL + "OSLOvalidator/" + sessionID;
-//			HttpPost request = new HttpPost(url);
-////			request.setConfig(config);
-//			
-//			// Set the content and headers of the POST
-//			HttpEntity entity = new ByteArrayEntity(file.getBytes("UTF-8"));   // Encoding
-//			request.setEntity(entity);
-//			request.setHeader(HttpHeaders.ACCEPT, "*/*");
-//			request.setHeader(HttpHeaders.EXPECT, "100-continue");
-//	        
-//			// Execute the POST and print the response if not successful.
-//			CloseableHttpResponse response = client.execute(request);   // IOException
-//			if (! (response.getStatusLine().getStatusCode() == 200 || response.getStatusLine().getStatusCode() == 201 )) {
-//				// Throw Exception using SOAP Fault Message 
-//					throw new RuntimeException("Upload of the file did not succeed");
-//			}
-//			client.close();    // IO Exception
-//		} catch (UnsupportedEncodingException e) {
-//			e.printStackTrace();
-//			// Throw Exception using SOAP Fault Message 
-//			
-//			throw new RuntimeException("Upload of the file did not succeed");
-//		}  catch (IOException e) {
-//			e.printStackTrace();
-//			// Throw Exception using SOAP Fault Message 
-//			
-//			throw new RuntimeException("Upload of the file did not succeed");
-//		}
-//	}
-
 }

@@ -7,7 +7,7 @@
 <html lang="nl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<script src="js/jquery-1.3.2.js" type="text/javascript"></script>
+	<script src="./js/jquery-1.3.2.js" type="text/javascript"></script>
         
 	<script>
 		$(document).ready(function () {
@@ -133,7 +133,6 @@
 					
 					</br>
 					</br>
-            		<p>Last updated: 2017-12-06</p>
             		
             		
         		</div>
