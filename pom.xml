@@ -121,10 +121,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.basedir}\target\SHACLValidatorOSLO2\conf</outputDirectory>
+                            <outputDirectory>${project.basedir}/target/SHACLValidatorOSLO2/conf</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}\samples</directory>
+                                    <directory>${project.basedir}/samples</directory>
                                     <filtering>false</filtering>
                                 </resource>
                             </resources>
