@@ -29,7 +29,7 @@ This project was created as part of the OSLO² ([Github](http://informatievlaand
 ## Requirements
 
 * JDK 8 (minimum)
-* Tomcat 7 (minimum)
+* Servlet container such as Tomcat 7 (minimum) or Jetty
 
 ## Source Structure
 
