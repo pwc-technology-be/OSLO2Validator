@@ -38,5 +38,9 @@
   "Transactie": {
     "location": "https://data.vlaanderen.be/shacl/Transactie-SHACL.ttl",
     "dependencies": ["https://data.vlaanderen.be/ns/transactie.ttl"]
+  },
+  "Besluit": {
+    "location": "https://data.vlaanderen.be/shacl/Transactie-SHACL.ttl",
+    "dependencies": ["https://data.vlaanderen.be/ns/transactie.ttl"]
   }
 }
