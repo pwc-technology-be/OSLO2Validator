@@ -12,7 +12,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class Configuration {
-	private String apConfig = "https://data.vlaanderen.be/src/shacl-validator-config.json";
+	private String apConfig = "http://localhost:8081/SHACLValidatorOSLO2/conf/config.json";
 	private static final String AP_CONFIG = "AP_CONFIG";
     private final LoadingCache<String, Map<String, APModel>> cache;
 
