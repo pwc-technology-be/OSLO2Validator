@@ -30,6 +30,11 @@
 			observer.observe(target, config);
 		 }); 
 	</script>
+	<style type="text/css">
+		#datafileerror{margin-left:80px;color:red}
+		#file-name{margin-left:80px}
+		#urierror{color:red}
+	</style>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -59,7 +64,7 @@
 				            <h1 class="h1">Valideer via opladen van bestand</h1>
 				            <div class="typography">
 				              	<!--Put Content for first tab here-->
-				        		 <form method="POST" action="validate" enctype="multipart/form-data">
+				        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
 				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
 				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 				        	    	</br>
@@ -84,6 +89,8 @@
 							            </label>
 							          </div>
 							          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#99999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
+							          <span id="file-name"></span>
+							          <span id="datafileerror" class="errormessage"></span>
 							        </div>
 							        <!-- end component -->
 							        
@@ -97,7 +104,7 @@
 				            <h1 class="h1">Valideer via URL</h1>
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
-				        		<form method="POST" action="validate" enctype="multipart/form-data">
+				        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">>
 				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
 				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 				        	    	</br>
@@ -112,7 +119,7 @@
 							       	<!-- input-field component -->          
 						          	<label for="input-field" class="form__label">URI </label>
 						          	<input class="input-field" id="input-field" type="text" placeholder="" name="dataURI" />
-						          	
+						          	<span id="urierror" class="errormessage"></span>
 						          	</br><p></p>
 						          	Geef hieronder eventuele optionele headers mee.
 						          	</br><p></p>
@@ -142,6 +149,6 @@
     </div>
     
     <jsp:include page="footer.jsp"></jsp:include>
-
+ 	<script src="./js/errors.js"></script>
 </body>
 </html>
