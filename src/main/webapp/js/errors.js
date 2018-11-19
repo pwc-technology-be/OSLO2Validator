@@ -10,7 +10,7 @@ function validateData(datafile, datafileerror) {
         return true;
     }
     else {
-        $(datafileerror).text("Le fichier de données est un champ obligatoire.");
+        $(datafileerror).text("Het databestand is een verplicht veld.");
         return false;
     }
 }
@@ -47,11 +47,11 @@ function validateEndpoint(endpoint, endpointerror) {
         return true;
     }
     if (!isFilled) {
-        $(endpointerror).text(subject + " est un champ obligatoire.");
+        $(endpointerror).text(subject + " is een verplicht veld.");
         return false;
     }
     if (!isUrl(value)) {
-        $(endpointerror).text(subject + " n'est pas une URL valide.");
+        $(endpointerror).text(subject + " is geen geldige URL.");
         return false;
     }
 }
