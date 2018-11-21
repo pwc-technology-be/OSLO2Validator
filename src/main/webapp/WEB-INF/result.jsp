@@ -14,6 +14,7 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" type="text/javascript"></script>
         <script>
 	        $(document).ready(function () {
 	            $("#resultaten").dataTable({
