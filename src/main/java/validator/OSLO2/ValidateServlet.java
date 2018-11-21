@@ -77,7 +77,7 @@ public class ValidateServlet extends HttpServlet {
                     Model vocModel = JenaUtil.createMemoryModel();
 					Map<String, APModel> aps = config.getApplicationProfiles();
 					APModel ap = aps.get(s);
-					shaclModel.read(ap.getLocation(), "TURTLE");
+					ap.getLocation().forEach(sha -> shaclModel.read(sha, "TURTLE"));
 					ap.getDependencies().forEach(voc -> vocModel.read(voc, "TURTLE"));
                     return Arrays.asList(shaclModel, vocModel);
                 }
@@ -132,6 +132,7 @@ public class ValidateServlet extends HttpServlet {
 		// Get data to validate from file, and combine with the vocabulary
 		// Check whether a file or a URI was provided.
 		Model dataModel = getDataModel(request, shaclModel, vocModel);
+		shaclModel.add(vocModel);
 		
 		// Perform the validation of data, using the shapes model. Do not validate any shapes inside the data model.
 		Resource resource = ValidationUtil.validateModel(dataModel, shaclModel, false);
