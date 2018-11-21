@@ -77,6 +77,8 @@ public class ValidateServlet extends HttpServlet {
                     Model vocModel = JenaUtil.createMemoryModel();
 					Map<String, APModel> aps = config.getApplicationProfiles();
 					APModel ap = aps.get(s);
+					SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+					sslContext.init(null, null, null);
 					shaclModel.read(ap.getLocation(), "TURTLE");
 					ap.getDependencies().forEach(voc -> vocModel.read(voc, "TURTLE"));
                     return Arrays.asList(shaclModel, vocModel);
