@@ -69,10 +69,11 @@
 				                            <th>Result Message</th>
 				                            <th>Result Path</th>
 				                            <th>Result Severity</th>
+				                         	<th>Value</th>
 				                            <th>Source Constraint</th>
 				                            <th>Source Constraint Component</th>
 				                            <th>Source Shape</th>
-				                            <th>Value</th>
+
 				                        </tr>
 				                    </thead>
 				                    <tbody>
