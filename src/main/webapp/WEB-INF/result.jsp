@@ -7,7 +7,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" />
         <link href="./media/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
@@ -70,7 +69,7 @@
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
 				        		<table id="resultaten" class="display">
-				                    <thead>
+				                    <thead style="background: linear-gradient(white, rgb(234, 234, 234));">
 				                        <tr>
 				                            <th>Focus Node</th>
 				                            <th>Result Message</th>
