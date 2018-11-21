@@ -8,6 +8,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" />
         <link href="./media/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
