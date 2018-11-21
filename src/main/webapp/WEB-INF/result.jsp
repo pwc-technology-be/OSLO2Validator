@@ -7,11 +7,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" />
-        <link href="./media/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
         <script>
 	        $(document).ready(function () {
 	            $("#resultaten").dataTable({
