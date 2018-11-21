@@ -3,7 +3,7 @@ prefix dash: <http://datashapes.org/dash#>
 prefix sh: <http://www.w3.org/ns/shacl#> 
 prefix shskos: <http://topbraid.org/shacl/skos.shacl#> 
 prefix message: <http://www.w3.org/ns/shacl#message>
- SELECT ?focusNode ?resultMessage ?resultPath ?resultSeverity ?sourceConstraint ?sourceConstraintComponent ?sourceShape ?value WHERE 
+ SELECT ?focusNode ?resultMessage ?resultPath ?resultSeverity ?value ?sourceConstraint ?sourceConstraintComponent ?sourceShape  WHERE 
  { 
  	?vr a sh:ValidationResult . 
  	?vr sh:focusNode ?focusNode . 
@@ -15,7 +15,10 @@ prefix message: <http://www.w3.org/ns/shacl#message>
  	}
  	OPTIONAL { 		 
  		?vr sh:resultSeverity ?resultSeverity .
- 	} 	
+ 	}
+ 	OPTIONAL { 		
+ 		?vr sh:value ?value.
+ 	}
  	OPTIONAL { 		 
  		?vr sh:sourceConstraint ?sourceConstraint .
  	}
@@ -25,7 +28,5 @@ prefix message: <http://www.w3.org/ns/shacl#message>
  	OPTIONAL { 
  		?vr sh:sourceShape ?sourceShape .
  	}
- 	OPTIONAL { 		
- 		?vr sh:value ?value.
- 	}
+
  }ORDER BY ?resultSeverity ?resultMessage

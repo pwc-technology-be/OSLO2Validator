@@ -304,10 +304,11 @@ public class ValidateServlet extends HttpServlet {
     		validationResult.setResultMessage(items.get(j).get(1));
     		validationResult.setResultPath(items.get(j).get(2));
     		validationResult.setResultSeverity(items.get(j).get(3));
-    		validationResult.setSourceConstraint(items.get(j).get(4));
-    		validationResult.setSourceConstraintComponent(items.get(j).get(5));
-    		validationResult.setSourceShape(items.get(j).get(6));
-    		validationResult.setValue(items.get(j).get(7));
+    		validationResult.setValue(items.get(j).get(4));
+    		validationResult.setSourceConstraint(items.get(j).get(5));
+    		validationResult.setSourceConstraintComponent(items.get(j).get(6));
+    		validationResult.setSourceShape(items.get(j).get(7));
+
     		
     		validationList.add(validationResult);
     		
