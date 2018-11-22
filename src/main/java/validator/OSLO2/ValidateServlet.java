@@ -205,6 +205,7 @@ public class ValidateServlet extends HttpServlet {
 		// Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
 		Model dataModel = JenaUtil.createMemoryModel();
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
+		System.out.println(extension);
 		if(extension == "html") {
 			try {
 				Class.forName("net.rootdev.javardfa.jena.RDFaReader");
