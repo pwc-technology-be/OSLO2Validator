@@ -37,6 +37,7 @@ import org.apache.jena.query.QueryFactory;
 import org.apache.jena.query.ResultSet;
 import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.sparql.resultset.ResultsFormat;
@@ -44,6 +45,7 @@ import org.apache.jena.util.FileUtils;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
+
 
 /**
  * Servlet implementation class validateServlet
@@ -199,7 +201,17 @@ public class ValidateServlet extends HttpServlet {
 		// Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
 		Model dataModel = JenaUtil.createMemoryModel();
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
-		dataModel.read(dataStream, null, extension);
+		if(extension == "html") {
+			try {
+				Class.forName("net.rootdev.javardfa.jena.RDFaReader");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			dataModel.read(dataStream, null, "HTML"); // html parsing
+		} else {
+			dataModel.read(dataStream, null, extension);
+		}
 		// Add vocabulary terms to the data model
         dataModel.add(vocModel);
 

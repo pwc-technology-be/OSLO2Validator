@@ -84,6 +84,16 @@
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
     </dependency>
+
+<!-- https://mvnrepository.com/artifact/net.rootdev/java-rdfa -->
+<dependency>
+    <groupId>net.rootdev</groupId>
+    <artifactId>java-rdfa</artifactId>
+    <version>0.4.2</version>
+</dependency>
+
+
+	
   </dependencies>
   <build>
     <finalName>SHACLValidatorOSLO2</finalName>
