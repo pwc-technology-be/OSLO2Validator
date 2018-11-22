@@ -182,13 +182,17 @@ public class ValidateServlet extends HttpServlet {
             }
             // TODO: catch the IO exception and render a pretty error page
             dataStream = httpCon.getInputStream();
-            extension = RDFLanguages.contentTypeToLang(ContentType.create(httpCon.getContentType())).getName();
+            ContentType ct = ContentType.create(httpCon.getContentType());
+ 
+            
 
     	    // If extension not found in Content-Type header
-    	    if (extension == null) {
+    	    if (ct == null) {
     			String urlString = request.getParameter("dataURI");
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
+    	    } else {
+    	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
     	    }
 					
 		} else {
