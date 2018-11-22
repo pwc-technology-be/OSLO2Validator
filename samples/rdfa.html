@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.0" 
+		xmlns:foaf="http://xmlns.com/foaf/0.1/"
+		xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+		xmlns:ns1="http://data.vlaanderen.be/ns/persoon#"
+		xmlns:ns2="http://www.w3.org/ns/person#"
+		xmlns:schema="http://schema.org/">
+<head>
+<title>RDFa example</title>
+</head>
+<body>
+<div>
+  <div typeof="foaf:PersonalProfileDocument" about="http://data.vlaanderen.be/id/profiel/burgerloket/1234">
+    <div rel="foaf:primaryTopic">
+      <div typeof="ns2:Person" about="https://data.vlaanderen.be/id/persoon/00000014182">
+        <div rel="schema:contactPoint">
+          <div typeof="rdfs:Resource">
+            <div property="schema:email" datatype="xsd:string" content="j.jansens@outlook.com"></div>
+            <div property="schema:telephone" datatype="xsd:string" content="0488010101"></div>
+            <div property="schema:email" datatype="xsd:string" content="jan.jansens@gmail.com"></div>
+            <div property="schema:telephone" datatype="xsd:string" content="0488020202"></div>
+          </div>
+        </div>
+        <div property="ns1:volledigeNaam" datatype="xsd:string" content="Jan Jansens"></div>
+        <div rel="ns1:heeftGeboorte">
+          <div typeof="rdfs:Resource">
+            <div property="ns1:datum" datatype="xsd:string" content="1993-09-08"></div>
+            <div property="ns1:plaats" datatype="xsd:string" content="Gent"></div>
+          </div>
+        </div>
+        <div property="ns1:geslacht" datatype="xsd:string" content="Man"></div>
+        <div rel="foaf:holdsAccount" resource="https://burgerloket.vlaanderen.be/account/janjansens"></div>
+        <div property="foaf:givenName" datatype="xsd:string" content="Jan"></div>
+        <div property="foaf:familyName" datatype="xsd:string" content="Jansens"></div>
+        <div rel="foaf:holdsAccount">
+          <div typeof="foaf:OnlineAccount">
+            <div property="foaf:accountName" datatype="xsd:string" content="janjansens"></div>
+            <div property="foaf:accountServiceHomepage" datatype="xsd:string" content="https://antwerpen.be"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div rel="foaf:maker" resource="https://data.vlaanderen.be/id/persoon/00000014182"></div>
+  </div>
+  <div typeof="foaf:OnlineAccount" about="https://burgerloket.vlaanderen.be/account/janjansens">
+    <div property="foaf:accountServiceHomepage" datatype="xsd:string" content="https://burgerloket.vlaanderen.be"></div>
+    <div property="foaf:accountName" datatype="xsd:string" content="janjansens"></div>
+  </div>
+</div>
+</body>
+</html>
