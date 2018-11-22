@@ -239,7 +239,7 @@ public class ValidateServlet extends HttpServlet {
 			
 			 java.io.Writer writer = new StringWriter();
 			 OutputStream bOut = new ByteArrayOutputStream();
-			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.RDFA); 
+			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
 			 String html2trig = writer.toString();
 			 InputStream is = new ByteArrayInputStream(html2trig.getBytes());
