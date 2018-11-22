@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -237,12 +238,13 @@ public class ValidateServlet extends HttpServlet {
 			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
 			
 			 java.io.Writer writer = new StringWriter();
-			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.TRIG); 
+			 OutputStream bOut = new ByteArrayOutputStream();
+			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.RDFA); 
 
 			 String html2trig = writer.toString();
 			 InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			 
-			 dataModel.read(is, null, Lang.TRIG.toString()); // html parsing
+			 dataModel.read(is, null, Lang.TURTLE.toString()); // html parsing
 	       
 		} else {
 			dataModel.read(dataStream, null, extension);
