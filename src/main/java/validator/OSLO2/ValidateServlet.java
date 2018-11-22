@@ -29,7 +29,6 @@ import javax.servlet.http.Part;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.metaphacts.data.rdf.RDFaExtractor;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -65,6 +64,7 @@ import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.Rio;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
@@ -233,10 +233,10 @@ public class ValidateServlet extends HttpServlet {
 			ValueFactory vf = SimpleValueFactory.getInstance();
 			IRI baseURI= vf.createIRI("http://www.test.de/Mike");
 			String htmlstring = dataStream.toString();
-					
-			org.eclipse.rdf4j.model.Model rdf4jmodel = RDFaExtractor.extractModel(htmlstring, baseURI.stringValue());
 			
-			java.io.Writer writer = new StringWriter();
+			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
+			
+			 java.io.Writer writer = new StringWriter();
 			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.TRIG); 
 
 			 String html2trig = writer.toString();

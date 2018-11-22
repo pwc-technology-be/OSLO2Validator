@@ -89,23 +89,10 @@
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
     </dependency>
-<!-- https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup -->
 <dependency>
-    <groupId>org.ccil.cowan.tagsoup</groupId>
-    <artifactId>tagsoup</artifactId>
-    <version>1.2.1</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.eclipse.rdf4j/rdf4j-model -->
-<dependency>
-    <groupId>org.eclipse.rdf4j</groupId>
-    <artifactId>rdf4j-model</artifactId>
-    <version>2.2</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.eclipse.rdf4j/rdf4j-rio-api -->
-<dependency>
-    <groupId>org.eclipse.rdf4j</groupId>
-    <artifactId>rdf4j-rio-api</artifactId>
-    <version>2.2</version>
+    <groupId>org.semarglproject</groupId>
+    <artifactId>semargl-rdf4j</artifactId>
+    <version>0.7</version>
 </dependency>
 
 
