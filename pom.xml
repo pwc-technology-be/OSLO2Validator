@@ -89,19 +89,23 @@
       <artifactId>jackson-databind</artifactId>
       <version>${fasterxml.jackson.version}</version>
     </dependency>
-
-<!-- https://mvnrepository.com/artifact/net.rootdev/java-rdfa -->
+<!-- https://mvnrepository.com/artifact/org.ccil.cowan.tagsoup/tagsoup -->
 <dependency>
-  <groupId>com.yevster.net.rootdev</groupId>
-  <artifactId>java-rdfa</artifactId>
-  <version>0.4.3</version>
-  <type>pom</type>
+    <groupId>org.ccil.cowan.tagsoup</groupId>
+    <artifactId>tagsoup</artifactId>
+    <version>1.2.1</version>
 </dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.jena/jena-core -->
+<!-- https://mvnrepository.com/artifact/org.eclipse.rdf4j/rdf4j-model -->
 <dependency>
-    <groupId>org.apache.jena</groupId>
-    <artifactId>jena-core</artifactId>
-    <version>3.0.1</version>
+    <groupId>org.eclipse.rdf4j</groupId>
+    <artifactId>rdf4j-model</artifactId>
+    <version>2.2</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.rdf4j/rdf4j-rio-api -->
+<dependency>
+    <groupId>org.eclipse.rdf4j</groupId>
+    <artifactId>rdf4j-rio-api</artifactId>
+    <version>2.2</version>
 </dependency>
 
 

@@ -1,8 +1,11 @@
 package validator.OSLO2;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Reader;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -26,6 +29,8 @@ import javax.servlet.http.Part;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.metaphacts.data.rdf.RDFaExtractor;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
@@ -40,9 +45,26 @@ import org.apache.jena.query.ResultSetFormatter;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.LangBuilder;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.RDFLanguages;
+import org.apache.jena.riot.RDFParserRegistry;
+import org.apache.jena.riot.ReaderRIOT;
+import org.apache.jena.riot.ReaderRIOTFactory;
+import org.apache.jena.riot.system.ErrorHandler;
+import org.apache.jena.riot.system.ErrorHandlerFactory;
+import org.apache.jena.riot.system.ParserProfile;
+import org.apache.jena.riot.system.StreamRDF;
 import org.apache.jena.sparql.resultset.ResultsFormat;
+import org.apache.jena.sparql.sse.Item;
+import org.apache.jena.sparql.sse.SSE;
+import org.apache.jena.sparql.util.Context;
 import org.apache.jena.util.FileUtils;
+import org.eclipse.rdf4j.model.IRI;
+import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.rio.RDFFormat;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.spin.util.JenaUtil;
@@ -208,13 +230,20 @@ public class ValidateServlet extends HttpServlet {
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
-			try {
-				Class.forName("net.rootdev.javardfa.jena.RDFaReader");
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			dataModel.read(dataStream, "XHTML"); // html parsing
+			ValueFactory vf = SimpleValueFactory.getInstance();
+			IRI baseURI= vf.createIRI("http://www.test.de/Mike");
+			String htmlstring = dataStream.toString();
+					
+			org.eclipse.rdf4j.model.Model rdf4jmodel = RDFaExtractor.extractModel(htmlstring, baseURI.stringValue());
+			
+			java.io.Writer writer = new StringWriter();
+			 org.eclipse.rdf4j.rio.Rio.write(rdf4jmodel, writer, RDFFormat.TRIG); 
+
+			 String html2trig = writer.toString();
+			 InputStream is = new ByteArrayInputStream(html2trig.getBytes());
+			 
+			 dataModel.read(is, null, Lang.TRIG.toString()); // html parsing
+	       
 		} else {
 			dataModel.read(dataStream, null, extension);
 		}
