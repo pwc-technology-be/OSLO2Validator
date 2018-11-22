@@ -245,7 +245,7 @@ public class ValidateServlet extends HttpServlet {
 			 String html2trig = writer.toString();
 			 InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			 
-			 dataModel.read(is, null, Lang.TURTLE.toString()); // html parsing
+			 dataModel.read(is, null, "Turtle"); // html parsing
 	       
 		} else {
 			dataModel.read(dataStream, null, extension);
