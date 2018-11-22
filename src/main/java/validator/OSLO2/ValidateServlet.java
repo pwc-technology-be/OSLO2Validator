@@ -232,20 +232,15 @@ public class ValidateServlet extends HttpServlet {
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
 			ValueFactory vf = SimpleValueFactory.getInstance();
-			IRI baseURI= vf.createIRI("http://www.test.de/Mike");
-			String htmlstring = dataStream.toString();
-			
+			IRI baseURI= vf.createIRI("http://shacl.validator.com/");
 			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
 			
-			 java.io.Writer writer = new StringWriter();
-			 OutputStream bOut = new ByteArrayOutputStream();
+			java.io.Writer writer = new StringWriter();
+			Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
-			 Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
-
-			 String html2trig = writer.toString();
-			 InputStream is = new ByteArrayInputStream(html2trig.getBytes());
-			 
-			 dataModel.read(is, null, "Turtle"); // html parsing
+			String html2trig = writer.toString();
+			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
+			dataModel.read(is, null, "Turtle");
 	       
 		} else {
 			dataModel.read(dataStream, null, extension);
