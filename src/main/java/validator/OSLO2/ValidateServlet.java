@@ -214,7 +214,7 @@ public class ValidateServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			dataModel.read(dataStream, "HTML"); // html parsing
+			dataModel.read(dataStream, "XHTML"); // html parsing
 		} else {
 			dataModel.read(dataStream, null, extension);
 		}
