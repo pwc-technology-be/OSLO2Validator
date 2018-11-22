@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
@@ -206,7 +207,7 @@ public class ValidateServlet extends HttpServlet {
 		Model dataModel = JenaUtil.createMemoryModel();
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
 		System.out.println(extension);
-		if(extension == "html") {
+		if(Objects.equals(extension, "html")) {
 			try {
 				Class.forName("net.rootdev.javardfa.jena.RDFaReader");
 			} catch (ClassNotFoundException e) {
