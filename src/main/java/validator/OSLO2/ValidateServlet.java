@@ -187,7 +187,7 @@ public class ValidateServlet extends HttpServlet {
             
 
     	    // If extension not found in Content-Type header
-    	    if (ct == null) {
+    	    if (ct == null || RDFLanguages.contentTypeToLang(ct) == null) {
     			String urlString = request.getParameter("dataURI");
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
