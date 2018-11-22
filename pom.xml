@@ -12,7 +12,12 @@
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
     </repository>
-  </repositories>
+    <repository>
+      <id>my-repo1</id>
+      <name>your custom repo</name>
+      <url>https://dl.bintray.com/yevster/maven/</url>
+    </repository>
+   </repositories>
   <properties>
     <fasterxml.jackson.version>2.9.5</fasterxml.jackson.version>
   </properties>
@@ -87,9 +92,10 @@
 
 <!-- https://mvnrepository.com/artifact/net.rootdev/java-rdfa -->
 <dependency>
-    <groupId>net.rootdev</groupId>
-    <artifactId>java-rdfa</artifactId>
-    <version>0.4.2</version>
+  <groupId>com.yevster.net.rootdev</groupId>
+  <artifactId>java-rdfa</artifactId>
+  <version>0.4.3</version>
+  <type>pom</type>
 </dependency>
 
 
