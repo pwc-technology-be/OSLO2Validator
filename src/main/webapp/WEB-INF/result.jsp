@@ -161,17 +161,15 @@
 		
 		<jsp:include page="footer.jsp"></jsp:include>
 		 <script>
-	        $(document).ready(function () {
-	            $("#resultaten").dataTable({
-	            	 dom: 'Bfrtip',
-	                "sPaginationType": "full_numbers",
-	                "bJQueryUI": true,
-	                "responsive": true,
-	                buttons: ['copy', 'csv', 'excel']
-	            });
-	        }); 
-        </script>
-        <script>
+          $(document).ready(function () {
+            $("#resultaten").dataTable({
+            	 dom: 'Bfrtip',
+                "sPaginationType": "full_numbers",
+                "bJQueryUI": true,
+                "responsive": true,
+                buttons: ['copy', 'csv', 'excel']
+            });
+
 	      var editor = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
 	        mode: "text/turtle",
 	        lineNumbers: true,
@@ -211,14 +209,24 @@
        	        }
        	      }
 		      });
-	     
+	    }); 
     	</script>
     	<script>
-    	setTimeout(function() {
-    	    editor1.refresh();
-    	    editor2.refresh();
-       	    editor3.refresh();
-    	},10);
+    	$("#tab-2-nummer-2").click(function () {
+            setTimeout(function () {
+                editor1.refresh();
+            }, 10);
+        });
+    	$("#tab-2-nummer-3").click(function () {
+            setTimeout(function () {
+                editor2.refresh();
+            }, 10);
+        });
+    	$("#tab-2-nummer-3").click(function () {
+            setTimeout(function () {
+                editor3.refresh();
+            }, 10);
+        });
     	</script>
 	</body>
 </html>
