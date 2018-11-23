@@ -213,5 +213,12 @@
 		      });
 	     
     	</script>
+    	<script>
+    	setTimeout(function() {
+    	    editor1.refresh();
+    	    editor2.refresh();
+       	    editor3.refresh();
+    	},10);
+    	</script>
 	</body>
 </html>
