@@ -23,59 +23,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/addon/display/fullscreen.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/mode/turtle/turtle.min.js"></script>
-        <script>
-	        $(document).ready(function () {
-	            $("#resultaten").dataTable({
-	            	 dom: 'Bfrtip',
-	                "sPaginationType": "full_numbers",
-	                "bJQueryUI": true,
-	                "responsive": true,
-	                buttons: ['copy', 'csv', 'excel']
-	            });
-	        }); 
-        </script>
-        <script>
-	      var editor = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
-	        mode: "text/turtle",
-	        lineNumbers: true,
-	        readOnly: true,
-	        extraKeys: {
-	            "F11": function(cm) {
-	              cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-	            },
-	            "Esc": function(cm) {
-	              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-	            }
-	          }
-	      });
-	      var editor2 = CodeMirror.fromTextArea(document.getElementById("result-data"), {
-	        mode: "text/turtle",
-	        lineNumbers: true,
-	        readOnly: true,
-       	 	extraKeys: {
-       	        "F11": function(cm) {
-       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-       	        },
-       	        "Esc": function(cm) {
-       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-       	        }
-       	      }
-		    });
-	      var editor3 = CodeMirror.fromTextArea(document.getElementById("result-shapes"), {
-	        mode: "text/turtle",
-	        lineNumbers: true,
-	        readOnly: true,
-       	 	extraKeys: {
-       	        "F11": function(cm) {
-       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-       	        },
-       	        "Esc": function(cm) {
-       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-       	        }
-       	      }
-		      });
-	     
-    	</script>
 	</head>
 	<body>
 	
@@ -191,6 +138,58 @@
 		</div>
 		
 		<jsp:include page="footer.jsp"></jsp:include>
-		
+		 <script>
+	        $(document).ready(function () {
+	            $("#resultaten").dataTable({
+	            	 dom: 'Bfrtip',
+	                "sPaginationType": "full_numbers",
+	                "bJQueryUI": true,
+	                "responsive": true,
+	                buttons: ['copy', 'csv', 'excel']
+	            });
+	        }); 
+        </script>
+        <script>
+	      var editor = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+	        extraKeys: {
+	            "F11": function(cm) {
+	              cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+	            },
+	            "Esc": function(cm) {
+	              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+	            }
+	          }
+	      });
+	      var editor2 = CodeMirror.fromTextArea(document.getElementById("result-data"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+       	 	extraKeys: {
+       	        "F11": function(cm) {
+       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+       	        },
+       	        "Esc": function(cm) {
+       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+       	        }
+       	      }
+		    });
+	      var editor3 = CodeMirror.fromTextArea(document.getElementById("result-shapes"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+       	 	extraKeys: {
+       	        "F11": function(cm) {
+       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+       	        },
+       	        "Esc": function(cm) {
+       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+       	        }
+       	      }
+		      });
+	     
+    	</script>
 	</body>
 </html>
