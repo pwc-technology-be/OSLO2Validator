@@ -11,6 +11,7 @@
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css" rel="stylesheet" />
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
@@ -19,6 +20,9 @@
         <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/addon/display/fullscreen.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/mode/turtle/turtle.min.js"></script>
         <script>
 	        $(document).ready(function () {
 	            $("#resultaten").dataTable({
@@ -30,6 +34,48 @@
 	            });
 	        }); 
         </script>
+        <script>
+	      var editor = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+	        extraKeys: {
+	            "F11": function(cm) {
+	              cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+	            },
+	            "Esc": function(cm) {
+	              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+	            }
+	          }
+	      });
+	      var editor2 = CodeMirror.fromTextArea(document.getElementById("result-data"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+       	 	extraKeys: {
+       	        "F11": function(cm) {
+       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+       	        },
+       	        "Esc": function(cm) {
+       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+       	        }
+       	      }
+		    });
+	      var editor3 = CodeMirror.fromTextArea(document.getElementById("result-shapes"), {
+	        mode: "text/turtle",
+	        lineNumbers: true,
+	        readOnly: true,
+       	 	extraKeys: {
+       	        "F11": function(cm) {
+       	          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+       	        },
+       	        "Esc": function(cm) {
+       	          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+       	        }
+       	      }
+		      });
+	     
+    	</script>
 	</head>
 	<body>
 	
@@ -89,7 +135,7 @@
 					                			<td>${result.resultMessage}</td>
 					                			<td>${result.resultPath}</td>
 					                			<td>${result.resultSeverity}</td>
-				                			    <td>${result.value}"</td>
+				                			    <td>${result.value}</td>
 					                			<td>${result.sourceConstraint}</td>
 					                			<td>${result.sourceConstraintComponent}</td>
 					                			<td>${result.sourceShape}</td>
@@ -104,9 +150,10 @@
 				            <h1 class="h1">Resultaat in TTL</h1>
 				            Hieronder ziet u een overzicht van de validatieresultaten.
 				            <br><br>
+				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
 				            <div class="typography">
 				              	<!--Put Content for first tab here-->
-				        		<pre><c:out value="${report.result != null ? report.result : 'no report found'}"/></pre> 
+				        		<form><textarea id="result-ttl" name="result-ttl"><c:out value="${report.result != null ? report.result : 'no report found'}"/></textarea></form>  
 				            </div>
 				          </section>
 				
@@ -116,9 +163,10 @@
 				            <h1 class="h1">Data</h1>
 				            Hieronder ziet u een overzicht van de data die gevalideerd werd. Aan de data die u opgaf werd het betreffende vocabularium aan toegevoegd om meer context aan uw bestand toe te voegen en het validatieresultaat te verbeteren.
 				            </br></br>
+				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
 				            <div class="typography">
 				            	<!--Put Content for third tab here-->
-				        		<pre><c:out value="${report.data != null ? report.data : 'no report found'}"/></pre>
+				        		<form><textarea id="result-data" name="result-data"><c:out value="${report.data != null ? report.data : 'no report found'}"/></textarea></form> 
 				          	</div>
 				          </section>
 				          
@@ -126,9 +174,10 @@
 				            <h1 class="h1">Regels</h1>
 				            Hieronder ziet u een overzicht van de SHACL regels die gebruikt werden om uw data te valideren. Deze SHACL regels zijn gebasseerd op het applicatie profiel dat u selecteerde in de eerste stap.
 				            </br></br>
+				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
 				           	<div class="typography">
 				        		<!--Put Content for fourth tab here-->
-				        		<pre><c:out value="${report.shapes != null ? report.shapes : 'no report found'}"/></pre>
+				        		<form><textarea id="result-shapes" name="result-shapes"><c:out value="${report.shapes != null ? report.shapes : 'no report found'}"/></textarea></form>
 				          	</div>
 				          </section>
 				
