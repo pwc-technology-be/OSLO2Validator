@@ -12,6 +12,26 @@
 		<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css" rel="stylesheet" />
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.css" rel="stylesheet" />
+		<style>
+		.CodeMirror-fullscreen {
+		    position:fixed;
+		    top:200px;
+		    left:8px;
+		    right:0;
+		    bottom:0;
+		    height:auto;
+		    z-index:9;
+		    width:99%;
+		    padding:0;
+		    border-top:3px solid grey;
+		    border-bottom:3px solid grey;
+		    border-bottom:3px solid grey;
+		    border-top-left-radius:10px;
+		    border-top-right-radius:10px;
+		    border-bottom-left-radius:10px;
+		    border-bottom-right-radius:10px;
+		}
+		</style>
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
 		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
