@@ -170,7 +170,7 @@
                 buttons: ['copy', 'csv', 'excel']
             });
 
-	      var editor = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
+	      var editor1 = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
 	        mode: "text/turtle",
 	        lineNumbers: true,
 	        readOnly: true,
