@@ -209,24 +209,23 @@
        	        }
        	      }
 		      });
+	    	$("#tab-2-nummer-2").click(function () {
+	            setTimeout(function () {
+	                editor1.refresh();
+	            }, 10);
+	        });
+	    	$("#tab-2-nummer-3").click(function () {
+	            setTimeout(function () {
+	                editor2.refresh();
+	            }, 10);
+	        });
+	    	$("#tab-2-nummer-4").click(function () {
+	            setTimeout(function () {
+	                editor3.refresh();
+	            }, 10);
+	        });
 	    }); 
-    	</script>
-    	<script>
-    	$("#tab-2-nummer-2").click(function () {
-            setTimeout(function () {
-                editor1.refresh();
-            }, 10);
-        });
-    	$("#tab-2-nummer-3").click(function () {
-            setTimeout(function () {
-                editor2.refresh();
-            }, 10);
-        });
-    	$("#tab-2-nummer-3").click(function () {
-            setTimeout(function () {
-                editor3.refresh();
-            }, 10);
-        });
+
     	</script>
 	</body>
 </html>
