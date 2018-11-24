@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="nl">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
         
 	<script>
@@ -65,8 +65,8 @@
 				            <div class="typography">
 				              	<!--Put Content for first tab here-->
 				        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
-				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
-				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
+				        	    	<h2 class="h2">OSLOÂ² applicatie profiel</h2>
+				        	    	Selecteer hieronder het OSLOÂ² applicatie profiel waartegen u uw data wil valideren.
 				        	    	</br>
 				        	    	<select class="select" name="shapes">
 				        	    		<c:forEach items="${options}" var="option">
@@ -105,8 +105,8 @@
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
 				        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">>
-				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
-				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
+				        	    	<h2 class="h2">OSLOÂ² applicatie profiel</h2>
+				        	    	Selecteer hieronder het OSLOÂ² applicatie profiel waartegen u uw data wil valideren.
 				        	    	</br>
 				        	    	<select class="select" name="shapes">
 				        	    		<c:forEach items="${options}" var="option">
