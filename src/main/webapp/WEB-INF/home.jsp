@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
-        
+	<jsp:include page="header.jsp"></jsp:include>
+	<title>OSLO2 Validator</title>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script>
 		$(document).ready(function () {
 		       
@@ -30,14 +30,14 @@
 			observer.observe(target, config);
 		 }); 
 	</script>
-	<style type="text/css">
+	<style>
 		#datafileerror{margin-left:80px;color:red}
 		#file-name{margin-left:80px}
 		#urierror{color:red}
 	</style>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="banner.jsp"></jsp:include>
 
 	<!-- Start page content -->
 
@@ -145,8 +145,6 @@
         		</div>
         	</section>
         </div>
-
-    </div>
     
     <jsp:include page="footer.jsp"></jsp:include>
  	<script src="./js/errors.js"></script>

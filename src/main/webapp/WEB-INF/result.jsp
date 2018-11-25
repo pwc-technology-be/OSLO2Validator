@@ -6,7 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<jsp:include page="header.jsp"></jsp:include>
+	    <title>OSLO2 SHACL Validator Results</title>
 		<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css" rel="stylesheet" />
 		<link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" />
@@ -48,7 +49,7 @@
 	</head>
 	<body>
 	
-		<jsp:include page="header.jsp"></jsp:include>
+		<jsp:include page="banner.jsp"></jsp:include>
 	
 			<div class="main-content" id="main" itemprop="mainContentOfPage" role="main" tabindex="-1">
 				<section class="region">
@@ -156,9 +157,7 @@
  					</div>
 				</section>
 			</div>
-			
-		</div>
-		
+					
 		<jsp:include page="footer.jsp"></jsp:include>
 		 <script>
           $(document).ready(function () {
