@@ -67,7 +67,7 @@
 				        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
 				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
 				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
-				        	    	</br>
+				        	    	<br/>
 				        	    	<select class="select" name="shapes">
 				        	    		<c:forEach items="${options}" var="option">
 					                		<option>${option}</option>
@@ -78,8 +78,7 @@
 							        
 							        <!-- component -->
 							        <div class="upload js-upload"
-							          data-upload-t-close="Sluiten" id="doc_container"
-							        >
+							          data-upload-t-close="Sluiten" id="doc_container">
 							          <div class="upload__element">
 							            <input class="upload__element__input" type="file" id="data" name="data"
 							            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
@@ -107,22 +106,22 @@
 				        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">>
 				        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
 				        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
-				        	    	</br>
+				        	    	<br/>
 				        	    	<select class="select" name="shapes">
 				        	    		<c:forEach items="${options}" var="option">
 					                		<option>${option}</option>
 					                	</c:forEach>
 				        	    	</select>
 				        	    	<h2 class="h2">Data</h2>
-				        	    	Geef hieronder de URL op waarop de data gepubliceerd is die u wilt valideren.</br>
+				        	    	Geef hieronder de URL op waarop de data gepubliceerd is die u wilt valideren.<br/>
 							       							       	
 							       	<!-- input-field component -->          
 						          	<label for="input-field" class="form__label">URI </label>
 						          	<input class="input-field" id="input-field" type="text" placeholder="" name="dataURI" />
 						          	<span id="urierror" class="errormessage"></span>
-						          	</br><p></p>
+						          	<br/><p></p>
 						          	Geef hieronder eventuele optionele headers mee.
-						          	</br><p></p>
+						          	<br/><p></p>
 						          	<!-- input-field component -->          
 							        <label for="input-field" class="form__label">Header key </label>
 							        <input class="input-field" id="input-field" type="text" placeholder="" name="headerKey" />
@@ -138,8 +137,8 @@
 				
 				        </div>
 					
-					</br>
-					</br>
+					<br/>
+					<br/>
             		
             		
         		</div>

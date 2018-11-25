@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-	<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="width=device-width, initial-scale=1" name="viewport">
  	<link href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui.css" rel="stylesheet">
 	<link href="https://dij151upo6vad.cloudfront.net/2.latest/css/vlaanderen-ui-corporate.css" rel="stylesheet">
