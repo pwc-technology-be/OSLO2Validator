@@ -16,3 +16,4 @@
 	<meta content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-wide.png" name="msapplication-wide310x150logo">
 	<meta content="https://dij151upo6vad.cloudfront.net/2.latest/icons/app-icon/tile-large.png" name="msapplication-square310x310logo">
 	<meta content="#FFE615" name="msapplication-TileColor">
+	<meta name="description" content="SHACL validator."/>
