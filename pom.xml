@@ -12,11 +12,7 @@
       <id>jitpack.io</id>
       <url>https://jitpack.io</url>
     </repository>
-    <repository>
-      <id>my-repo1</id>
-      <name>your custom repo</name>
-      <url>https://dl.bintray.com/yevster/maven/</url>
-    </repository>
+
    </repositories>
   <properties>
     <fasterxml.jackson.version>2.9.5</fasterxml.jackson.version>
@@ -38,7 +34,7 @@
     <dependency>
       <groupId>com.github.TopQuadrant</groupId>
       <artifactId>shacl</artifactId>
-      <version>4eccdcf</version>
+      <version>1.1.0</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
     <dependency>
