@@ -58,11 +58,11 @@
 					          </div>
 				
 					          <section class="col--1-1 tab__pane" data-tab-pane>
-					  
+					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
 					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
-					        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
+					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
 					        	    	<select class="select" name="shapes">
@@ -70,7 +70,7 @@
 						                		<option>${option}</option>
 						                	</c:forEach>
 					        	    	</select>
-					        	    	<h2 class="h2">Data</h2>
+					        	    	<h3 class="h3">Data</h3>
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
@@ -90,17 +90,18 @@
 								        </div>
 								        <!-- end component -->
 								        
-								        <h2 class="h2">Valideer</h2>
+								        <h3 class="h3">Valideer</h3>
 								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
 								    </form>
 					            </div>
 					          </section>
 					
 					          <section class="col--1-1 tab__pane" data-tab-pane>
+					          <h2 class="h2">VValideer via URL</h2>
 					            <div class="typography">
 					              	<!--Put Content for second tab here-->
 					        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">
-					        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
+					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
 					        	    	<select class="select" name="shapes">
@@ -108,7 +109,7 @@
 						                		<option>${option}</option>
 						                	</c:forEach>
 					        	    	</select>
-					        	    	<h2 class="h2">Data</h2>
+					        	    	<h3 class="h3">Data</h3>
 					        	    	Geef hieronder de URL op waarop de data gepubliceerd is die u wilt valideren.<br/>
 								       							       	
 								       	<!-- input-field component -->          
@@ -125,7 +126,7 @@
 							          	<label for="input-field" class="form__label">Header value </label>
 							          	<input class="input-field" id="input-field3" type="text" placeholder="" name="headerValue" />
 							          	
-								       	<h2 class="h2">Valideer</h2>
+								       	<h3 class="h3">Valideer</h3>
 								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload2" />
 								    </form>
 					            </div>
