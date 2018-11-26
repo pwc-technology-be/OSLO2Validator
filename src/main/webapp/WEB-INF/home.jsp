@@ -49,10 +49,10 @@
 					            <div class="tabs__wrapper">
 					              <ul class="tabs" data-tabs-list>
 					                <li class="tab tab--active">
-					                  <h1 class="h1"><a class="tab__link" id="tab-2-nummer-1" href="#" data-tab>Valideer via opladen van bestand</a></h1>
+					                  <a class="tab__link" id="tab-2-nummer-1" href="#" data-tab>Valideer via opladen van bestand</a>
 					                </li>
 					                <li class="tab">
-					                  <h1 class="h1"><a class="tab__link" id="tab-2-nummer-2" href="#" data-tab>Valideer via URL</a></h1>
+					                  <a class="tab__link" id="tab-2-nummer-2" href="#" data-tab>Valideer via URL</a>
 					                </li>
 					              </ul>
 					            </div>
