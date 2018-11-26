@@ -127,8 +127,6 @@
 				            </div>
 				          </section>
 				
-				          
-				
 				          <section class="col--1-1 tab__pane" data-tab-pane>
 				            <h2 class="h2">Data</h2>
 				            Hieronder ziet u een overzicht van de data die gevalideerd werd. Aan de data die u opgaf werd het betreffende vocabularium aan toegevoegd om meer context aan uw bestand toe te voegen en het validatieresultaat te verbeteren.
@@ -152,8 +150,7 @@
 				          </section>
 				
 				        </div>
-					     
-					    					
+					         					
  					</div>
 				</div>
 			</div>

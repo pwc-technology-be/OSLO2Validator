@@ -144,7 +144,7 @@ public class ValidateServlet extends HttpServlet {
 		shaclModel.add(vocModel);
 		
 		// Perform the validation of data, using the shapes model. Do not validate any shapes inside the data model.
-		Resource resource = ValidationUtil.validateModel(dataModel, shaclModel, false);
+		Resource resource = ValidationUtil.validateModel(dataModel, shaclModel, true);
 		Model reportModel = resource.getModel();
 		reportModel.setNsPrefix("sh", "http://www.w3.org/ns/shacl#");
 		
