@@ -50,7 +50,8 @@
 	<body>
 	
 		<jsp:include page="banner.jsp"></jsp:include>
-	
+		<!-- Start page content -->
+		<div class="page">
 			<div class="main-content" id="main" itemprop="mainContentOfPage" role="main" tabindex="-1">
 				<section class="region">
 					<div class="layout layout--wide">
@@ -157,7 +158,7 @@
  					</div>
 				</section>
 			</div>
-					
+		</div>		
 		<jsp:include page="footer.jsp"></jsp:include>
 		 <script>
           $(document).ready(function () {
