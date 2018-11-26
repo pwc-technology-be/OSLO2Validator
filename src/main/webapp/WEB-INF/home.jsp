@@ -60,7 +60,6 @@
 				
 					          <section class="col--1-1 tab__pane" data-tab-pane>
 					  
-					            <h1 class="h1">Valideer via opladen van bestand</h1>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
 					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
@@ -99,10 +98,9 @@
 					          </section>
 					
 					          <section class="col--1-1 tab__pane" data-tab-pane>
-					            <h1 class="h1">Valideer via URL</h1>
 					            <div class="typography">
 					              	<!--Put Content for second tab here-->
-					        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">>
+					        		<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm2()">
 					        	    	<h2 class="h2">OSLO² applicatie profiel</h2>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
