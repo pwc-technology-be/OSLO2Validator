@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8" import="validator.OSLO2.ValidationResult.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false" %>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="nl">
 	<head>
 		<jsp:include page="header.jsp"></jsp:include>
 	    <title>OSLO2 SHACL Validator Results</title>
@@ -36,11 +35,11 @@
 		}
 		</style>
        <!--  <link href="./media/themes/smoothness/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" media="all" /> -->
-		<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js" type="text/javascript"></script>
-        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" type="text/javascript"></script>
-        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" type="text/javascript"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.jqueryui.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
         <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.41.0/codemirror.min.js"></script>
@@ -52,8 +51,8 @@
 		<jsp:include page="banner.jsp"></jsp:include>
 		<!-- Start page content -->
 		<div class="page">
-			<div class="main-content" id="main" itemprop="mainContentOfPage" role="main" tabindex="-1">
-				<section class="region">
+			<div class="main-content" id="main" role="main" tabindex="-1">
+				<div class="region">
 					<div class="layout layout--wide">
 					
 						<form action="home">
@@ -81,7 +80,7 @@
 				          </div>
 				          
 				         <section class="col--1-1 tab__pane" data-tab-pane>
-				            <h1 class="h1">Resultaat in tabel</h1>
+				            <h2 class="h2">Resultaat in tabel</h2>
 				            Hieronder ziet u overzicht van de validatieresultaten.
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
@@ -118,7 +117,7 @@
 				          </section>
 				          
 				          <section class="col--1-1 tab__pane" data-tab-pane>
-				            <h1 class="h1">Resultaat in TTL</h1>
+				            <h2 class="h2">Resultaat in TTL</h2>
 				            Hieronder ziet u een overzicht van de validatieresultaten.
 				            <br><br>
 				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
@@ -131,9 +130,9 @@
 				          
 				
 				          <section class="col--1-1 tab__pane" data-tab-pane>
-				            <h1 class="h1">Data</h1>
+				            <h2 class="h2">Data</h2>
 				            Hieronder ziet u een overzicht van de data die gevalideerd werd. Aan de data die u opgaf werd het betreffende vocabularium aan toegevoegd om meer context aan uw bestand toe te voegen en het validatieresultaat te verbeteren.
-				            </br></br>
+				            <br/><br/>
 				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
 				            <div class="typography">
 				            	<!--Put Content for third tab here-->
@@ -142,9 +141,9 @@
 				          </section>
 				          
 				          <section class="col--1-1 tab__pane" data-tab-pane>
-				            <h1 class="h1">Regels</h1>
+				            <h2 class="h2">Regels</h2>
 				            Hieronder ziet u een overzicht van de SHACL regels die gebruikt werden om uw data te valideren. Deze SHACL regels zijn gebasseerd op het applicatie profiel dat u selecteerde in de eerste stap.
-				            </br></br>
+				            <br/><br/>
 				            <span class="fullscreen-message">Voor volledig scherm, klik op het gebied en druk op F11, druk op ESC om terug naar normaal te gaan.</span>
 				           	<div class="typography">
 				        		<!--Put Content for fourth tab here-->
@@ -156,7 +155,7 @@
 					     
 					    					
  					</div>
-				</section>
+				</div>
 			</div>
 		</div>		
 		<jsp:include page="footer.jsp"></jsp:include>
