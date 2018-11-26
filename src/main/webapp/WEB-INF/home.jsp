@@ -42,17 +42,17 @@
 		<!-- Start page content -->
 		<div class="page">
 	        <div class="main-content" id="main" role="main" tabindex="-1">
-	        	<section class="region">
+	        	<div class="region">
 					<div class="layout layout--wide" id="form">			
 						<div class="grid" data-tabs data-tabs-responsive-label="Navigatie">
 					          <div class="col--1-1">
 					            <div class="tabs__wrapper">
 					              <ul class="tabs" data-tabs-list>
 					                <li class="tab tab--active">
-					                  <a class="tab__link" id="tab-2-nummer-1" href="#" data-tab>Valideer via opladen van bestand</a>
+					                  <h1 class="h1"><a class="tab__link" id="tab-2-nummer-1" href="#" data-tab>Valideer via opladen van bestand</a></h1>
 					                </li>
 					                <li class="tab">
-					                  <a class="tab__link" id="tab-2-nummer-2" href="#" data-tab>Valideer via URL</a>
+					                  <h1 class="h1"><a class="tab__link" id="tab-2-nummer-2" href="#" data-tab>Valideer via URL</a></h1>
 					                </li>
 					              </ul>
 					            </div>
@@ -139,7 +139,7 @@
 	            		
 	            		
 	        		</div>
-	        	</section>
+	        	</div>
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
