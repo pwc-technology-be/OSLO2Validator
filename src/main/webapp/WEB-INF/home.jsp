@@ -81,8 +81,9 @@
 								        <!-- end component -->
 								        
 								        <h3 class="h3">Valideer</h3>
-								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
 								    </form>
+								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
+
 					            </div>
 					          </section>
 				
