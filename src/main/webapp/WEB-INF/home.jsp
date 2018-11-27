@@ -153,6 +153,7 @@
 	    $("#upload").click(function (e) {
 	    	var myDropzone = Dropzone.forElement(".dropzone");
 	    	myDropzone.processQueue();
+	    	$("#my-awesome-dropzone").submit();
            });
 	    </script>
 	 	<script src="./js/errors.js"></script>
