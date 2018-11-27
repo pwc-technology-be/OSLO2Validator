@@ -7,7 +7,7 @@
 	<head>
 		<jsp:include page="header.jsp"></jsp:include>
 		<title>OSLO2 Validator</title>
-		<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
 			$(document).ready(function () {
@@ -62,7 +62,7 @@
 					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
-					        		 <form method="POST" action="validate" enctype="multipart/form-data">
+					        		 <form method="POST" action="validate" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
 					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
@@ -75,7 +75,7 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								         <input type="file" id="data" name="data" class="filepond" />
+								         <div class="dropzone-previews"></div>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -134,12 +134,28 @@
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
-	    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 	    <script>
-	    FilePond.create(
-	    	    document.querySelector('input')
-	    	);
-  		</script>
+	    Dropzone.options.myAwesomeDropzone = {
+	    		  uploadMultiple: true,
+	    		  parallelUploads: 100,
+	    		  maxFiles: 100,
+	    		  addRemoveLinks: true,
+	    		  maxFilesize: 2, // MB
+	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
+	    		  autoProcessQueue: false,
+	    		  previewsContainer: ".dropzone-previews",
+	    		  init:function(){
+	    			  var submitButton = document.querySelector("#upload");
+	    			  var wrapperThis = this;
+
+	                  submitButton.addEventListener("click", function () {
+	                      wrapperThis.processQueue();
+	                      $("#my-awesome-dropzone").submit();
+	                  });
+       				}
+	    		};
+	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
 </html>
