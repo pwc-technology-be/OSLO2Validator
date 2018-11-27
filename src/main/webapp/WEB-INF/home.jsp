@@ -62,7 +62,7 @@
 					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
-					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()" class="dropzone" id="my-awesome-dropzone">
+					        		 <form method="POST" action="validate" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
 					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
