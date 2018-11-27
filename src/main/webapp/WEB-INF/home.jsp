@@ -75,7 +75,7 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								         <div class="dropzone-previews"></div>
+								         <div class="dz-message">Drop file here</div>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -140,14 +140,16 @@
 	    		  parallelUploads: 100,
 	    		  maxFiles: 100,
 	    		  addRemoveLinks: true,
-	    		  paramName: "data",
+	    		  paramName: "file",
 	    		  maxFilesize: 2, // MB
-	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld",
+	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
 	    		  autoProcessQueue: false,
 	    		  init:function(){
                       var that = this,
-               			uploadBtn = document.getElementById('upload');
+               			uploadBtn = this.element.querySelector("#upload");
               			uploadBtn.addEventListener("click", function () {
+              				e.preventDefault();
+                            e.stopPropagation();
                             that.processQueue();
                        });
        				}
