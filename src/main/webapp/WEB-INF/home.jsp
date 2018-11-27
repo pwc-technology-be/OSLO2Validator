@@ -62,7 +62,7 @@
 					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
-					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
+					        		 <form method="POST" action="validate" enctype="multipart/form-data">
 					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
@@ -75,7 +75,7 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								         <input type="file" id="data" name="data" class="filepond">
+								         <input type="file" id="data" name="data" class="filepond" />
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
