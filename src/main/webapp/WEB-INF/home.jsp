@@ -75,7 +75,6 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								          <input type="file" id="data" name="data" />
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -136,6 +135,7 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 	    <script>
 	    Dropzone.options.myAwesomeDropzone = {
+	    		  paramName: "data"
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld"
 	    		};
