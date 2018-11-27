@@ -7,7 +7,7 @@
 	<head>
 		<jsp:include page="header.jsp"></jsp:include>
 		<title>OSLO2 Validator</title>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
 			$(document).ready(function () {
@@ -137,7 +137,7 @@
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js"></script>
 	    <script>
 	    Dropzone.options.myAwesomeDropzone = {
 	    		  paramName: "data",
