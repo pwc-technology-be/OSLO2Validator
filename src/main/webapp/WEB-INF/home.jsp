@@ -85,7 +85,7 @@
 								        
 								        <h3 class="h3">Valideer</h3>
 
-								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
+								       	<button type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" >Submit</button>
 								    </form>
 					            </div>
 					          </section>
