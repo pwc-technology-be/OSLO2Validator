@@ -76,6 +76,7 @@
 								        
 								        <!-- component -->
 								         <div class="dz-message">Drop file here</div>
+								         <input type="file" id="data" name="data"/>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -140,7 +141,7 @@
 	    		  parallelUploads: 100,
 	    		  maxFiles: 100,
 	    		  addRemoveLinks: true,
-	    		  paramName: "file",
+	    		  paramName: "data",
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
 	    		  autoProcessQueue: false,
