@@ -141,7 +141,6 @@
 	    		  parallelUploads: 100,
 	    		  maxFiles: 100,
 	    		  addRemoveLinks: true,
-	    		  paramName: "file",
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
 	    		  autoProcessQueue: false,
