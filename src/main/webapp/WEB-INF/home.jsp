@@ -7,6 +7,7 @@
 	<head>
 		<jsp:include page="header.jsp"></jsp:include>
 		<title>OSLO2 Validator</title>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
 			$(document).ready(function () {
@@ -61,7 +62,7 @@
 					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
-					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
+					        		 <form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()" class="dropzone" id="my-awesome-dropzone">
 					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
@@ -77,12 +78,7 @@
 								        <div class="upload js-upload"
 								          data-upload-t-close="Sluiten" id="doc_container">
 								          <div class="upload__element">
-								            <input class="upload__element__input" type="file" id="data" name="data"
-								            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
-								            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld" />
-								            <label class="upload__element__label" for="data">
-								              <i class="vi vi-paperclip"></i><span>Bijlage toevoegen</span>
-								            </label>
+								            <input type="file" id="data" name="data" />
 								          </div>
 								          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
 								          <span id="file-name"></span>
@@ -143,6 +139,15 @@
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+	    <script>
+	    Dropzone.options.myAwesomeDropzone = {
+	    		  paramName: "data", // The name that will be used to transfer the file
+	    		  maxFilesize: 2, // MB
+	    		  acceptedFiles: .ttl, .rdf, .xml, .json, .jsonld
+	    		};
+
+	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
 </html>
