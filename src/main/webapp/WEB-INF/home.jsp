@@ -142,7 +142,8 @@
 	    		  addRemoveLinks: true,
 	    		  paramName: "data",
 	    		  maxFilesize: 2, // MB
-	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld"
+	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld",
+	    		  autoProcessQueue: false
 	    		};
 
 	    </script>
