@@ -143,7 +143,14 @@
 	    		  paramName: "data",
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld",
-	    		  autoProcessQueue: false
+	    		  autoProcessQueue: false,
+	    		  init:function(){
+                      var that = this,
+               			uploadBtn = document.getElementById('upload');
+              			uploadBtn.addEventListener("click", function () {
+                            that.processQueue();
+                       });
+       				}
 	    		};
 
 	    </script>
