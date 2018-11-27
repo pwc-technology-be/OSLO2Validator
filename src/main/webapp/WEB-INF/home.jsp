@@ -75,6 +75,7 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
+								         <div class="dropzone-previews"></div>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -135,8 +136,10 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 	    <script>
 	    Dropzone.options.myAwesomeDropzone = {
-	    		  autoProcessQueue: false,
-	    		  maxFiles: 1,
+	    		  uploadMultiple: true,
+	    		  parallelUploads: 100,
+	    		  maxFiles: 100,
+	    		  addRemoveLinks: true,
 	    		  paramName: "data",
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld"
