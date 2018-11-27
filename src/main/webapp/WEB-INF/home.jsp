@@ -151,11 +151,20 @@
 	    		  previewsContainer: ".dropzone-previews",
 	    		  init:function(){
 	    			  var submitButton = document.querySelector("#upload");
-	    			  var wrapperThis = this;
+	    			  var myDropzone = this;
 
 	                  submitButton.addEventListener("click", function () {
-	                      wrapperThis.processQueue();
-	                      $("#my-awesome-dropzone").submit();
+	                      if (myDropzone.getUploadingFiles().length === 0 && myDropzone.getQueuedFiles().length === 0) {      
+	                          alert('No file selected for upload');  
+	                          return false;
+	                        }
+	                        else {
+	                          /* Remove event listener and start processing */ 
+	                          myDropzone.removeEventListeners();
+	                          myDropzone.processQueue(); 
+		                      $("#my-awesome-dropzone").submit();    
+	                        }
+
 	                  });
        				}
 	    		};
