@@ -136,7 +136,9 @@
 	    <jsp:include page="footer.jsp"></jsp:include>
 	    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 	    <script>
-  			FilePond.parse(document.body);
+	    FilePond.create(
+	    	    document.querySelector('input')
+	    	);
   		</script>
 	 	<script src="./js/errors.js"></script>
 	</body>
