@@ -76,7 +76,6 @@
 								        
 								        <!-- component -->
 								         <div class="dz-message">Drop file here</div>
-								         <input type="file" id="data" name="data"/>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->

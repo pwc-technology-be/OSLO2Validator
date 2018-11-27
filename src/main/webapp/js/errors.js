@@ -4,7 +4,7 @@
  * @param {string} datafileerror -  JQuery selector for the error field of the file uploaded
  */
 function validateData(datafile, datafileerror) {
-    var isFilled = $(datafile).get(0).files.length > 0;
+    var isFilled = $('input[name=' + datafile + ']').get(0).files.length > 0;
     if (isFilled) {
         $(datafileerror).text("");
         return true;
@@ -16,14 +16,14 @@ function validateData(datafile, datafileerror) {
 }
 
 $("#data").change(function () {
-    validateData("#data", "#datafileerror")
+    validateData("data", "#datafileerror")
 });
 
 /**
  * Validates the Form2, triggered by the web form on submit
  */
 function validateForm1() {
-    var cond_metadata = validateData("#data", "#datafileerror");
+    var cond_metadata = validateData("data", "#datafileerror");
     if (cond_metadata) {
         return true;
     }
