@@ -76,6 +76,9 @@
 								        
 								        <!-- component -->
 								         <div class="dropzone-previews"></div>
+								         <div class="fallback">
+    										<input id="data" name="data" type="file" multiple />
+  											</div>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        <!-- end component -->
@@ -140,6 +143,7 @@
 	    		  uploadMultiple: true,
 	    		  parallelUploads: 100,
 	    		  maxFiles: 100,
+	    		  paramName: "data",
 	    		  addRemoveLinks: true,
 	    		  maxFilesize: 2, // MB
 	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
