@@ -146,6 +146,7 @@
 	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
 	    		  autoProcessQueue: false,
 	    		  previewsContainer: ".dropzone-previews",
+	    		  uploadMultiple: true,
 	    		  init:function(){
 	    			  var submitButton = document.querySelector("#upload");
 	    			  var myDropzone = this;
@@ -163,6 +164,15 @@
 	                        }
 
 	                  });
+	                  
+	                  this.on('sendingmultiple', function (files, xhr, formData) {
+	                      var formFields = $('#my-awesome-dropzone').serializeArray();
+
+	                      $.each(formFields, function (i, field) {
+	                          formData.append(field.name, field.value)
+	                      });
+	                  });
+
        				}
 	    		};
 	    </script>
