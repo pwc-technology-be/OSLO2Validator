@@ -147,14 +147,13 @@
 	    		  init:function(){
                       var that = this,
                			uploadBtn = this.element.querySelector("#upload");
-              			uploadBtn.addEventListener("click", function () {
+              			uploadBtn.addEventListener("click", function(e) {
               				e.preventDefault();
                             e.stopPropagation();
                             that.processQueue();
                        });
        				}
 	    		};
-
 	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
