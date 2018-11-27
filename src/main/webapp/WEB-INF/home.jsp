@@ -75,15 +75,9 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								        <div class="upload js-upload"
-								          data-upload-t-close="Sluiten" id="doc_container">
-								          <div class="upload__element">
-								            <input type="file" id="data" name="data" />
-								          </div>
-								          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
+								          <input type="file" id="data" name="data" />
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
-								        </div>
 								        <!-- end component -->
 								        
 								        <h3 class="h3">Valideer</h3>
@@ -142,9 +136,8 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 	    <script>
 	    Dropzone.options.myAwesomeDropzone = {
-	    		  paramName: "data", // The name that will be used to transfer the file
 	    		  maxFilesize: 2, // MB
-	    		  acceptedFiles: .ttl, .rdf, .xml, .json, .jsonld
+	    		  acceptedFiles: ".ttl,.rdf,.xml,.json,.jsonld"
 	    		};
 
 	    </script>
