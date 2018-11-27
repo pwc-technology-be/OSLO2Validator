@@ -146,15 +146,14 @@
 	    		  acceptedFiles: ".ttl, .rdf, .xml, .json, .jsonld",
 	    		  autoProcessQueue: false,
 	    		  init:function(){
-                      var that = this,
-               			uploadBtn = this.element.querySelector("#upload");
-              			uploadBtn.addEventListener("click", function(e) {
-              				e.preventDefault();
-                            e.stopPropagation();
-                            that.processQueue();
-                       });
+                      var that = this;
+               			
        				}
 	    		};
+	    $("#upload").click(function (e) {
+	    	var myDropzone = Dropzone.forElement(".dropzone");
+	    	myDropzone.processQueue();
+           });
 	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
