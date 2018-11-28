@@ -114,7 +114,6 @@ public class ValidateServlet extends HttpServlet {
 		
         // Forward to /WEB-INF/views/validatedView.jsp
 	 	RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/result.jsp");
-		response.setHeader("Location", "validate");
 	    dispatcher.forward(request, response);
 	}
 

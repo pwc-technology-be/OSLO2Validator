@@ -7,7 +7,6 @@
 	<head>
 		<jsp:include page="header.jsp"></jsp:include>
 		<title>OSLO2 Validator</title>
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script>
 			$(document).ready(function () {
@@ -62,7 +61,7 @@
 					  			<h2 class="h2">Valideer via opladen van bestand</h2>
 					            <div class="typography">
 					              	<!--Put Content for first tab here-->
-					        		 <form method="POST" action="validate" enctype="multipart/form-data" class="dropzone" id="my-awesome-dropzone">
+ 									<form method="POST" action="validate" enctype="multipart/form-data" onsubmit="return validateForm1()">
 					        	    	<h3 class="h3">OSLO² applicatie profiel</h3>
 					        	    	Selecteer hieronder het OSLO² applicatie profiel waartegen u uw data wil valideren.
 					        	    	<br/>
@@ -75,18 +74,25 @@
 								       	Selecteer hieronder het bestand dat u wil valideren.<br/>
 								        
 								        <!-- component -->
-								         <div class="dropzone-previews"></div>
-								         <div class="fallback">
-    										<input id="data" name="data" type="file" multiple />
-  											</div>
+								        <div class="upload js-upload"
+								          data-upload-t-close="Sluiten" id="doc_container">
+								          <div class="upload__element">
+								            <input class="upload__element__input" type="file" id="data" name="data"
+								            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
+								            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld" />
+								            <label class="upload__element__label" for="data">
+								              <i class="vi vi-paperclip"></i><span>Bijlage toevoegen</span>
+								            </label>
+								          </div>
+								          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
 								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
+								        </div>
 								        <!-- end component -->
 								        
 								        <h3 class="h3">Valideer</h3>
-
-								       	<button type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" >Submit</button>
-								    </form>
+								       	<input type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" />
+								</form>
 					            </div>
 					          </section>
 				
@@ -137,40 +143,6 @@
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js"></script>
-	    <script>
-	    // Init dropzone instance
-	    Dropzone.autoDiscover = false;
-	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
-	      url: "validate",
-	      autoProcessQueue: false,
-	      paramName: "data"
-	    });
-
-	    // Submit
-	    const $button = document.getElementById('upload')
-	    $button.addEventListener('click', function (e) {
-	      // Retrieve selected files
-	      //var formFields = $('#my-awesome-dropzone').serializeArray();
-
-	       //$.each(formFields, function (i, field) {
-	       // 	formData.append(field.name, field.value)
-	        //});
-	     e.preventDefault();
-      	e.stopPropagation();
-	      const acceptedFiles = myDropzone.getAcceptedFiles()
-	      for (let i = 0; i < acceptedFiles.length; i++) {
-	        setTimeout(function () {
-	          myDropzone.processFile(acceptedFiles[i])
-	        }, i * 2000)
-	      }
-	      
-	      
-	    })
-	   myDropzone.on("success", (file, response, xhr) => {
-		   location.reload()
-			})
-	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
 </html>
