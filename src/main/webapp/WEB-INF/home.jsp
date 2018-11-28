@@ -142,7 +142,8 @@
 	    // Init dropzone instance
 	    Dropzone.autoDiscover = false
 	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
-	      autoProcessQueue: false
+	      autoProcessQueue: false,
+	      paramName: "data"
 	    })
 
 	    // Submit
@@ -160,7 +161,8 @@
 	          myDropzone.processFile(acceptedFiles[i])
 	        }, i * 2000)
 	      }
-	    }
+	    })
+	   
 	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
