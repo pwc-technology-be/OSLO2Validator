@@ -154,6 +154,7 @@
 	       //$.each(formFields, function (i, field) {
 	       // 	formData.append(field.name, field.value)
 	        //});
+	        myDropzone.removeEventListeners();
 	      const acceptedFiles = myDropzone.getAcceptedFiles()
 	      for (let i = 0; i < acceptedFiles.length; i++) {
 	        setTimeout(function () {
