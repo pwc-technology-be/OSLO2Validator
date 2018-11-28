@@ -162,6 +162,8 @@
 	          myDropzone.processFile(acceptedFiles[i])
 	        }, i * 2000)
 	      }
+	      
+	      $('#my-awesome-dropzone').submit();
 	    })
 	   
 	    </script>
