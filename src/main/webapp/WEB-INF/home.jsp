@@ -167,7 +167,7 @@
 	      
 	      
 	    })
-	   mydropzone.on("success", function(file, responseText) {
+	   myDropzone.on("success", function(file, responseText) {
   			window.location.href = ("/validate")
 		});
 	    </script>
