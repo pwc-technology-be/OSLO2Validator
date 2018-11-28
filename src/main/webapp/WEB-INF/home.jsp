@@ -167,9 +167,13 @@
 	      
 	      
 	    })
-	   myDropzone.on("success", function(file, responseText) {
-  			window.location.href = ("validate")
-		});
+	   myDropzone.on("success", (file, response, xhr) => {
+		   if (!response.location) {
+			    // do nothing if there's no location supplied (optional)
+			    return;
+			  }
+			  window.location.href = response.location
+			})
 	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
