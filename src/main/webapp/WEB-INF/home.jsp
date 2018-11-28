@@ -143,6 +143,14 @@
 	        </div>
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
+	    <script>
+	    $("#doc_container").on("dragover drop", function(e) {
+	        e.preventDefault();
+	    }).on("drop", function(e) {
+	        $("input[type='file']")
+	            .prop("files", e.originalEvent.dataTransfer.files);
+	    });
+	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
 </html>
