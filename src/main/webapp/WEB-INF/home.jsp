@@ -168,11 +168,7 @@
 	      
 	    })
 	   myDropzone.on("success", (file, response, xhr) => {
-		   if (!response.location) {
-			    // do nothing if there's no location supplied (optional)
-			    return;
-			  }
-			  window.location.href = response.location
+		   window.location.replace(response.redirect);
 			})
 	    </script>
 	 	<script src="./js/errors.js"></script>
