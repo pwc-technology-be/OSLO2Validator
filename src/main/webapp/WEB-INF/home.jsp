@@ -142,8 +142,7 @@
 	    // Init dropzone instance
 	    Dropzone.autoDiscover = false
 	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
-	      autoProcessQueue: false,
-	      paramName: "data"
+	      autoProcessQueue: false
 	    })
 
 	    // Submit
