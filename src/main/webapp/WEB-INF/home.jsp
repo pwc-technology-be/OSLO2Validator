@@ -142,8 +142,9 @@
 	    // Init dropzone instance
 	    Dropzone.autoDiscover = false;
 	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
+	      url: "validate",
 	      autoProcessQueue: false
-	    })
+	    });
 
 	    // Submit
 	    const $button = document.getElementById('upload')
@@ -163,7 +164,7 @@
 	        }, i * 2000)
 	      }
 	      
-	      $('#my-awesome-dropzone').submit();
+	      
 	    })
 	   
 	    </script>
