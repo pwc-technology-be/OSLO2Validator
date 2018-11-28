@@ -85,7 +85,7 @@
 								        
 								        <h3 class="h3">Valideer</h3>
 
-								       	<button type="submit" class="button" value="Klik hier om te valideren" name="upload" id="upload" >Submit</button>
+								       	<input type="submit" class="button fileupload" value="Klik hier om te valideren" name="upload" id="upload" />
 								    </form>
 					            </div>
 					          </section>
@@ -148,28 +148,29 @@
 	    		  previewsContainer: ".dropzone-previews",
 	    		  uploadMultiple: true,
 	    		  init:function(){
-	    			  var submitButton = document.querySelector("#upload");
+	    			  console.log(this.element);
+	    			  var submitButton = document.querySelector("input.fileupload");
 	    			  var myDropzone = this;
-
-	                  submitButton.addEventListener("click", function () {
+	                  submitButton.addEventListener("click", function (e) {
 	                      if (myDropzone.getUploadingFiles().length === 0 && myDropzone.getQueuedFiles().length === 0) {      
 	                          alert('No file selected for upload');  
 	                          return false;
 	                        }
 	                        else {
 	                          /* Remove event listener and start processing */ 
-	                          myDropzone.removeEventListeners();
-	                          myDropzone.processQueue(); 
-		                      $("#my-awesome-dropzone").submit();    
+	                         e.preventDefault();
+     						 e.stopPropagation();
+	                         // myDropzone.removeEventListeners();
+	                          myDropzone.processQueue();    
 	                        }
 
 	                  });
 	                  
 	                  this.on('sendingmultiple', function (files, xhr, formData) {
-	                      var formFields = $('#my-awesome-dropzone').serializeArray();
+	                      //var formFields = $('#my-awesome-dropzone').serializeArray();
 
-	                      $.each(formFields, function (i, field) {
-	                          formData.append(field.name, field.value)
+	                      //$.each(formFields, function (i, field) {
+	                       //  formData.append(field.name, field.value)
 	                      });
 	                  });
 
