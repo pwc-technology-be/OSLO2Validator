@@ -147,14 +147,15 @@
 
 	    // Submit
 	    const $button = document.getElementById('upload')
-	    $button.addEventListener('click', function () {
+	    $button.addEventListener('click', function (e) {
 	      // Retrieve selected files
 	      //var formFields = $('#my-awesome-dropzone').serializeArray();
 
 	       //$.each(formFields, function (i, field) {
 	       // 	formData.append(field.name, field.value)
 	        //});
-	        myDropzone.removeEventListeners();
+	     e.preventDefault();
+      	e.stopPropagation();
 	      const acceptedFiles = myDropzone.getAcceptedFiles()
 	      for (let i = 0; i < acceptedFiles.length; i++) {
 	        setTimeout(function () {
