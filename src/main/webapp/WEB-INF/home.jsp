@@ -140,7 +140,7 @@
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.js"></script>
 	    <script>
 	    // Init dropzone instance
-	    Dropzone.autoDiscover = false
+	    Dropzone.autoDiscover = false;
 	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
 	      autoProcessQueue: false
 	    })
@@ -149,11 +149,11 @@
 	    const $button = document.getElementById('upload')
 	    $button.addEventListener('click', function () {
 	      // Retrieve selected files
-	      var formFields = $('#my-awesome-dropzone').serializeArray();
+	      //var formFields = $('#my-awesome-dropzone').serializeArray();
 
-	       $.each(formFields, function (i, field) {
-	        	formData.append(field.name, field.value)
-	        });
+	       //$.each(formFields, function (i, field) {
+	       // 	formData.append(field.name, field.value)
+	        //});
 	      const acceptedFiles = myDropzone.getAcceptedFiles()
 	      for (let i = 0; i < acceptedFiles.length; i++) {
 	        setTimeout(function () {
