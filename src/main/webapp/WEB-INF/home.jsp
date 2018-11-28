@@ -143,7 +143,8 @@
 	    Dropzone.autoDiscover = false;
 	    const myDropzone = new Dropzone('#my-awesome-dropzone', {
 	      url: "validate",
-	      autoProcessQueue: false
+	      autoProcessQueue: false,
+	      paramName: "data"
 	    });
 
 	    // Submit
