@@ -168,7 +168,7 @@
 	      
 	    })
 	   myDropzone.on("success", (file, response, xhr) => {
-		   window.location.replace(response.redirect);
+		   location.reload()
 			})
 	    </script>
 	 	<script src="./js/errors.js"></script>
