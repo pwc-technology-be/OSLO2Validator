@@ -147,16 +147,13 @@
 	    	on("dragover drop", function(e) {
 	        	e.preventDefault();
 	        	$(".upload__element").addClass('is-dragover');
-	        	console.log("dragover drop");
 	    	}).
 	    	on("dragleave dragend drop", function(e) {
 	        	$(".upload__element").removeClass('is-dragover');
-	        	console.log("dragleave dragend drop");
 	    	}).
 	    	on("drop", function(e) {
 	        	$("input[type='file']").prop("files", e.originalEvent.dataTransfer.files);
 	        	$("#file-name").text(e.originalEvent.dataTransfer.files[0].name);
-	        	console.log("drop");
 	    	});
 	    </script>
 	 	<script src="./js/errors.js"></script>
