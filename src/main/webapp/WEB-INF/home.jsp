@@ -82,11 +82,10 @@
 								            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
 								            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld" />
 								            <label class="upload__element__label" for="data">
-								              <i class="vi vi-paperclip"></i><span>Bijlage toevoegen</span>
+								              <i class="vi vi-paperclip"></i><span id="file-name">Bijlage toevoegen</span>
 								            </label>
 								          </div>
 								          <div id='deactivate' style='cursor:not-allowed; width:100%; height:52px; background-color:#999925; position:relative; bottom:51px; z-index:10; display:none;'></div>
-								          <span id="file-name"></span>
 								          <span id="datafileerror" class="errormessage"></span>
 								        </div>
 								        <!-- end component -->
