@@ -156,6 +156,7 @@
 	    	on("drop", function(e) {
 	        	$("input[type='file']")
 	            .prop("files", e.originalEvent.dataTransfer.files);
+	        	$("#file-name").text(e.originalEvent.dataTransfer.files[0].name);
 	    	});
 	    </script>
 	 	<script src="./js/errors.js"></script>
