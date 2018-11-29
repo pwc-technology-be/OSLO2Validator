@@ -33,6 +33,7 @@
 			#datafileerror{margin-left:80px;color:red}
 			#file-name{margin-left:80px}
 			#urierror{color:red}
+			.is-dragover {background-color: #f2f2f2}
 		</style>
 	</head>
 	<body>
@@ -144,12 +145,18 @@
 	    </div>
 	    <jsp:include page="footer.jsp"></jsp:include>
 	    <script>
-	    $("#doc_container").on("dragover drop", function(e) {
-	        e.preventDefault();
-	    }).on("drop", function(e) {
-	        $("input[type='file']")
+	    $("#doc_container").
+	    	on("dragover drop", function(e) {
+	        	e.preventDefault();
+	        	$(".upload__element").addClass('is-dragover');
+	    	}).
+	    	on("dragleave dragend drop", function(e) {
+	        	$(".upload__element").removeClass('is-dragover');
+	    	}).
+	    	on("drop", function(e) {
+	        	$("input[type='file']")
 	            .prop("files", e.originalEvent.dataTransfer.files);
-	    });
+	    	});
 	    </script>
 	 	<script src="./js/errors.js"></script>
 	</body>
