@@ -31,7 +31,6 @@
 		</script>
 		<style>
 			#datafileerror{margin-left:80px;color:red}
-			#file-name{margin-left:80px}
 			#urierror{color:red}
 			.is-dragover {background-color: #f2f2f2}
 		</style>
