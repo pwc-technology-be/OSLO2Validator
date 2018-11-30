@@ -219,6 +219,7 @@ public class ValidateServlet extends HttpServlet {
 		if(Objects.equals(extension, "html")) {
 			
 			String html = dataStream.toString();
+			System.out.println(html);
 			final Document document = Jsoup.parse(html);
 		    document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);    
 		    String xhtml = document.html();
