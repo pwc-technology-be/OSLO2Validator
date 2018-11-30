@@ -1,12 +1,15 @@
 package validator.OSLO2;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -218,7 +221,7 @@ public class ValidateServlet extends HttpServlet {
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
 			
-			String html = dataStream.toString();
+			String html = convert(dataStream,StandardCharsets.UTF_8);
 			System.out.println(html);
 			final Document document = Jsoup.parse(html);
 		    document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);    
@@ -410,5 +413,19 @@ public class ValidateServlet extends HttpServlet {
 		} else {
 			return "";
 		}
+	}
+	
+	public String convert(InputStream inputStream, Charset charset) throws IOException {
+		 
+		StringBuilder stringBuilder = new StringBuilder();
+		String line = null;
+		
+		try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, charset))) {	
+			while ((line = bufferedReader.readLine()) != null) {
+				stringBuilder.append(line);
+			}
+		}
+	 
+		return stringBuilder.toString();
 	}
 }
