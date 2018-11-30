@@ -220,7 +220,7 @@ public class ValidateServlet extends HttpServlet {
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
-			
+			/*
 			String html = convert(dataStream,StandardCharsets.UTF_8);
 			System.out.println(html);
 			final Document document = Jsoup.parse(html);
@@ -228,11 +228,11 @@ public class ValidateServlet extends HttpServlet {
 		    String xhtml = document.html();
 		    System.out.println(xhtml);
 		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
-		    
+		    */
 			ValueFactory vf = SimpleValueFactory.getInstance();
 			IRI baseURI= vf.createIRI("http://shacl.validator.com/");
 			
-			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(in, baseURI.toString(), RDFFormat.RDFA);
+			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
 			
 			java.io.Writer writer = new StringWriter();
 			Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
