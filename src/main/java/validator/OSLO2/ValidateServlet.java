@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -49,6 +50,8 @@ import org.eclipse.rdf4j.model.ValueFactory;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
 import org.eclipse.rdf4j.rio.RDFFormat;
 import org.eclipse.rdf4j.rio.Rio;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.topbraid.jenax.util.JenaUtil;
@@ -214,9 +217,17 @@ public class ValidateServlet extends HttpServlet {
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
+			
+			String html = dataStream.toString();
+			final Document document = Jsoup.parse(html);
+		    document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);    
+		    String xhtml = document.html();
+		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
+		    
 			ValueFactory vf = SimpleValueFactory.getInstance();
 			IRI baseURI= vf.createIRI("http://shacl.validator.com/");
-			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
+			
+			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(in, baseURI.toString(), RDFFormat.RDFA);
 			
 			java.io.Writer writer = new StringWriter();
 			Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
