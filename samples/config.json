@@ -40,7 +40,7 @@
     "dependencies": ["https://data.vlaanderen.be/ns/transactie.ttl"]
   }
   ,
-  "LBLOD": {
+  "Lblod": {
     "location": ["http://104.199.52.178:8081/SHACLValidatorOSLO2/conf/lblod-SHACL.ttl"],
     "dependencies": ["http://104.199.52.178:8081/SHACLValidatorOSLO2/conf/lblod.ttl"]
   }
