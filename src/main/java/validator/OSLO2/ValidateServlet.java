@@ -222,6 +222,7 @@ public class ValidateServlet extends HttpServlet {
 			final Document document = Jsoup.parse(html);
 		    document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);    
 		    String xhtml = document.html();
+		    System.out.println(xhtml);
 		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
 		    
 			ValueFactory vf = SimpleValueFactory.getInstance();
