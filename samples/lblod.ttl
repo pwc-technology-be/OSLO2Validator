@@ -1,0 +1,30 @@
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#> .
+@prefix ns1: <http://www.w3.org/ns/rdfa#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+besluit:Agenda a owl:Class ;
+    rdfs:label "Agenda"@nl .
+
+besluit:Agendapunt a owl:Class ;
+    rdfs:label "Agenda Punt"@nl .
+
+besluit:heeftAgendapunt a owl:ObjectProperty ;
+    rdfs:label "has agenda punt"@nl ;
+    rdfs:domain besluit:Agenda ;
+    rdfs:range besluit:Agendapunt .
+
+besluit:aangebrachtNa a owl:ObjectProperty ;
+    rdfs:label "has aangebrachtNa"@nl ;
+    rdfs:domain besluit:Agendapunt .
