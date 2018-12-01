@@ -238,6 +238,7 @@ public class ValidateServlet extends HttpServlet {
 			Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
 			String html2trig = writer.toString();
+			System.out.println(html2trig);
 			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			dataModel.read(is, null, "Turtle");
 	       
