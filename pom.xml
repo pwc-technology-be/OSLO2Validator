@@ -34,7 +34,7 @@
     <dependency>
       <groupId>com.github.TopQuadrant</groupId>
       <artifactId>shacl</artifactId>
-      <version>shacl-1.1.0</version>
+      <version>shacl-1.0.1</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.apache.tika/tika-core -->
     <dependency>
