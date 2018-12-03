@@ -31,6 +31,14 @@ import javax.servlet.http.Part;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.io.ByteStreams;
+
+import fr.sparna.rdf.extractor.DataExtractionException;
+import fr.sparna.rdf.extractor.DataExtractionSource;
+import fr.sparna.rdf.extractor.DataExtractionSourceFactory;
+import fr.sparna.rdf.extractor.DataExtractorHandlerFactory;
+import fr.sparna.rdf.extractor.SimpleDataExtractionSource;
+import fr.sparna.rdf.extractor.rdfa.RdfaExtractor;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -50,13 +58,22 @@ import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
 import org.eclipse.rdf4j.model.IRI;
 import org.eclipse.rdf4j.model.ValueFactory;
+import org.eclipse.rdf4j.model.impl.LinkedHashModel;
 import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
+import org.eclipse.rdf4j.repository.Repository;
+import org.eclipse.rdf4j.repository.RepositoryConnection;
+import org.eclipse.rdf4j.repository.sail.SailRepository;
 import org.eclipse.rdf4j.rio.RDFFormat;
+import org.eclipse.rdf4j.rio.RDFHandler;
+import org.eclipse.rdf4j.rio.RDFWriterRegistry;
 import org.eclipse.rdf4j.rio.Rio;
+import org.eclipse.rdf4j.rio.helpers.BufferedGroupingRDFHandler;
+import org.eclipse.rdf4j.sail.memory.MemoryStore;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
+import org.xml.sax.SAXException;
 import org.topbraid.jenax.util.JenaUtil;
 
 
@@ -229,13 +246,38 @@ public class ValidateServlet extends HttpServlet {
 		    System.out.println(xhtml);
 		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
 		    */
-			ValueFactory vf = SimpleValueFactory.getInstance();
-			IRI baseURI= vf.createIRI("http://shacl.validator.com/");
+			Repository repo = new SailRepository(new MemoryStore());
+			repo.initialize();
+			DataExtractorHandlerFactory handlerFactory = new DataExtractorHandlerFactory();
+			DataExtractionSourceFactory desf = new DataExtractionSourceFactory();
+			DataExtractionSource source;
+			try {
+				source = desf.buildSource(SimpleValueFactory.getInstance().createIRI("http://example.com"), ByteStreams.toByteArray(dataStream));
+			RdfaExtractor rdfa = new RdfaExtractor();
+			RepositoryConnection connection = repo.getConnection();
+		        // create the target handler
+		    RDFHandler handler = handlerFactory.newHandler(connection, source.getDocumentIri());
+		        
+		        // extract
+		        rdfa.extract(source, handler);
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DataExtractionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RDFHandler writer = RDFWriterRegistry.getInstance().get(RDFFormat.TURTLE).get().getWriter(System.out);
+			repo.getConnection().export(new BufferedGroupingRDFHandler(1024*24, writer));
 			
-			org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
 			
-			java.io.Writer writer = new StringWriter();
-			Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
+			//ValueFactory vf = SimpleValueFactory.getInstance();
+			//IRI baseURI= vf.createIRI("http://shacl.validator.com/");
+			
+			//org.eclipse.rdf4j.model.Model rdf4jmodel = Rio.parse(dataStream, baseURI.toString(), RDFFormat.RDFA);
+			
+			//java.io.Writer writer = new StringWriter();
+			//Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
 			String html2trig = writer.toString();
 			System.out.println(html2trig);
