@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.io.Writer;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
@@ -40,6 +41,7 @@ import fr.sparna.rdf.extractor.DataExtractionSourceFactory;
 import fr.sparna.rdf.extractor.DataExtractorHandlerFactory;
 import fr.sparna.rdf.extractor.SimpleDataExtractionSource;
 import fr.sparna.rdf.extractor.rdfa.RdfaExtractor;
+import nu.validator.htmlparser.common.XmlViolationPolicy;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -72,6 +74,12 @@ import org.eclipse.rdf4j.rio.helpers.BufferedGroupingRDFHandler;
 import org.eclipse.rdf4j.sail.memory.MemoryStore;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.semarglproject.rdf.ParseException;
+import org.semarglproject.rdf.TurtleSerializer;
+import org.semarglproject.rdf.rdfa.RdfaParser;
+import org.semarglproject.sink.CharOutputSink;
+import org.semarglproject.sink.TripleSink;
+import org.semarglproject.source.StreamProcessor;
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
 import org.xml.sax.SAXException;
@@ -247,6 +255,7 @@ public class ValidateServlet extends HttpServlet {
 		    System.out.println(xhtml);
 		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
 		    */
+			if(false) {
 			Repository repo = new SailRepository(new MemoryStore());
 			repo.initialize();
 			DataExtractorHandlerFactory handlerFactory = new DataExtractorHandlerFactory();
@@ -271,7 +280,20 @@ public class ValidateServlet extends HttpServlet {
 			OutputStream out = new ByteArrayOutputStream();
 			RDFHandler writer = RDFWriterRegistry.getInstance().get(RDFFormat.TURTLE).get().getWriter(out);
 			repo.getConnection().export(new BufferedGroupingRDFHandler(1024*24, writer));
+			}
 			
+			OutputStream out = new ByteArrayOutputStream();
+			CharOutputSink charOutputSink = new CharOutputSink("UTF-8");
+			charOutputSink.connect(out);
+			StreamProcessor streamProcessor = new StreamProcessor(RdfaParser.connect(TurtleSerializer.connect(charOutputSink)));
+			nu.validator.htmlparser.sax.HtmlParser reader = new nu.validator.htmlparser.sax.HtmlParser(XmlViolationPolicy.ALTER_INFOSET);
+	        streamProcessor.setProperty(StreamProcessor.XML_READER_PROPERTY, reader);		        
+			try {
+				streamProcessor.process(new ByteArrayInputStream(ByteStreams.toByteArray(dataStream)), "http://example.com");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			//ValueFactory vf = SimpleValueFactory.getInstance();
 			//IRI baseURI= vf.createIRI("http://shacl.validator.com/");
