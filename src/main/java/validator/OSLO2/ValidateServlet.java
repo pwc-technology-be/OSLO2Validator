@@ -61,7 +61,7 @@ import org.semarglproject.source.StreamProcessor;
 
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
-import org.topbraid.jenax.util.JenaUtil;
+import org.topbraid.spin.util.JenaUtil;
 
 
 /**
