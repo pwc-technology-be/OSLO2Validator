@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.net.URL;
 import java.net.URLConnection;
@@ -267,7 +268,8 @@ public class ValidateServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			RDFHandler writer = RDFWriterRegistry.getInstance().get(RDFFormat.TURTLE).get().getWriter(System.out);
+			OutputStream out = new ByteArrayOutputStream();
+			RDFHandler writer = RDFWriterRegistry.getInstance().get(RDFFormat.TURTLE).get().getWriter(out);
 			repo.getConnection().export(new BufferedGroupingRDFHandler(1024*24, writer));
 			
 			
@@ -279,7 +281,7 @@ public class ValidateServlet extends HttpServlet {
 			//java.io.Writer writer = new StringWriter();
 			//Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
-			String html2trig = writer.toString();
+			String html2trig = out.toString();
 			System.out.println(html2trig);
 			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			dataModel.read(is, null, "Turtle");
