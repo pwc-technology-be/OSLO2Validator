@@ -8,11 +8,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -35,18 +33,13 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.io.ByteStreams;
 
-import fr.sparna.rdf.extractor.DataExtractionException;
-import fr.sparna.rdf.extractor.DataExtractionSource;
-import fr.sparna.rdf.extractor.DataExtractionSourceFactory;
-import fr.sparna.rdf.extractor.DataExtractorHandlerFactory;
-import fr.sparna.rdf.extractor.SimpleDataExtractionSource;
-import fr.sparna.rdf.extractor.rdfa.RdfaExtractor;
 import nu.validator.htmlparser.common.XmlViolationPolicy;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
 import org.apache.jena.atlas.web.ContentType;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryExecution;
@@ -59,30 +52,15 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
-import org.eclipse.rdf4j.model.IRI;
-import org.eclipse.rdf4j.model.ValueFactory;
-import org.eclipse.rdf4j.model.impl.LinkedHashModel;
-import org.eclipse.rdf4j.model.impl.SimpleValueFactory;
-import org.eclipse.rdf4j.repository.Repository;
-import org.eclipse.rdf4j.repository.RepositoryConnection;
-import org.eclipse.rdf4j.repository.sail.SailRepository;
-import org.eclipse.rdf4j.rio.RDFFormat;
-import org.eclipse.rdf4j.rio.RDFHandler;
-import org.eclipse.rdf4j.rio.RDFWriterRegistry;
-import org.eclipse.rdf4j.rio.Rio;
-import org.eclipse.rdf4j.rio.helpers.BufferedGroupingRDFHandler;
-import org.eclipse.rdf4j.sail.memory.MemoryStore;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
+
 import org.semarglproject.rdf.ParseException;
 import org.semarglproject.rdf.TurtleSerializer;
 import org.semarglproject.rdf.rdfa.RdfaParser;
 import org.semarglproject.sink.CharOutputSink;
-import org.semarglproject.sink.TripleSink;
 import org.semarglproject.source.StreamProcessor;
+
 import org.topbraid.shacl.util.ModelPrinter;
 import org.topbraid.shacl.validation.ValidationUtil;
-import org.xml.sax.SAXException;
 import org.topbraid.jenax.util.JenaUtil;
 
 
@@ -246,41 +224,6 @@ public class ValidateServlet extends HttpServlet {
 		dataModel.setNsPrefixes(shapesModel.getNsPrefixMap());
 		System.out.println(extension);
 		if(Objects.equals(extension, "html")) {
-			/*
-			String html = convert(dataStream,StandardCharsets.UTF_8);
-			System.out.println(html);
-			final Document document = Jsoup.parse(html);
-		    document.outputSettings().syntax(Document.OutputSettings.Syntax.xml);    
-		    String xhtml = document.html();
-		    System.out.println(xhtml);
-		    InputStream in = new ByteArrayInputStream(xhtml.getBytes(StandardCharsets.UTF_8));
-		    */
-			if(false) {
-			Repository repo = new SailRepository(new MemoryStore());
-			repo.initialize();
-			DataExtractorHandlerFactory handlerFactory = new DataExtractorHandlerFactory();
-			DataExtractionSourceFactory desf = new DataExtractionSourceFactory();
-			DataExtractionSource source;
-			try {
-				source = desf.buildSource(SimpleValueFactory.getInstance().createIRI("http://example.com"), ByteStreams.toByteArray(dataStream));
-			RdfaExtractor rdfa = new RdfaExtractor();
-			RepositoryConnection connection = repo.getConnection();
-		        // create the target handler
-		    RDFHandler handler = handlerFactory.newHandler(connection, source.getDocumentIri());
-		        
-		        // extract
-		        rdfa.extract(source, handler);
-			} catch (SAXException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DataExtractionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			OutputStream out = new ByteArrayOutputStream();
-			RDFHandler writer = RDFWriterRegistry.getInstance().get(RDFFormat.TURTLE).get().getWriter(out);
-			repo.getConnection().export(new BufferedGroupingRDFHandler(1024*24, writer));
-			}
 			
 			OutputStream out = new ByteArrayOutputStream();
 			CharOutputSink charOutputSink = new CharOutputSink("UTF-8");
