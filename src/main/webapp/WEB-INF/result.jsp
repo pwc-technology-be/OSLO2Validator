@@ -81,7 +81,7 @@
 				          
 				         <section class="col--1-1 tab__pane" data-tab-pane>
 				            <h2 class="h2">Resultaat in tabel</h2>
-				            Hieronder ziet u overzicht van de validatieresultaten.
+				            Hieronder ziet u een overzicht van de validatieresultaten.
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
 				        		<table id="resultaten" class="display">
