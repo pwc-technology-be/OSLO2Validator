@@ -4,12 +4,12 @@
     "dependencies": ["http://104.199.52.178:8081/SHACLValidatorOSLO2/conf/lblod.ttl"]
   },
   "Mandatendatabank": {
-    "location": ["https://data.vlaanderen.be/shacl/mandatendatabank-SHACL.ttl"],
+    "location": ["http://104.199.52.178:8081/SHACLValidatorOSLO2/conf/mandatendatabank-SHACL.ttl"],
     "dependencies": ["https://data.vlaanderen.be/ns/mandaat.ttl"]
   }
   ,
   "Besluit publicatie": {
-    "location": ["https://data.vlaanderen.be/shacl/besluit-publicatie-SHACL.ttl"],
+    "location": ["http://104.199.52.178:8081/SHACLValidatorOSLO2/conf/besluit-publicatie-SHACL.ttl"],
     "dependencies": ["https://data.vlaanderen.be/ns/besluit.ttl"]
   }
 }
