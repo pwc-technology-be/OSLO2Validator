@@ -210,6 +210,10 @@ public class ValidateServlet extends HttpServlet {
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
     			System.out.println("set extension 1: " + extension);
+    			if(Objects.equals(extension, "")) {
+    				extension = MimeTypes.getExtensionFromMimeType(contentype);
+    				System.out.println("set extension 1.1: " + extension);
+    			}
     	    } else {
     	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
     	    	System.out.println("set extension 2: " + extension);

@@ -1,0 +1,1091 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.1//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-2.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="XHTML+RDFa 1.1">
+	<head>
+		<title>XHTML test</title>
+	</head>
+	<body>
+		<div xmlns="http://www.w3.org/1999/xhtml"
+		  prefix="
+			foaf: http://xmlns.com/foaf/0.1/
+			dcterms: http://purl.org/dc/terms/
+			rdfs: http://www.w3.org/2000/01/rdf-schema#
+			prov: http://www.w3.org/ns/prov#
+			rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+			rdfa: http://www.w3.org/ns/rdfa#
+			xsd: http://www.w3.org/2001/XMLSchema#
+			ns0: http://mu.semte.ch/vocabularies/ext/
+			ns1: http://data.vlaanderen.be/ns/besluit#
+			ns2: http://data.europa.eu/eli/ontology#
+			ns3: http://data.vlaanderen.be/ns/mandaat#"
+		  >
+		  <div typeof="ns0:Variable" about="http://variables/f64dd9a4-188a-4544-97a2-f2c2b3d86247">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="dc674a79-fe13-4980-9be1-8fd052d1b025"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-2/title"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/84b51f9bc40aaf2c9973b950a4e50ff3378b6096139a63d174c89eaa5ed3305d">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-0"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/986f6c9d4f1f6fc02c5e667150dfb583748c8de6f771ba1e8a4ccc2604519271">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-4"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/6607ba3e1c8c1308573159b70bb12bf7c91769f95641ac0a00905d7b58b9c8cd">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-6"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/2d34a9cf-0dfc-40c7-a2c9-ceaa34f222d5">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-1/title"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="2e14e859-802c-4f43-9c33-47b0afd0bb93"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/b5028046-43ce-4d15-9050-5c82e8b474ec">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="606c2164-6ca5-402e-a666-783747eb370b"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-6/title"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/9e9a8a32-c60f-40ef-a4fe-b0bbba6be93d">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-6"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="31afd052-6a8b-481b-b60b-3a3ca6498027"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/1267e946-1318-4824-b5d2-07181433eaaf">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-1"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="0612d0c9-85b2-4cac-bba3-bc3d08572f01"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/a6aa25df-5476-4a48-82a5-0ff3e6e25f84">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="2a4e4948-3d14-4e73-bd22-652cc59f2ed0"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://installatie/verkiezingsdatum"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/9489dcfd-6764-43a9-b3db-29deef0eebd4">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="a96955c2-e992-4686-b779-05fc667b611a"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-5"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/4eb4d793-6fbc-4e9c-b018-2a710565c0a6">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="80d49dc0-2fa8-43f4-84a6-3d7857062fe3"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-5/title"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/7f07df17-38dc-4026-bb10-1651a1a3ae00">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="aan en afwezigen"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="4c8af5c5-c9ea-4942-b8bc-ed34234d57d1"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/01954dc5-be86-4a6b-8770-8c76079a948d">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="rangorde schepenen"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="738b0fd9-6148-4d0a-bc98-ae7e49fa9c8f"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/3bb10761-b43c-46e2-aed5-6b724a2601a6">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="21e64412-46b5-4819-b56e-0745b207c034"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-6"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/20cc00bf-17a0-4888-997d-ca842090461d">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="282e9665-2232-4e73-b5d8-9c5a929de32e"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-3/title"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/dc855451-b120-416e-8a80-90d13db0a981">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="1e82363d-afa0-4bb1-9c26-919b50bfc508"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://installatie/verkiezingsdatum"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/4a98f3467c6bcc7c0713a70b117ea3688263c3e8b3a1c2ec9cb721a191ba91d3">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-2"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/2c871688-c1d1-4dc7-8fed-41f6b574dc91">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/nieuwe-voorzitter"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="f81db3d3-6c68-4f2a-a9a1-873d0c72aa08"></div>
+		  </div>
+		  <div typeof="ns1:Zitting" about="http://data.lblod.info/id/zittingen/daa43b35-a874-44b8-9011-80d1f11ab116">
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/ba296ce6-8698-40e2-abb4-bb657e953795">
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb"></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/27d7ef52-c8f7-4c7f-989f-09a4bc8749b3"></div>
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/f2e2a0de-2d7d-4ef7-9732-620205a2b022"></div>
+			  </div>
+			</div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/df2929ad-062f-4687-ae3e-65311043c56d">
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/40341871-e4be-4426-9440-e0675f7fd18f"></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02"></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/8ee87bfa-65fc-4479-8d47-72019409fd40"></div>
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+			  </div>
+			</div>
+			<div property="ns0:scopedBestuursorgaanText" xml:lang="nl" content="selecteer bestuursorgaan"></div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/65a45274-4fda-4eed-ac5e-a0704e1bb6ff">
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/99eb1b0c-4a5c-48ce-8145-035b4525d084"></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395"></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/1761aa8a-64b1-417a-b061-7aff25b569d3"></div>
+			  </div>
+			</div>
+			<div property="dcterms:title" xml:lang="nl" content="
+			Notulen van selecteer bestuursorgaan, zitting van 22 november 2018​ (installatievergadering)
+		  "></div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/e5163cf8-c2b9-43a9-a98e-9915cb94dfab">
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/d41b1d60-76e1-44b5-abe5-508e6fcbce13"></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/bd3a4f02-51e5-4dbb-bf9a-87c4350682cb"></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/67a5db97-0498-4b41-9beb-072dab397e88"></div>
+			  </div>
+			</div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/8868156b-32ad-4e28-996b-7074daad8447">
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/f0ddde99-e13d-42be-a20a-c283b2842c26"></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4"></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/2360b5f0-641e-4f1b-b4d0-85fd97c0e8f0"></div>
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+			  </div>
+			</div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234862"></div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/6aefbb05-eab1-4132-89fe-b1fdb71cfaf2">
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/62cfa086-699e-4b4c-ab9d-4d67431b6f90"></div>
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c"></div>
+			  </div>
+			</div>
+			<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij de zitting."></div>
+			<div property="ns1:geplandeStart" datatype="xsd:date" content="2018-11-22"></div>
+			<div rel="ns1:heeftAgenda">
+			  <div typeof="ns1:Agenda" about="http://data.lblod.info/id/agendas/94cc3d80-ed84-453e-a292-d62098d1d5b3">
+				<div rel="ns0:noHighlight">
+				  <div typeof="ns0:NoHighlight">
+				  </div>
+				</div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/d41b1d60-76e1-44b5-abe5-508e6fcbce13"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4"></div>
+				<div rel="ns1:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb"></div>
+			  </div>
+			</div>
+			<div rel="ns0:behandelt">
+			  <div typeof="ns1:BehandelingVanAgendapunt" about="http://data.lblod.info/id/behandelingen-van-agendapunten/624ff8a9-32c9-4a5b-9390-ab1f77547530">
+				<div property="ns0:insertAanwezigenText" xml:lang="nl" content="Beheer aanwezigen bij agendapunt."></div>
+				<div property="ns1:openbaar" datatype="xsd:boolean" content="true"></div>
+				<div rel="ns1:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/f0bbbe72-f93e-4549-9190-920319f6530e"></div>
+				<div rel="dcterms:subject" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94"></div>
+				<div rel="prov:generated" resource="http://data.lblod.info/id/besluiten/59f1561b-d3ab-4828-850e-c4f573609c81"></div>
+			  </div>
+			</div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/64a48d9d-fa66-4732-860f-96b1ac14829f">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="76edf311-4702-4414-9db0-b7424d2ced54"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-4"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/4afb0da0-fadf-4da9-9c81-70c654ce2ad6">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-4"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="c2c528c8-41ac-4768-a902-11d493f3bd2a"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/01e12be5-3cd2-4756-b029-c6c7094c52e3">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-2"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="b372dea8-e8dd-4e99-b185-df2de9f1bd52"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/8b1eb31a-5bec-43dc-bfa2-0bb791929c01">
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003C">
+			  </div>
+			</div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="6976bf81-abf2-4399-92a0-49479bd6b361"></div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/b75d22df-1c7c-4e8e-bb07-149242ac4055">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="e5328ad4-1e27-479d-b60f-111df4848401"></div>
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="onderzoek geloofsbrieven"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/05db867f-94f3-4af6-a896-6e29cc5f6671">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="1ffbeaac-fa73-44d9-9bf6-d16884340b50"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/nieuwe-voorzitter"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/872148f6-2259-4ca7-acd9-e031a88b055d">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="708909e3-343c-4ff3-8dff-fdb8f06f915b"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-5"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/da7cd39a-2611-45c0-8168-dc0e44202288">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="56e37396-30b1-4810-8cf1-b496144fdceb"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://installatie/verkiezingsdatum"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/8368398b-662b-43ee-a1cf-4a750596ac45">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="f47d45bd-8966-4289-92b2-35ccecc513a3"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://installatie/burgemeester-persoon"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns1:Stemming">
+			<div property="ns0:TODO" xml:lang="nl" content="0"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="Stelt vast dat &lt;aantal stemmen&gt; kandidaat effectieve leden, die het grootste aantal stemmen hebben bekomen, verkozen worden."></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal raadsleden&gt;"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="Stelt vast dat 0 kandidaat effectieve leden wegens staking van stemmen een keuze moet worden gedaan overeenkomstig de wet van 7 december 1998, artikel 17."></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal stemmen&gt;"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal stembiljetten&gt;"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="Stelt vast dat de stemmen werden uitgebracht op naam van regelmatig voorgedragen kandidaten effectieve leden."></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/7234d3a0-fb4d-4b89-8de0-3272c51c3087">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="16c5fccf-6af9-440e-94e8-bddcc4a16e9d"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-3"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/e81e3d91-30ee-4e44-9107-9cd12db12097">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="d41b1d60-76e1-44b5-abe5-508e6fcbce13"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-7/title"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/884a00eb3934152318210bde7a003c9313a39af5710665614a435b6e9efc9be2">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-5"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/5eb5c4a3-5c73-4681-b247-e72152041a8a">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="b990d662-b2df-4674-9242-3548f9bdd5f8"></div>
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="afstand van mandaat"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/b2ea3c9d-6485-47a5-8dca-1fc9986e8384">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-6/title"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="ccb1c244-b055-449f-901b-15312457eb02"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/f5de902d-29dc-4457-b6e2-ae24ff18e2c8">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="datum voordrachtsakten politieraadsleden"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="846153ae-9f6a-4485-a54a-221b3285e509"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/6a566afc-d3f1-4e07-a550-e25bd7985b41">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="ad11ad5c-28e8-4a86-a520-3d24a087df3d"></div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003E">
+			  </div>
+			</div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/5678108f-2970-4ba2-a780-45e36d3a513c">
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A000041">
+			  </div>
+			</div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="574e5f2e-4354-4ab3-85a2-401f391e3afa"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/10b78012-8bf2-4cad-935c-95051e993510">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="aantal schepenen"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="b1d30322-830c-418e-8aba-4020e57fbeaf"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/32f569235e6c55d8ae889dd7f6baf63bbfdcf1cb42d4f9e5c1fe4c45b19c418a">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-7"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/068c3169-f54d-47ff-8679-b25939d99819">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="f89e9081-eb13-412f-9850-c805b861f395"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-4/title"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/3c742971-e619-4aab-8824-e1bd0b5980c0">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="62ab5dff-1352-4e39-960a-27c364595ee6"></div>
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003D">
+			  </div>
+			</div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/37d7e5ec-f040-4ec5-828b-2aa5993b24fa">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="117e100f-4fe6-4292-9dfc-0b0a5daf6c11"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-2"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/04de86b9-7468-4010-934d-1bf156ec8164">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-3/title"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="a00991b6-67fa-4eab-ad76-9196f1c3e7eb"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/d2814139-41dd-46e5-b380-b9c8b4934538">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="949a38b1-7fdc-4150-a55b-612aef870009"></div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003F">
+			  </div>
+			</div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/561e38ce-5a88-45cb-913c-e60af64fe17b">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="datum en locatie installatievergadering"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="0d401f8c-ddc6-41a2-9157-5b8e7e447478"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/16f84f9b-cd96-47a3-9c79-e13e993f2752">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-3"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="fcf10217-a95d-4de6-9243-2e9e7b5c6e15"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/8b6480aa-d3ff-4c3c-a728-1cf25d095121">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="3db50792-2ae4-4d7b-b25e-2b72473b098b"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/geplande-start"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:ScrollToLocation" about="http://scrollToLocation/02111819-ea29-4ca6-8633-254e3be29765">
+			<div property="ns0:scrollToLogicalName" xml:lang="nl" content="datum bezorging akte van voordracht schepenen"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="1ffc4031-c030-4195-853b-cf8be751492f"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/a6af68c4-d4a4-4ac5-bddd-f90c05e1c00b">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-7"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="0408f85a-a96c-4626-97fe-9cd89e0c6720"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/a0e0a5cd-6b9e-44ee-b84b-27cec2b03caf">
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003A">
+			  </div>
+			</div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="71e11876-3945-45f8-aedf-a3c6d3a2a39f"></div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/c6294742-5e52-49ea-92b9-ac14d77fb256">
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A000040">
+			  </div>
+			</div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="4e9c59c1-e36d-4efc-ae27-826b7be3e88a"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/3989e822-ce03-4930-bc3f-eadc6011f3f9">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="7ce51893-8c8f-4cf6-82bb-df3db8f855e4"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-5/title"></div>
+		  </div>
+		  <div typeof="ns0:TasklistData" about="http://data.lblod.info/id/tasklistsdata/cc97e834-6428-4c71-b04e-81dadc938711">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="241db5f3-79ed-42a5-a49c-ef1d0097c16a"></div>
+			<div rel="ns0:tasklistDataTasklistSolution">
+			  <div typeof="ns0:TasklistSolution" about="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003B">
+			  </div>
+			</div>
+			<div property="ns0:tasklistDataState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/59615147-c6b5-46ce-a3ce-778e2ec3b983">
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="87a46157-abb7-433a-938e-9cacf61be2c4"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-7"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/f53c9358-91aa-43fc-8f53-85747e9659ab">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="212a9b5d-10ee-4c77-b2f0-2414ebcdbf94"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-2/title"></div>
+		  </div>
+		  <div typeof="rdfs:Resource" about="http://data.lblod.info/id/zittingen/8b0e178f-0b2d-40c1-86d3-731cee91096c">
+			<div property="ns1:geplandeStart" datatype="xsd:date" content="2018-11-22"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/4e879d88-08e4-4c0b-82ee-568d93bbd7b2">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="31af7a39-9bd3-4cb5-904e-954393e6f1a3"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-4/title"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/48d90ea9-f97f-4059-b112-1ccf54817f2b">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/agendapunt-nummer-1"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="807ff9b9-a776-4b8e-a06a-0d0d51c37b1e"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/74fd11344fa1a41b4b9dfaddf7713bb870b8b024faa6ddc8dd537ab544fbff88">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-3"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/5d4ab806-3710-43f3-834b-73d1a9b9f01d">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-7/title"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="ced537cf-b99a-4571-b109-b019f6299718"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/e0cba331-793f-4a2f-bcbe-8d3cd615daad">
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://agendapunt-1/title"></div>
+			<div property="ns0:idInSnippet" xml:lang="nl" content="cc39832c-d130-4e70-b2e2-94bb86c51d2c"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="foaf:Document" about="http://njh.me/#">
+			<div property="ns0:metadata" xml:lang="nl" content="
+		  44
+		  a
+		  syncing
+		​
+		  1
+		  a
+		  syncing
+		​
+		  1
+		  a
+		  syncing
+		​​​​
+		  1
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  4
+		  a
+		  syncing
+		​
+		  3
+		  a
+		  syncing
+		​
+		  2
+		  a
+		  syncing
+		​
+		  25
+		  a
+		  syncing
+		​
+		  24
+		  a
+		  syncing
+		​
+		  23
+		  a
+		  syncing
+		​
+		  22
+		  a
+		  syncing
+		​
+		  21
+		  a
+		  syncing
+		​
+		  20
+		  a
+		  syncing
+		​
+		  19
+		  a
+		  syncing
+		​
+		  18
+		  a
+		  syncing
+		​
+		  17
+		  a
+		  syncing
+		​
+		  16
+		  a
+		  syncing
+		​
+		  15
+		  a
+		  syncing
+		​
+		  14
+		  a
+		  syncing
+		​
+		  13
+		  a
+		  syncing
+		​
+		  12
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+		  0
+		  a
+		  syncing
+		​
+					  datum voordrachtsakten politieraadsleden
+					  846153ae-9f6a-4485-a54a-221b3285e509
+					​
+						  rangorde schepenen
+						  738b0fd9-6148-4d0a-bc98-ae7e49fa9c8f
+						​
+							aantal schepenen
+							b1d30322-830c-418e-8aba-4020e57fbeaf
+						  ​
+							datum bezorging akte van voordracht schepenen
+							1ffc4031-c030-4195-853b-cf8be751492f
+						  ​
+					  aan en afwezigen
+					  4c8af5c5-c9ea-4942-b8bc-ed34234d57d1
+					​
+							onderzoek geloofsbrieven
+							e5328ad4-1e27-479d-b60f-111df4848401
+						  ​
+							afstand van mandaat
+							b990d662-b2df-4674-9242-3548f9bdd5f8
+						  ​
+			datum en locatie installatievergadering
+			0d401f8c-ddc6-41a2-9157-5b8e7e447478
+		  ​
+		  574e5f2e-4354-4ab3-85a2-401f391e3afa
+		  tasklist
+		  syncing
+		​
+		  4e9c59c1-e36d-4efc-ae27-826b7be3e88a
+		  tasklist
+		  syncing
+		​
+		  949a38b1-7fdc-4150-a55b-612aef870009
+		  tasklist
+		  syncing
+		​
+		  ad11ad5c-28e8-4a86-a520-3d24a087df3d
+		  tasklist
+		  syncing
+		​
+		  241db5f3-79ed-42a5-a49c-ef1d0097c16a
+		  tasklist
+		  syncing
+		​
+		  62ab5dff-1352-4e39-960a-27c364595ee6
+		  tasklist
+		  syncing
+		​
+		  6976bf81-abf2-4399-92a0-49479bd6b361
+		  tasklist
+		  syncing
+		​
+		  71e11876-3945-45f8-aedf-a3c6d3a2a39f
+		  tasklist
+		  syncing
+
+												
+											   "></div>
+		  </div>
+		  <div typeof="ns0:Variable" about="http://variables/0fccf557-6196-44e1-a301-5e54d3a8e01d">
+			<div property="ns0:idInSnippet" xml:lang="nl" content="937de4b7-8b0d-4ab3-a14b-dac09f07d27d"></div>
+			<div property="ns0:intentionUri" xml:lang="nl" content="http://zitting/geplande-start"></div>
+			<div property="ns0:variableState" xml:lang="nl" content="syncing"></div>
+		  </div>
+		  <div typeof="ns0:Tasklist" about="http://data.lblod.info/id/tasklists/a299a730333cb29122e818466194b0a2bfcbe4762580c42779288cd60b91fc8a">
+			<div property="ns0:tasklistDataTasklist" xml:lang="nl" content="meta-content-1"></div>
+		  </div>
+		  <div typeof="rdfs:Resource" about="http://njh.me/">
+			<div rel="rdfa:usesVocabulary" resource="http://data.vlaanderen.be/ns/besluit#"></div>
+		  </div>
+		  <div typeof="ns1:Stemming">
+		  </div>
+		  <div typeof="ns1:Besluit" about="http://data.lblod.info/id/besluiten/67a5db97-0498-4b41-9beb-072dab397e88">
+			<div property="prov:value" xml:lang="nl" content="
+				  Stelt vast dat de verkiesbaarheidsvoorwaarden, vervult zijn door:
+				  
+					de &lt;aantal&gt; verkozen kandidaat effectieve leden.
+					  
+					
+					
+					  de &lt;aantal&gt;  kandidaten van rechtswege de opvolgers van deze &lt;aantal&gt; kandidaten effectieve leden
+					  
+					
+				  
+				  
+
+				  Stelt vast dat:
+				  
+					geen enkel effectief lid zich bevindt in een van de gevallen van onverenigbaarheid bepaald in &lt;persoon&gt; die de voorwaarde van de wet van 7 december 1998 artikel 15; 
+				  
+				  
+
+				  
+
+				  
+					Dit proces-verbaal zal overeenkomstig 
+					  de wet van 7 december 1998 artikel 18bis en het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad artikel 15 in dubbel exemplaar naar de  deputatie (of het college bedoeld de bijzondere wet van 12 januari 1989 met betrekking tot de Brusselse Instellingen, artikel 83quinquies, § 2) worden gezonden. 
+					
+					Origineel werd getekend door:
+					
+					  Voer naam burgemeester in, burgemeester
+					  &lt;persoon&gt; en &lt;persoon&gt;, de jongste twee gemeenteraadsleden
+					   (Algemeen Directeur)
+					  Volgende gemeenteraadsleden: NIHIL
+					
+				  
+
+				  
+				"></div>
+			<div property="ns2:title" xml:lang="nl" content="Verkiezing van de Politieraad"></div>
+			<div property="prov:value" xml:lang="nl" content="
+					Dit proces-verbaal zal overeenkomstig 
+					  de wet van 7 december 1998 artikel 18bis en het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad artikel 15 in dubbel exemplaar naar de  deputatie (of het college bedoeld de bijzondere wet van 12 januari 1989 met betrekking tot de Brusselse Instellingen, artikel 83quinquies, § 2) worden gezonden. 
+					
+					Origineel werd getekend door:
+					
+					  Voer naam burgemeester in, burgemeester
+					  &lt;persoon&gt; en &lt;persoon&gt;, de jongste twee gemeenteraadsleden
+					   (Algemeen Directeur)
+					  Volgende gemeenteraadsleden: NIHIL
+					
+				  "></div>
+			<div property="prov:value" xml:lang="nl" content="
+				  Bijgevolg stelt de burgemeester vast dat volgende personen verkozen zijn tot effectief lid van de politieraad:
+
+				  
+					&lt;persoon&gt;
+					  
+						Eerste opvolger: &lt;persoon&gt;
+					  
+					
+				  
+
+				  
+				  
+				"></div>
+			<div property="ns2:description" xml:lang="nl" content="Verkiezing van de Politieraad."></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal gemeenteraadsleden&gt;"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal&gt;"></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+					  
+						Gelet op de wet van 7 december 1998 tot organisatie van een geïntegreerde politiedienst, gestructureerd op twee niveaus;
+						Gelet op het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad;
+					  
+					
+
+					
+					  
+						Overwegende dat het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad artikel 18 bepaalt dat de verkiezing van de leden van de politieraad plaatsheeft tijdens de openbare zitting waarop de gemeenteraad wordt geïnstalleerd of ten laatste binnen tien dagen; Indien die laatste dag een zaterdag, een zondag of een wettelijke feestdag is, wordt die termijn verlengd tot en met de eerstvolgende dag die geen zaterdag, zondag of wettelijke feestdag is;
+
+						Overwegende dat de politieraad van de meergemeentezone overeenkomstig de wet van 7 december 1998 artikel 12, eerste lid, samengesteld is uit &lt;aantal leden&gt; verkozen leden;
+
+						Overwegende dat de gemeenteraad overeenkomstig de wet van 7 december 1998, artikel 12, tweede lid, dient over te gaan tot verkiezing van &lt;aantal gemeenteraadsleden&gt; leden van de gemeenteraad als lid van de politieraad;
+
+						Overwegende dat elk van de 21 gemeenteraadsleden overeenkomstig 
+						  de wet van 7 december 1998, artikel 16, beschikt over 1 stem;
+					  
+					
+
+					
+
+					
+					  
+						Gelet op de voordrachtsakten ten getale van 
+						  &lt;aantal leden&gt; ingediend overeenkomstig het koninklijk besluit van 20 december 2000, de artikelen 2, 4 en 5, betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad op &lt;datum&gt;​.
+					  
+					
+
+					
+					  
+						Overwegende dat, respectievelijk deze akten de hierna vermelde kandidaten voordragen en ondertekend zijn door de volgende verkozenen voor de gemeenteraad:
+						  
+						  
+							&lt;persoon&gt; (effectief), &lt;persoon&gt;   (1ste opvolger), &lt;persoon&gt; (2de opvolger)
+						  
+						
+					  
+					
+
+					
+					  
+					  
+						Gelet op de kandidatenlijst door de burgemeester opgemaakt, overeenkomstig het voornoemd koninklijk besluit op grond van gezegde voordrachtsakten, artikel 7, en luidend als volgt:
+						  
+							&lt;persoon&gt; (effectief), &lt;persoon&gt;   (1ste opvolger), &lt;persoon&gt; (2de opvolger)
+						  
+						
+					  
+					
+				  "></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;datum&gt;"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal leden&gt;"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div property="ns0:insertStemmingText" xml:lang="nl" content="Beheer de stemmingen bij verkiezingen politieraad."></div>
+		  </div>
+		  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94">
+			<div rel="ns1:aangebrachtNa">
+			  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c">
+				<div property="dcterms:title" xml:lang="nl" content="Kennisneming van de geldigverklaring van de verkiezingen"></div>
+				<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+			  </div>
+			</div>
+			<div property="dcterms:title" xml:lang="nl" content="Mededeling over de benoeming en eedaflegging van de burgemeester"></div>
+			<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+		  </div>
+		  <div typeof="ns1:Besluit" about="http://data.lblod.info/id/besluiten/40341871-e4be-4426-9440-e0675f7fd18f">
+			<div property="ns2:description" xml:lang="nl" content="Verkiezing van de schepenen."></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+						Gelet op het  decreet van 22 december 2017 over het lokaal bestuur, artikelen 42, 43, 44 en 49;
+						Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;
+					  
+					
+
+					
+					  
+						
+						  
+						  Overwegende dat een gezamenlijke akte van voordracht van de kandidaat-schepenen werd overhandigd aan de algemeen directeur op 
+						  Voer datum in​, zijnde binnen de termijn van acht dagen voor de installatievergadering van de gemeenteraad;
+
+						  
+						
+
+						
+						  Overwegende dat de algemeen directeur op datum van 
+						  Voer datum in​ een afschrift van de gezamenlijke akte van voordracht aan de burgemeester heeft bezorgd;
+						
+
+						
+						  Overwegende dat 
+						  Voer voorzitter van de gemeenteraad in​ tot voorzitter van de gemeenteraad werd verkozen tijdens de installatievergadering van 22 november 2018​ en na zijn installatie de gemeenteraad voorzit;
+						
+
+						Overwegende dat de algemeen directeur de gezamenlijke akte van voordracht van de kandidaat-schepenen ter zitting heeft overhandigd aan de voorzitter van de gemeenteraad;
+
+						Overwegende dat beide geslachten zijn vertegenwoordigd in de voordrachtsakte;
+
+						Overwegende dat de gezamenlijke akte van voordracht van kandidaat-schepenen voldoet aan de decretaal voorziene ontvankelijkheidsvereisten;
+
+						Overwegende dat de voorgedragen kandidaat schepenen de volgende personen zijn:
+						  
+							Voer persoon in
+						  
+						
+
+						Overwegende dat alle kandidaat-schepenen de eed als gemeenteraadslid hebben afgelegd;
+
+						Overwegende dat de gezamenlijke akte van voordracht van de kandidaat-schepenen geen melding maakt van de einddatum van een schepenmandaat;
+
+						  
+						
+
+						
+						  
+						  Overwegende dat door de indiening van een geldige voordrachtsakte het aantal schepenen voor de rest van de legislatuur bepaald is, zijnde Voer aantal schepenen in;
+						Overwegende dat de voorzitter van de gemeenteraad dit aantal ter zitting meedeelt aan de gemeenteraad;
+						Overwegende dat de rangorde van de schepenen is bepaald door de rangorde zoals deze op de ontvankelijke voordrachtsakte bepaald;
+						Overwegende dat de voorzitter van de gemeenteraad deze volgorde ter zitting meedeelt aan de gemeenteraad;
+						Overwegende dat de verkozen verklaarde schepenen de decretaal voorziene eed hebben afgelegd in handen van de burgemeester;
+					  
+					
+				  "></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234880"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div property="ns2:title" xml:lang="nl" content="Verkiezing van de schepenen"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234887"></div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/6dedd554-3993-41c1-9edd-9643c14333a3">
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+				<div property="ns2:number" xml:lang="nl" content="Artikel 1"></div>
+				<div property="prov:value" xml:lang="nl" content="Kennis te nemen van de ontvankelijke gezamenlijke akte van voordracht van de kandidaat-schepenen."></div>
+			  </div>
+			</div>
+			<div property="ns0:TODO" xml:lang="nl" content="Voer persoon in"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234882"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234881"></div>
+			<div property="ns0:TODO" xml:lang="nl" content="Voer aantal schepenen in"></div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/7fb71981-267d-4519-96b3-7034a55b499e">
+				<div property="prov:value" xml:lang="nl" content="De voorgedragen kandidaat-schepenen verkozen te verklaren in de rangorde van de gezamenlijke akte van voordracht van de kandidaat-schepenen, meer bepaald:
+
+						  
+							Voornaam en familienaam: &lt;persoon&gt; 
+							  
+								Mandaat: &lt;rangorde&gt; schepen
+								Einddatum: &lt;datum&gt;​
+								Naam opvolger(s): geen
+							  
+							
+						  
+						  
+						"></div>
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+				<div property="ns0:TODO" datatype="xsd:date" content="datum"></div>
+				<div property="ns0:TODO" xml:lang="nl" content="&lt;persoon&gt;"></div>
+				<div property="ns2:number" xml:lang="nl" content="Artikel 2"></div>
+			  </div>
+			</div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/721dc250-08b4-4eb2-bc16-4d366f8ff373">
+				<div property="ns2:number" xml:lang="nl" content="Artikel 4"></div>
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+				<div property="prov:value" xml:lang="nl" content="Akte te nemen van de rangorde waarin de schepenen werden geïnstalleerd:
+						  
+							Eerste schepen: &lt;persoon&gt;
+						  
+						"></div>
+			  </div>
+			</div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/37c115bd-9b8f-4d9d-931d-763b3d428b13">
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+				<div property="prov:value" xml:lang="nl" content="Akte te nemen van het aantal schepenen, geldig voor de ganse duur van de legislatuur, en zoals vastgelegd door het aantal voorgedragen schepenen op ontvankelijke gezamenlijke voordrachtsakte, met name &lt;aantal schepenen&gt;."></div>
+				<div property="ns2:number" xml:lang="nl" content="Artikel 5"></div>
+				<div property="ns0:TODO" xml:lang="nl" content="&lt;aantal schepenen&gt;"></div>
+			  </div>
+			</div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/866a8973-752a-44f3-99b9-022605be6897">
+				<div property="ns2:number" xml:lang="nl" content="Artikel 3"></div>
+				<div property="prov:value" xml:lang="nl" content="Akte te nemen van de eedaflegging"></div>
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			  </div>
+			</div>
+		  </div>
+		  <div typeof="ns1:Besluit" about="http://data.lblod.info/id/besluiten/1761aa8a-64b1-417a-b061-7aff25b569d3">
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div rel="ns2:has_part">
+			  <div typeof="ns1:Artikel" about="http://data.lblod.info/artikels/aeaaa7f1-5c87-4527-82ef-54cf4f4c1071">
+				<div property="ns0:fractievormingText" xml:lang="nl" content="Voeg lijst met fracties hier toe."></div>
+				<div property="ns2:number" xml:lang="nl" content="Enig artikel."></div>
+				<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+				<div property="prov:value" xml:lang="nl" content="
+						  Vast te stellen dat volgende fracties gevormd worden:
+						  Voeg lijst met fracties hier toe.
+						  
+						"></div>
+			  </div>
+			</div>
+			<div property="ns2:description" xml:lang="nl" content="Vaststelling van fractievorming."></div>
+			<div property="ns2:title" xml:lang="nl" content="Vaststelling van fractievorming"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234874"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+						Gelet op decreet van 22 december 2017 over het lokaal bestuur, artikel 36;
+						Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;
+					  
+					
+					
+					  
+						Selecteer scenario fracties splitsingen
+						
+
+						Selecteer scenario fracties verenigingen
+						
+					  
+					
+				  "></div>
+		  </div>
+		  <div typeof="ns3:Aanstellingsbesluit" about="http://data.lblod.info/id/besluiten/f0ddde99-e13d-42be-a20a-c283b2842c26">
+			<div rel="rdf:type" resource="http://data.vlaanderen.be/ns/besluit#Besluit"></div>
+			<div property="ns2:description" xml:lang="nl" content="Verkiezing van de voorzitter van de gemeenteraad."></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234844"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+						Gelet op het decreet van 22 december 2017 over het lokaal bestuur, de artikelen 6  en 7 ;
+						Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;
+					  
+					
+
+					
+					  
+						Selecteer scenario overhandiging akte van voordracht
+							
+
+							
+
+						Overwegende dat de kandidaat-voorzitter de voorgeschreven eed als gemeenteraadslid heeft afgelegd en er geen specifieke eed als voorzitter van de gemeenteraad dient afgelegd te worden;
+					  
+					
+				  "></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234845"></div>
+			<div property="ns2:title" xml:lang="nl" content="Verkiezing van de voorzitter van de gemeenteraad"></div>
+		  </div>
+		  <div typeof="ns1:Besluit" about="http://data.lblod.info/id/besluiten/62cfa086-699e-4b4c-ab9d-4d67431b6f90">
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1240910"></div>
+			<div property="ns2:title" xml:lang="nl" content="Kennisneming van de geldigverklaring van de verkiezingen"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1024603"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138929"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234844"></div>
+			<div property="prov:value" xml:lang="nl" content="
+					De goedkeuring van de resultaten van de gemeenteraadsverkiezingen van 14 oktober 2018 door de Raad voor Verkiezingsbetwistingen.
+				  "></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+						Gelet op het decreet van 22 december 2017 over het lokaal bestuur, artikel 6;
+						Gelet op het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011, de artikelen 203 en 204;
+						
+						  Gelet op het decreet van 4 april 2014 betreffende de organisatie en rechtspleging van sommige Vlaamse bestuursrechtcolleges, artikel 28;
+			  
+					  
+					
+					
+					
+					  
+						
+						  Overwegende dat de resultaten van de gemeenteraadsverkiezingen van 
+						  14 oktober 2018 
+						  door de Raad voor Verkiezingsbetwistingen op 
+						  Voeg datum in werden 
+						  goedgekeurd, zoals meegedeeld per brief op 
+						  Voeg datum in;
+					  
+					
+				  "></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138930"></div>
+			<div property="ns2:description" xml:lang="nl" content="Kennisneming van de geldigverklaring van de verkiezingen."></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1020561"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+		  </div>
+		  <div typeof="ns1:Besluit" about="http://data.lblod.info/id/besluiten/f2e2a0de-2d7d-4ef7-9732-620205a2b022">
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138783"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234844"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138811"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234849"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234901"></div>
+			<div property="ns2:title" xml:lang="nl" content="Installatie van de gemeenteraadsleden en vaststelling van hun rangorde"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1020561"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234850"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234852"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234846"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138733"></div>
+			<div property="ns2:description" xml:lang="nl" content="Installatie van de gemeenteraadsleden (akteneming eventuele afstanden van mandaat en onverenigbaarheden, goedkeuring van de geloofsbrieven en eedaflegging) en vaststelling van de rangorde."></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingDocument/1029017"></div>
+			<div property="ns1:motivering" xml:lang="nl" content="
+					
+					  
+
+						Gelet op het decreet van 22 december 2017 over het lokaal bestuur, de artikelen 6 , 7 , 8 , 9 , 10, 11, 12, 14, 49 en 59;
+						Gelet op het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011, de artikelen 8, 58, 86 en 169;
+						Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;
+					  
+					
+					
+
+					
+					  
+						Overwegende dat de resultaten van de gemeenteraadsverkiezingen van 14 oktober 2018 door de Raad voor Verkiezingsbetwistingen op Voeg datum in werden goedgekeurd;
+
+						
+						  
+							Selecteer scenario afstanden van mandaat
+						  
+
+							
+
+						Selecteer scenario afwezigen
+
+							
+
+										
+						  
+						  Selecteer scenario geloofsbrieven
+						
+
+							
+
+						Overwegende dat uit het onderzoek van de geloofsbrieven van de verkozen gemeenteraadsleden door de gemeenteraad, zoals voorgeschreven in het decreet van 22 december 2017 over het lokaal bestuur in artikel 6, §3 en artikel 9, blijkt dat alle verkozenen en hun respectieve opvolgers die worden uitgenodigd heden de eed af te leggen, voldoen aan de verkiesbaarheidsvoorwaarden en op eer verklaard hebben zich niet in een situatie van onverenigbaarheid te bevinden;
+
+						Selecteer scenario onverenigbaarheden
+
+							
+
+						Selecteer scenario burgemeester
+
+							
+					  
+					
+				  "></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1138894"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234845"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234847"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234848"></div>
+			<div rel="ns2:cites" resource="http://data.lblod.info/WetgevingArtikel/1234887"></div>
+		  </div>
+		  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb">
+			<div rel="ns1:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94"></div>
+			<div property="dcterms:title" xml:lang="nl" content="Installatie van de gemeenteraadsleden en vaststelling van hun rangorde"></div>
+			<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+		  </div>
+		  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02">
+			<div rel="ns1:aangebrachtNa">
+			  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4">
+				<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+				<div rel="ns1:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395"></div>
+				<div property="dcterms:title" xml:lang="nl" content="Verkiezing van de voorzitter van de gemeenteraad"></div>
+			  </div>
+			</div>
+			<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+			<div property="dcterms:title" xml:lang="nl" content="Verkiezing van de schepenen"></div>
+		  </div>
+		  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/d41b1d60-76e1-44b5-abe5-508e6fcbce13">
+			<div property="dcterms:title" xml:lang="nl" content="Verkiezing van de Politieraad"></div>
+			<div rel="ns1:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02"></div>
+			<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+		  </div>
+		  <div typeof="ns0:BesluitBenoemingBurgemeester" about="http://data.lblod.info/id/besluiten/59f1561b-d3ab-4828-850e-c4f573609c81">
+			<div rel="rdf:type" resource="http://data.vlaanderen.be/ns/besluit#Besluit"></div>
+			<div rel="ns2:language" resource="http://publications.europa.eu/resource/authority/language/NLD"></div>
+			<div property="ns2:description" xml:lang="nl" content="Mededeling over de benoeming en eedaflegging van de burgemeester."></div>
+			<div property="ns2:title" xml:lang="nl" content="Mededeling over de benoeming en eedaflegging van de burgemeester"></div>
+		  </div>
+		  <div typeof="ns1:Agendapunt" about="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395">
+			<div property="dcterms:title" xml:lang="nl" content="Vaststelling van fractievorming"></div>
+			<div rel="ns1:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb"></div>
+			<div property="ns1:geplandOpenbaar" datatype="xsd:boolean" content="true"></div>
+		  </div>
+		</div>
+	</body>
+</html>

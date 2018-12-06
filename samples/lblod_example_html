@@ -1,0 +1,3379 @@
+<html lang="nl" class="bgsizecover flexbox objectfit object-fit js"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Demo editor</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+<meta name="frontend-demo-editor/config/environment" content="%7B%22modulePrefix%22%3A%22frontend-demo-editor%22%2C%22environment%22%3A%22production%22%2C%22rootURL%22%3A%22/%22%2C%22locationType%22%3A%22auto%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%2C%22EXTEND_PROTOTYPES%22%3A%7B%22Date%22%3Afalse%7D%7D%2C%22APP%22%3A%7B%22@lblod/ember-rdfa-editor-date-plugin%22%3A%7B%22allowedInputDateFormats%22%3A%5B%22DD/MM/YYYY%22%2C%22DD-MM-YYYY%22%2C%22DD.MM.YYYY%22%5D%2C%22outputDateFormat%22%3A%22D%20MMMM%20YYYY%22%2C%22moment%22%3A%7B%22includeLocales%22%3A%5B%22nl%22%5D%7D%7D%2C%22name%22%3A%22frontend-demo-editor%22%2C%22version%22%3A%220.8.2+00108333%22%7D%2C%22moment%22%3A%7B%22outputFormat%22%3A%22DD-MM-YYYY%20hh%3Amm%3Ass%22%2C%22includeTimezone%22%3A%22all%22%2C%22includeLocales%22%3A%5B%22nl%22%5D%2C%22allowEmpty%22%3Atrue%7D%2C%22torii%22%3A%7B%22disableRedirectInitializer%22%3Atrue%2C%22providers%22%3A%7B%22acmidm-oauth2%22%3A%7B%22apiKey%22%3A%2268b1585d-0e13-4817-820e-c475207673ed%22%2C%22baseUrl%22%3A%22https%3A//authenticatie-ti.vlaanderen.be/op/v1/auth%22%2C%22scope%22%3A%22openid%20rrn%20vo%20profile%20abb_gelinktNotuleren%22%2C%22redirectUri%22%3A%22https%3A//gelinkt-notuleren.lblod.info/authorization/callback%22%2C%22logoutUrl%22%3A%22https%3A//authenticatie-ti.vlaanderen.be/op/v1/logout%22%7D%7D%7D%2C%22vo-webuniversum%22%3A%7B%22version%22%3A%222.8.3%22%2C%22header%22%3A%22//widgets.vlaanderen.be/widget/live/5d47450609154d5c86f588f3b36ce9ba%22%2C%22footer%22%3A%22//widgets.vlaanderen.be/widget/live/a6670dda202e46beb2832ae8f57f197e%22%7D%2C%22allowedInputDateFormats%22%3A%5B%22DD/MM/YYYY%22%2C%22DD-MM-YYYY%22%2C%22DD.MM.YYYY%22%5D%2C%22outputDateFormat%22%3A%22D%20MMMM%20YYYY%22%2C%22exportApplicationGlobal%22%3Afalse%2C%22ember-load%22%3A%7B%22loadingIndicatorClass%22%3A%22ember-load-indicator%22%7D%7D">
+        <link href="//dij151upo6vad.cloudfront.net/2.8.3/css/vlaanderen-ui.css" rel="stylesheet" type="text/css">
+
+        <link href="//dij151upo6vad.cloudfront.net/2.8.3/css/vlaanderen-ui-corporate.css" rel="stylesheet" type="text/css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <link integrity="" rel="stylesheet" href="/assets/frontend-demo-editor-59b0bd31ffba087a6837c5df6d36ffbe.css">
+
+    
+  <script id="walkme-config-constants" type="text/javascript" src="chrome-extension://iffnipbkkgbgeffippbaldmgdpealpdd/config/consts.js"></script>
+  <script id="walkme-errors-logger" type="text/javascript" src="chrome-extension://iffnipbkkgbgeffippbaldmgdpealpdd/errorsLoggers/errorsLogger.js"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/widget/assets/js/widget_api.min.js?mtime=1537784531"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/widget/assets/js/widget_api.min.js?mtime=1537784531"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.GlobalHeader/2.0.0/GlobalHeader.min.js?mtime=1530084169" async="true"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.GlobalBarBase/2.0.0/GlobalBarBase.min.js?t=1508426284" async="true"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/jquery/1.11.0/jquery.min.js" async="true"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.GlobalFooter/2.0.0/GlobalFooter.min.js?mtime=1530084169" async="true"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.InfolijnTracker/1.0.0/InfolijnTracker.min.js?t=1508426284" async="true"></script>
+  <script type="text/javascript" src="//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.Common.ContactCenter/1.0.0/ContactCenter.min.js?t=1508426284" async="true"></script>
+  <style type="text/css">@import url("//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.GlobalHeader/2.0.0/GlobalHeader.css?mtime=1530084169");</style>
+  <style type="text/css">@import url("//widgets.vlaanderen.be/modules/custom/infolijn_widget/assets/libraries/FlemishAuthorities.InfolijnWidget.GlobalFooter/2.0.0/GlobalFooterRedesign.css?mtime=1530084169");</style>
+  <script type="text/javascript" src="//www.google-analytics.com/analytics.js" async="true"></script>
+  </head>
+  <body class="ember-application">
+    
+
+    <script src="//dij151upo6vad.cloudfront.net/2.8.3/js/vlaanderen-ui.js" type="text/javascript"></script>
+<div id="ember-vo-webuniversum-wormhole"></div>
+
+    <script src="/assets/vendor-e919206413c7f69593786d68ef1458f4.js" integrity="sha256-LfyiMFvKkOo6/FAscMOizhBULYNsISbrwfdOOn0vCFs= sha512-sKw2ghPl2s+GI5Pj0KVJzGaFkZZhTP4CliU6AZfZJ6rV1BVNonz/9nl5gqBsD8fnYV980Jp+L1w31/+yUvxE6w=="></script>
+    <script src="/assets/frontend-demo-editor-2aff0a41d17b9f1fc0919c0bf0f32840.js" integrity="sha256-gLGjh2oE6we5Eo74+gieY+isPTLysddZF26yV13n/FQ= sha512-xRQo0RP/ORmeZoWo3egXG+i0K5MWfyBC3PDT98aFQaH29P7GVXicNa3xB/qcNIi14sQ2Xc0wFvx3SWIkFI471g=="></script>
+
+    
+  
+
+<div class="ember-view" id="ember3"><div id="ember4" class="ember-view">
+</div>
+
+<div class="container">
+  <nav id="ember2300" class="editor-chrome ember-view"><div class="grid u-spacer--tiny">
+  <div class="col--6-12">
+    <a href="/inbox" id="ember2301" class="smaller link-dark ember-view">← Terug naar overzicht</a>
+  </div>
+  <div class="col--6-12 u-align-right">
+<!---->  </div>
+</div>
+<div class="grid">
+  <div class="col--6-12">
+    <div id="ember2302" class="ember-view">    <h1 class="h3 sans-serif">
+        <a class="link-dark link--edit">
+           Notulen van selecteer bestuursorgaan, zitting van 22 november 2018 (installatievergadering) 
+        </a>
+    </h1>
+</div>
+  </div>
+  <div class="col--6-12 u-align-bottom">
+      <div id="ember2304" class="u-align-right button-group ember-view">      <button id="ember2305" class="button button--narrow button--link button--link--dark ember-view"><!---->  Verwijder concept
+
+<!----></button>
+    <button id="ember2306" class="button--alt button button--narrow ember-view"><!---->  Publiceer agendapunten
+
+<!----></button>
+    <button id="ember2307" class="button button--narrow ember-view"><!---->  Bewaar concept
+
+<!----></button>
+
+<!---->
+<!----></div>
+
+  </div>
+</div>
+</nav><!---->
+<!----><!----><!----><!---->
+  <div id="ember2308" class="container-flex--contain ember-view" vocab="http://data.vlaanderen.be/ns/besluit#" prefix="eli: http://data.europa.eu/eli/ontology# prov: http://www.w3.org/ns/prov# mandaat: http://data.vlaanderen.be/ns/mandaat# besluit: http://data.vlaanderen.be/ns/besluit# ext: http://mu.semte.ch/vocabularies/ext/ person: http://www.w3.org/ns/person# persoon: http://data.vlaanderen.be/ns/persoon# " typeof="foaf:Document" resource="#"><div id="ember2309" class="tasklist tasklist--open ember-view"><div class="tasklist__header">
+  <div class="grid">
+        <div class="col--10-12">
+            <h2 class="h4 u-spacer--tb--tiny">Takenlijsten</h2>
+        </div>
+        <div class="col--2-12 u-align--right">
+            <div class="button-group">
+                <a class="u-spacer--none button button--link button--link--dark button--narrow" data-ember-action="" data-ember-action-2310="2310">
+                    <i class="vi vi-expand u-padding--right--none vi-u-s"></i>
+                    <i class="vi vi-long-arrow vi-u-90deg"></i>
+                    <span>klap takenlijst in</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tasklist__content">
+  <div class="tasklist-navigation">
+    <div class="tasklist-navigation__group">
+          <div id="ember2332" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Voorbereiding: De installatievergadering organiseren</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2333" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2334" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2356" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2357" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Bepaal het tijdstip en de locatie van de installatievergadering</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> 
+Doe dit zo snel mogelijk    
+<ul class="dashed-list u-spacer--none">
+<li>Op uitnodiging van de uittredende voorzitter van de gemeenteraad op 2, 3, 4, 7 of 8 januari 2019 </li>
+<li>Van rechtswege 2 januari 2019</li>
+</ul> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2444" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2445" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vul de datum en de locatie van de installatievergadering aan in de ontwerpnotulen</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2358" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2359" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verstuur oproeping installatievergadering én eerste vergadering van de OCMW-raad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Donderdag 20 december (uiterlijk) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2360" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2361" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Publiceer agendapunten installatievergadering en eerste OCMW-raad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Dinsdag 1 januari 2019 (uiterlijk)
+<div class="u-spacer--round--tiny"> Op dit moment treedt de vernieuwde publicatieplicht in werking.</div> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2335" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Voorbereiding van de voordracht en de verkiezing van de politieraadsleden in meergemeentezones</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2336" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2337" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2362" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2363" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De (uittredend) burgemeester bepaalt het tijdstip waarop de voordrachtakten voor politieraadsleden ingediend moeten worden.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De burgemeester kiest één welbepaalde dag tussen donderdag 13 december en zondag 16 december (tussen de 7de en de 4de dag vóór de oproeping voor de installatievergadering van de gemeenteraad)
+<div class="u-spacer--round--tiny">Hij doet dit best zo snel mogelijk.</div> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2446" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2447" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vul datum indienen voordrachtsakten politieraadsleden voor meergemeentezones in</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2364" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2365" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester verstuurt de informatienota </strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Zaterdag 8 december (uiterlijk) verstuurt de burgemeester de informatienota naar de verkozenen voor de gemeenteraad voor indienen voordrachtakte kandidaten politieraadsleden in meergemeentezones. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2366" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2367" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Deadline voor indienen voordrachtsakten politieraadsleden in meergemeentezones</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> (gekozen datum tussen 13 en 16 december) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2368" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2369" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Kandidatenlijst politieraad ter inzage leggen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Tussen 16 en 19 december (uiterlijk binnen de 3 dagen na het indienen van voordrachtsakten politieraadsleden in meergemeentezones) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2338" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Indiening akten van voordracht (uitgezonderd de burgemeester)</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2339" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2340" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2370" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2371" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Uiterste datum voor het indienen van alle voordrachtsakten (m.u.v. politieraad)</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Woensdag 26 december 2018 (8 dagen vóór installatievergadering) </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2448" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2449" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Akte van voordracht kandidaat-voorzitter gemeenteraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Checklist voor deze akte: </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2556" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2557" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De kandidaat-voorzitter heeft de belgische nationaliteit</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2558" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2559" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eventuele einddatum en opvolger</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De voordrachtakte kan een einddatum en eventueel de naam van de opvolger bevatten. Een voordracht met enkel een einddatum kan wel maar een voordracht met enkel de naam van de opvolger (dus zonder einddatum) kan niet. Wie opvolger is, moet weten op welk tijdstip hij of zij ten laatste het mandaat overneemt. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2560" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2561" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Correct ondertekend</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <ul class="dashed-list u-spacer--none"> 
+<li>door meer dan de helft van de verkozenen op de lijsten die aan de verkiezingen deelnamen </li>
+<li>door een meerderheid van de personen die op dezelfde lijst als de voorgedragen kandidaat werden verkozen </li>
+</ul>
+Als de lijst slechts twee verkozenen telt, volstaat de handtekening van een van hen. 
+Niemand kan meer dan één akte van voordracht ondertekenen. 
+
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2562" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2563" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Akte van voordracht kandidaat-voorzitter werd tijdig bezorgd</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Vul datum bezorging akte van voordracht kandidaat-voorzitter aan algemeen directeur aan in de ontwerpnotulen </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2450" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2451" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Gezamenlijke akte van voordracht kandidaat-schepenen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Checklist voor deze akte: </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2564" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2565" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Leg het aantal schepenen vast</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <ul class="dashed-list u-spacer--none">
+<li>minimaal twee </li>
+<li>maximaal het vastgelegde aantal </li>
+</ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2566" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2567" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Correct ondertekend</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <div class="u-spacer--round--tiny"> - door meer dan de helft van de verkozenen op de lijsten die aan de verkiezingen deelnamen </div>
+<div class="u-spacer--round--tiny"> - door een meerderheid van de personen die op dezelfde lijst als de voorgedragen kandidaat werden verkozen </div>
+Als de lijst slechts twee verkozenen telt, volstaat de handtekening van een van hen. 
+Niemand kan meer dan één akte van voordracht ondertekenen. 
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2568" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2569" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eventuele einddatum en opvolger correct ingevuld</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De voordrachtakte kan een einddatum en eventueel de naam van de opvolger bevatten. Een voordracht met enkel een einddatum kan wel maar een voordracht met enkel de naam van de opvolger (dus zonder einddatum) kan niet. Wie opvolger is, moet weten op welk tijdstip hij of zij ten laatste het mandaat overneemt. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2570" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2571" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Akte van voordracht kandidaat-schepenen werd tijdig bezorgd</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Vul datum bezorging gezamenlijke akte van voordracht kandidaat-schepenen aan algemeen directeur aan in de ontwerpnotulen. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2572" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2573" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vul de rangorde van de schepenen aan in de ontwerpnotulen</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> De rangorde van de schepenen (wie is eerste, tweede enz. schepen) is dezelfde als de volgorde op de akte van voordracht. De naam van de eerste schepen wordt dus eerst ingevuld. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2452" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2453" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Akte van voordracht kandidaat-voorzitter bijzonder comité voor de sociale dienst</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Checklist voor deze akte: </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2574" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2575" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Correct ondertekend</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <ul class="dashed-list u-spacer--none"><li>door meer dan de helft van de verkozenen op de lijsten die aan de verkiezingen deelnamen </li>
+<li>door een meerderheid van de personen die op dezelfde lijst als de voorgedragen kandidaat werden verkozen. </li></ul>
+Als de lijst waarop de naam van de kandidaat-voorzitter voorkomt slechts twee verkozenen telt, volstaat de handtekening van een van hen. 
+Niemand kan meer dan één akte van voordracht ondertekenen. 
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2576" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2577" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eventuele einddatum en opvolger</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De voordrachtakte kan een einddatum en eventueel de naam van de opvolger bevatten. Een voordracht met enkel een einddatum kan wel maar een voordracht met enkel de naam van de opvolger (dus zonder einddatum) kan niet. Wie opvolger is, moet weten op welk tijdstip hij of zij ten laatste het mandaat overneemt. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2578" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2579" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Tijdig bezorgd op</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Vul datum bezorging aan algemeen directeur aan in de ontwerpnotulen. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2454" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2455" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Voordracht leden bijzonder comité voor de sociale dienst </strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2580" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2581" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Het aantal leden van het bijzonder comité voor de sociale dienst (zonder de voorzitter!) is:</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> acht leden voor een OCMW-raad met 25 tot en met 47 leden. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2582" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2583" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Lijstverbinding en aantal zetels per lijst of groep van lijsten</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2600" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2601" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verklaring(en) van lijstenverbinding bijzonder comité voor de sociale dienst ontvangen</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Donderdag 13 december 2018: Uiterste dag voor overhandiging aan de algemeen directeur van de verklaring van lijstenverbinding bijzonder comité voor de sociale dienst (artikel 91, §1 DLB) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2602" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2603" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Berekening en bekendmaking door de algemeen directeur van de zetelverdeling binnen het bijzonder comité voor de sociale dienst voltooid</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Vrijdag 14 december 2018: Uiterste dag voor berekening en bekendmaking door de algemeen directeur van de zetelverdeling binnen het bijzonder comité voor de sociale dienst (Artikel 91 § 2, derde lid DLB) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2584" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2585" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Akte van voordacht</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2604" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2605" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vormelijke voorwaarden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De voordrachtsakte moet voldoen aan een aantal voorwaarden. Ze:
+<ul class="numbered-list">
+<li>vermeldt de naam, de voornamen, de geboortedatum, het beroep, het rijksregisternummer en de hoofdverblijfplaats van de kandidaat-leden en eventuele kandidaat-opvolgers </li>
+<li>vermeldt de naam, de voornaam en het rijksregisternummer van de verkozenen op de lijsten die de voordracht doen; </li>
+<li>is voor akkoord ondertekend door de kandidaat-leden en eventuele kandidaat-opvolgers; </li>
+<li>is ondertekend door de meerderheid van de verkozenen van dezelfde lijst of groep van lijsten. Als een lijst of groep van lijsten maar twee verkozenen telt, volstaat de handtekening van een van hen; </li>
+<li>bevat kandidaat-leden van verschillend geslacht, tenzij de lijst of groep van lijsten als resultaat van de berekening maar één kandidaat-lid kan voordragen. </li></ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2606" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2607" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verkiesbaarheidsvoorwaarden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De kandidaten voldoen aan de verkiesbaarheidsvoorwaarden:
+<ul class="numbered-list"><li>Belg of onderdaan van de Europese Unie zijn </li>
+<li>de leeftijd van achttien jaar hebben bereikt (op het moment van de eedaflegging!) </li>
+<li>in de bevolkingsregisters van de gemeente ingeschreven zijn </li>
+<li>niet uitgesloten of geschorst zijn als kiezer (de zogenaamde politieke rechten) </li></ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2456" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2457" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Voordracht politieraadsleden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2586" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2587" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Aantal leden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Het aantal leden van de politieraad is
+
+Het aantal te verkiezen vertegenwoordigers door deze gemeenteraad is </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2588" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2589" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Voordrachtsakten</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De kandidaat-effectieve leden worden in elke gemeenteraad schriftelijk voorgedragen door één of meer verkozenen voor de gemeenteraad. De kandidaten stemmen in door een ondertekende verklaring op akte van voordracht.  </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2608" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2609" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Kandidaat-effectieve leden en kandidaat-opvolgers</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <div class="u-spacer--round--tiny">
+  Een kandidaat-effectief lid kan één of twee opvolgers hebben. De kandidaat-opvolgers maken geen voorwerp uit van een afzonderlijke verkiezing, maar zij moeten op de dag van de verkiezing van de politieraad wel gemeenteraadslid zijn. 
+</div>
+<div class="u-spacer--round--tiny">
+  Eenzelfde persoon kan tegelijk als kandidaat-effectief lid en kandidaat-opvolger worden voorgedragen.
+</div>
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2610" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2611" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Geen dubbele ondertekening</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Een verkozene voor de gemeenteraad mag niet meer dan één voordrachtakte voor diezelfde verkiezing steunen door de akte te tekenen voor akkoord. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2590" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2591" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Indienen voordrachtakte kandidaten</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2612" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2613" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Bevoegdheid om in te dienen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De verkozene of één van de verkozenen die de voordrachtakte ondertekenden, of hij die daartoe door de voormelde verkozene(n) werd aangeduid, is bevoegd om de voordrachtakte in te dienen. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2614" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2615" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Aantal exemplaren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De voordrachtakte moet in 2 exemplaren worden ingediend op het gemeentehuis. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2616" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2617" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>In ontvangstname</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De (uittredende) burgemeester, bijgestaan door de algemeen directeur en in tegenwoordigheid van een raadslid van elke fractie die een kandidatenlijst indient, neemt op de vastgelegde datum en het vastgelegde tijdstip de voordrachtakte, in dubbel exemplaar, in ontvangst. </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2628" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2629" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Dossier van de verkiezing van de leden van de politieraad verzenden naar bestendige deputatie</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2618" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2619" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Onderzoek naar ontvankelijkheid</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De (uittredende) burgemeester moet bij het in ontvangst nemen van de voordrachtakten onderzoeken of zij voldoen aan de wettelijke bepalingen en kan de verbetering of aanvulling aanbevelen. Deze bevoegdheid is beperkt. De (uittredende) burgemeester kan de voordrachtakte in geen enkel geval weigeren en kan dus louter opmerkingen maken over de inhoud. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2620" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2621" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Tekenen voor ontvangst</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De (uittredende) burgemeester en de algemeen directeur tekenen elke voordrachtakte voor ontvangst. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2622" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2623" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eén exemplaar bewaren en één exemplaar teruggeven</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De (uittredende) burgemeester bewaart één exemplaar en geeft het tweede exemplaar terug aan de indiener(s). </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2592" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2593" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Opmaak en inzage kandidatenlijst</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2624" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2625" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester maakt de lijst op</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Onmiddellijk na het verstrijken van de termijn voor het indienen van de voordrachtakten sluit de burgemeester de kandidatenlijsten af en rangschikt:
+<ul class="bullet-list u-spacer--none"><li>de kandidaat-effectieve leden in alfabetische orde. </li>
+<li>de kandidaat-opvolger(s), in de precieze volgorde zoals vermeld in de voordrachtakte. </li></ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2626" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2627" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De voordrachtakten en de door de burgemeester opgemaakte kandidatenlijst zijn op het gemeentesecretariaat zijn ter inzage</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Voor de verkozenen voor de gemeenteraad en alle kandidaten, uiterlijk de derde dag die volgt op de datum vastgesteld voor het indienen van de voordrachtakten. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2341" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Voorbereiding van de installatie en eedaflegging van gemeenteraadsleden</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2342" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2343" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2372" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2373" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Onderzoek van de geloofsbrieven van de verkozenen</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2374" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2375" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Schriftelijke kennisgaves afstand van mandaat</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> Ten laatste op de installatievergadering </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2344" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">De installatievergadering</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2345" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2346" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2376" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2377" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De uittredend voorzitter van de gemeenteraad zit de installatievergadering voor bij de start van de vergadering.</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2378" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2379" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 1: Kennisneming geldigverklaring van de verkiezingen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2380" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2381" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 2: Mededeling van de benoeming en eedaflegging van de burgemeester (onder voorbehoud)</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2458" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2459" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verwijder agendapunt in agenda indien geen eedaflegging burgemeester</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2382" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2383" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 3: Installatie gemeenteraadsleden en eedaflegging</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2460" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2461" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Aan- en afwezigheden nakijken</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> <ul class="bullet-list u-spacer--none">
+<li>Wie zit in een situatie van onverenigbaarheid en wordt dus verondersteld afstand van mandaat te doen; </li>
+<li>Wie is verontschuldigd en kan dus pas op een volgende vergadering de eed afleggen; </li>
+<li>Wie is zonder reden afwezig (is die persoon ook na uitdrukkelijk te zijn opgeroepen zonder geldige reden afwezig op de daaropvolgende vergadering dan wordt hij verondersteld afstand van mandaat te doen); </li>
+<li>Wie is aanwezig; </li>
+</ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2462" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2463" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Onderzoek geloofsbrieven</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2594" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2595" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Elke raadslid en elke opvolger heeft volgende schriftelijke bewijsstukken voorgelegd:
+</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <ul class="bullet-list u-spacer--none">
+<li>een recent uittreksel uit het bevolkings- of rijksregister </li>
+<li>een recent bewijs van goed zedelijk gedrag </li>
+<li>een verklaring op eer dat men zich niet bevindt in een geval van onverenigbaarheid </li>
+</ul> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2596" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2597" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Nazicht verkiesbaarheidsvereisten</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2598" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2599" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Nazicht onverenighbaarheden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2464" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2465" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eedaflegging</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De verkozen gemeenteraadsleden van wie de geloofsbrieven werden goedgekeurd, leggen, vóór ze hun mandaat aanvaarden, in openbare vergadering de volgende eed af in handen van de voorzitter van de installatievergadering: “Ik zweer de verplichtingen van mijn mandaat trouw na te komen.” 
+Door deze eedaflegging zijn de gemeenteraadsleden van rechtswege ook OCMW-raadslid </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2466" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2467" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Rangorde</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> De rangorde van de gemeenteraadsleden wordt tijdens de installatievergadering van de nieuwe gemeenteraad onmiddellijk na de eedaflegging van de gemeenteraadsleden vastgesteld. Het gemeenteraadslid met de hoogste anciënniteit neemt de hoogste rang in. Dat wil zeggen dat wie al het langste een mandaat van gemeenteraadslid uitoefent bovenaan in de rangorde staat. Bij gelijke anciënniteit neemt het gemeenteraadslid dat bij de laatste volledige vernieuwing van de gemeenteraad het hoogste aantal naamstemmen heeft behaald, de hoogste rang in. Bij een gelijk aantal naamstemmen neemt het gemeenteraadslid van wie de lijst bij de laatste volledige vernieuwing van de gemeenteraad de meeste stemmen heeft behaald de hoogste rang in.
+De opvolgers die na de installatievergadering als gemeenteraadslid worden geïnstalleerd, nemen in volgorde van hun eedaflegging een rang in. Deze rangorde geldt ook voor de OCMW-raad. 
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2468" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2469" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vervanging van verhinderde raadsleden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Wie verhinderd is moet tijdelijk worden vervangen nadat hij de eed aflegde en dit voor zolang de verhindering duurt. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2470" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2471" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vertrouwenspersoon</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Zijn er raadsleden die zich door een vertrouwenspersoon willen laten bijstaan? De vertrouwenspersoon moet minstens 18 jaar zijn, legaal in de EU verblijven en mag zich niet in een situatie van onverenigbaarheid of verhindering bevinden. De vertrouwenspersoon mag wel een familielid zijn. Vertrouwenspersonen moeten geen eed afleggen. Ze hebben recht op presentiegeld op dezelfde wijze als een gemeenteraadslid. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2384" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2385" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 4: Verkiezing van de voorzitter van de gemeenteraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2472" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2473" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De algemeen directeur overhandigt de akte van voordracht van de kandidaat-voorzitter aan de voorzitter van de installatievergadering</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2474" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2475" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De voorzitter van de installatievergadering gaat na of de akte van voordracht ontvankelijk is.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Alleen de handtekeningen op de akte van voordracht van de verkozenen en de eventuele opvolgers die de eed als raadslid hebben afgelegd worden in aanmerkingen genomen. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2476" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2477" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Is alles in orde dan wordt de voorgedragen kandidaat- voorzitter verkozen verklaard.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2386" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2387" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De nieuwe voorzitter neemt het voorzitterschap van de uittredende voorzitter over.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2388" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2389" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 5: Verkiezing van de schepenen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2478" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2479" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De algemeen directeur overhandigt de gezamenlijke akte van voordracht van de kandidaat-schepenen aan de voorzitter van de gemeenteraad.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2480" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2481" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De voorzitter van de gemeenteraad gaat na of de gezamenlijke akte van voordracht ontvankelijk is in overeenstemming met de voorwaarden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> O.a. zijn er geen onverenigbaarheden, werd de akte ondertekend door raadsleden die ondertussen de eed aflegden. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2482" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2483" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Is alles in orde dan worden de voorgedragen kandidaat- schepenen verkozen verklaard.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2484" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2485" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Eedaflegging</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Voor ze hun mandaat aanvaarden, leggen de schepenen in openbare vergadering van de gemeenteraad de volgende eed af in handen van de burgemeester: “Ik zweer de verplichtingen van mijn mandaat trouw na te komen.” </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2486" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2487" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Mannen en vrouwen in het college</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2488" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2489" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vervanging van verhinderde schepen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2490" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2491" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Rangorde</strong>
+</label>
+<p class="smaller u-spacer--left">
+  <a href="#">
+    <i class="vi vi-long-arrow vi-u-xs"></i> Ga naar verwijzing in het document
+  </a>
+</p>
+<p class="smaller u-spacer--left"> De rang van de schepenen wordt bepaald door de rangorde op de gezamenlijke akte van voordracht. De voorzitter van het bijzonder comité voor de sociale dienst die is toegevoegd aan het college is steeds de laatste schepen in rang. De burgemeester staat hoger in rang dan de schepenen. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2390" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2391" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 6: Vaststelling van fractievorming</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2492" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2493" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Kartels die in twee splitsen om twee fracties te vormen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2494" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2495" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Als er geldige een akte van fractievorming is</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2496" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2497" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Kandidaten die zich niet tot een fractie hebben bekend</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2498" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2499" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Partijen kunnen zich verenigen om één fractie te vormen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Het gemeenteraadslid of de gemeenteraadsleden die verkozen zijn op lijsten die zich uiterlijk op de installatievergadering onderling hebben verenigd, vormen één fractie. Tot onderlinge vereniging van de lijsten kan slechts beslist worden als de meerderheid van de verkozenen op elk van die lijsten daarmee instemt. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2392" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2393" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Agendapunt 7: Verkiezing van de Politieraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2500" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2501" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verwijder agendapunt in agenda indien geen verkiezing van de politieraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De verkiezing van de leden van de politieraad vindt in principe plaats tijdens de installatievergadering van de gemeenteraad of ten laatste binnen tien dagen. Omdat dit een zaterdag 12 januari 2019 is, wordt de verkiezing in dat geval verplaatst naar maandag 14 januari 2019 </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2502" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2503" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester neemt voor de verkiezing van de politieraadsleden het voorzitterschap van de installatievergadering van de gemeenteraad over.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2504" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2505" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Samenstelling van het bureau voor de kiesverrichtingen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Het bureau voor de kiesverrichtingen wordt gevormd door de burgemeester, bijgestaan door de twee jongste gemeenteraadsleden. De algemeen directeur neemt het secretariaat van het bureau waar. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2506" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2507" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester laat de stembiljetten ronddelen in het juiste aantal per persoon</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <div>
+  <p>
+    De stemming gebeurt volgens het meervoudig stemrecht. Het aantal stembiljetten is afhankelijk van het aantal stemmen waarover een gemeenteraadslid tijdens de verkiezing beschikt.
+  </p>
+  <p>
+  Het gaat over (aantal) stemmen.
+  </p>
+  <div>
+    Het stembiljet vermeldt: 
+    <ul class="bullet-list u-spacer--none">
+            <li> in alfabetische volgorde de namen van de kandidaat-effectieve leden </li>
+            <li> en (indien voorzien) de namen van de kandidaat-opvolgers in de precieze volgorde, zoals vermeld in de voordrachtakte </li>
+    </ul>
+  </div>
+</div>
+ </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2508" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2509" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester wijst op het geheime karakter van deze stemming</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2510" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2511" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester deelt mee dat de stemming geopend is</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2512" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2513" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester deelt mee dat de geheime stemming gesloten is;</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2514" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2515" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester verzamelt de verschillende stembiljetten</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2516" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2517" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester deelt mee dat tot telling van de stembiljetten wordt overgegaan</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2518" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2519" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Het bureau voor de kiesverrichtingen telt het aantal verzamelde stembiljetten en geeft eventueel aan hoeveel stembiljetten er ontbreken</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2520" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2521" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester geeft raadsleden een laatste kans om ontbrekende stembiljetten in te dienen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2522" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2523" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Het bureau voor de kiesverrichtingen opent de stembiljetten en sorteert deze.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> De blanco of ongeldige stemmen worden na de stemming apart gelegd. De geldige stembiljetten worden gerangschikt volgens de effectieve kandidaten waarvoor een stem is uitgebracht. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2524" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2525" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De burgemeester kondigt de verkiezingsuitslag af .</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Hij vermeldt daarbij het aantal behaalde stemmen volgens kandidaat en eventueel volgens blanco of ongeldige stem. De kandidaten met de meeste stemmen zijn verkozen en eventueel wordt toepassing gemaakt van de voorrangsregeling </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2526" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2527" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Indien er nog mandaten te verdelen zijn, kan men overgaan tot een aanvullende stemming. Daarvoor volgt men dezelfde volgorde als hierboven uiteengezet werd.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2528" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2529" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Ondertekenen van proces-verbaal opgesteld tijdens de installatievergadering</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2347" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Na de installatievergadering van de gemeenteraad</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2348" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2349" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2394" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2395" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De eerste vergadering van de OCMW-raad aansluitend op de installatievergadering van de gemeenteraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2396" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2397" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Gegevens mandatarissen publiceren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Maandag 14 januari 2019 (uiterlijk): publicatie van de gegevens mandatarissen. Dit gebeurt automatisch indien de mandatarissen en besluiten correct genotuleerd werden. Zoniet moeten deze manueel ingevoerd worden in de mandatendatabank. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2398" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2399" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Verkiezing politieraad indien niet op de installatievergadering</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Maandag 14 januari 2019 (uiterlijk): verkiezing van de politieraad (enkel indien er geen verkiezing van de politieraad heeft plaatsgevonden tijdens de installatievergadering) </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2400" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2401" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Besluitenlijst installatievergadering publiceren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Maandag 14 januari 2019 (uiterlijk): publicatie besluitenlijst installatievergadering gemeenteraad </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2402" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2403" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Besluitenlijst eerste OCMW-raad publiceren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Maandag 14 januari 2019 (uiterlijk): publicatie besluitenlijst eerste vergadering OCMW-raad </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2404" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2405" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Notulen installatievergadering publiceren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Na goedkeuring op volgende gemeenteraad </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2406" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2407" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Notulen eerste OCMW-raad publiceren</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Na goedkeuring op volgende OCMW-raad </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2408" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2409" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Mededeling geldigheidsverklaring verkiezing politieraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2410" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2411" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Installatie politieraad</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Ten vroegste dinsdag 5 februari 2019, ten laatste binnen de 30 dagen na de definitieve verkiezingsuitslag: installatie politieraad </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2412" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2413" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vertegenwoordigers van de gemeenteraad in de intergemeentelijke samenwerkingsverbanden aanduiden</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2530" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2531" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>In de loop van januari 2019: projectverenigingen duiden de nieuwe bestuurders aan.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2532" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2533" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Algemene vergadering gehouden en vervanging raad van bestuur</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> Binnen de 3 eerste maanden van 2019: dienstverlenende of opdrachthoudende verenigingen houden een algemene vergadering waarbij tot een algehele vervanging van de raad van bestuur wordt overgegaan. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2350" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Andere beslissingen</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2351" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2352" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2414" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2415" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Huishoudelijke reglementen bevestigen of aannemen.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2416" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2417" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Deontologische code overlopen of bezorgen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2418" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2419" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Gemeenteraadscommissie voor ombudsman of -vrouw bepalen (indien ombudsman of -vrouw)</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2420" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2421" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De algemeen directeur sluit, mede namens het managementteam, opnieuw een afsprakennota </strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2422" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2423" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>In de loop van het eerste jaar: evaluatieverslag gemeentelijk extern verzelfstandigd agentschap, de welzijnsvereniging en de autonome verzorgingsinstellingen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2424" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2425" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Beheersovereenkomst tussen gemeente en het autonoom gemeentebedrijf</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2426" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2427" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Vernieuwing van de raad van bestuur van het autonoom gemeentebedrijf</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2428" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2429" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Nazicht klachtenreglement</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2534" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2535" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Jaarlijkse rapportering van algemeen directeur aan gemeenteraad de tegen de gemeente ingediende klachten.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2536" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2537" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Jaarlijkse rapportering van algemeen directeur aan de OCMW-raad over de tegen het OCMW ingediende klachten.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2430" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2431" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Nazicht inspraakreglementen</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2432" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2433" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Beheer budgetten realissatie van bepaalde acties of projecten </strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> 6 maanden na de algehele vernieuwing van de gemeenteraad: indien het college van burgemeester en schepenen (onder de voorwaarden door de gemeenteraad vastgesteld) het beheer van budgetten voor de realisatie van bepaalde acties of projecten toevertrouwen aan wijkcomités en burgerinitiatieven toevertrouwt dan vervalt het beheer. </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+          <div id="ember2353" class="tasklist-navigation__item js-accordion tasklist-solution ember-view"><div class="grid">
+  <div class="col--9-12">
+    <h3 class="h5 toggle toggle--arrow-down js-accordion__toggle">Wat als</h3>
+  </div>
+  <div class="col--3-12 u-align--right">
+<a id="ember2354" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-180deg vi-u-xs"></i>
+
+
+<!----></a><a id="ember2355" class="button--link button--tiny button button--narrow ember-view">        <i class="vi vi-burger-alt button__icon vi-u-xs"></i>
+
+
+<!----></a>  </div>
+</div>
+<ul class="tasklist-navigation__group accordion__content">
+      <div id="ember2434" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2435" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Er is geen (ontvankelijke) voordracht voor de kandidaat-voorzitter.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2538" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2539" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Binnen de veertien dagen kiest de gemeenteraad een voorzitter.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2540" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2541" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Drie dagen voor de volgende vergadering van de gemeenteraad moet de algemeen directeur de akte van voordracht in handen hebben.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2436" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2437" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Er is geen (ontvankelijke) gezamenlijke voordracht voor de kandidaat-schepenen.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2542" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2543" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>3 januari 2019: De gemeenteraad beslist op de installatievergadering over het aantal te verkiezen schepenen.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2544" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2545" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>17 januari 2019 (uiterlijk): er wordt overgegaan tot afzonderlijke verkiezing van de schepenen onder de gemeenteraadsleden.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2546" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2547" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>3 dagen voor de eerstvolgende vergadering van de gemeenteraad: Per schepenmandaat wordt een gedagtekende akte van voordracht aan de algemeen directeur bezorgd. </strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> 3 dagen voor de eerstvolgende vergadering van de gemeenteraad: Per schepenmandaat wordt een gedagtekende akte van voordracht aan de algemeen directeur bezorgd.  </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2438" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2439" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Er is geen ontvankelijke akte van voordracht voor kandidaat-voorzitter BCSD ingediend</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2548" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2549" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>De OCMW-raad verkiest binnen de veertien dagen een voorzitter van het bijzonder comité voor de sociale dienst.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+      <div id="ember2550" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2551" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Uiterlijk drie dagen voor de eerstvolgende vergadering van de OCMW-raad: de OCMW-raadsleden bezorgen een gedagtekende akte van voordracht aan de algemeen directeur.</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2440" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2441" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Er is geen ontvankelijke voordrachtsakte voor een of meer kandidaat-leden van het BCSD</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2552" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2553" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Elke lijst kan tijdens de vergadering een akte indienen voor de resterende zetels</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+      <div id="ember2442" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2443" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Er is een zetelwijziging</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+      <div id="ember2554" class="tasklist-navigation__item task-solution ember-view"><label class="checkbox checkbox--block">
+  <input id="ember2555" class="checkbox__toggle ember-checkbox ember-view" type="checkbox">
+  <span></span>
+  <strong>Binnen de tien dagen nadat de zetelverdeling definitief is, worden de verkozen bijeengeroepen door de uittredende voorzitter van de gemeenteraad, of door uittredend lid van college van burgemeester en schepenen in volgorde van rang</strong>
+</label>
+<p class="smaller u-spacer--left">
+<!----></p>
+<p class="smaller u-spacer--left"> <!----> </p>
+
+<ul class="tasklist-navigation__group">
+<!---->  
+</ul>
+</div>
+  
+</ul>
+</div>
+  
+</ul>
+</div>
+        
+    </div>
+  </div>
+</div>
+</div>
+<div id="ember2311" class="rdfa-annotations container-flex--contain ember-view ember-view"><div class="toolbar__annotations-switch">
+<div id="ember2312" class="button-group ember-view">    <div class="checkbox--switch__wrapper checkbox--switch--small">
+      <input name="isAdmin" id="toggle-1" class="checkbox--switch ember-checkbox ember-view" type="checkbox">
+      <label class="checkbox--switch__label" for="toggle-1"></label>
+      <span>Toon annotaties</span>
+    </div>
+</div></div>
+    <div id="ember2313" class="rdfa-editor container-flex--contain ember-view"><div class="container-flex--contain editor-container">
+  <div class="grid grid--collapse">
+    <div class="col--12-12">
+      <div class="container-flex--scroll">
+        <div class="grid grid--collapse grid--align-right">
+          <div class="col--8-12">
+            <div class="editor">
+<div contenteditable="true" id="ember2314" class="editor__paper ember-view">                <div class="ext_metadata" contenteditable="false" property="ext:metadata"><div class="ext_variable" typeof="ext:Variable" resource="http://variables/8368398b-662b-43ee-a1cf-4a750596ac45">
+  <div property="ext:idInSnippet" content="f47d45bd-8966-4289-92b2-35ccecc513a3">44</div>
+  <div property="ext:intentionUri" content="http://installatie/burgemeester-persoon">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/05db867f-94f3-4af6-a896-6e29cc5f6671">
+  <div property="ext:idInSnippet" content="1ffbeaac-fa73-44d9-9bf6-d16884340b50">1</div>
+  <div property="ext:intentionUri" content="http://zitting/nieuwe-voorzitter">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/2c871688-c1d1-4dc7-8fed-41f6b574dc91">
+  <div property="ext:idInSnippet" content="f81db3d3-6c68-4f2a-a9a1-873d0c72aa08">1</div>
+  <div property="ext:intentionUri" content="http://zitting/nieuwe-voorzitter">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;&#8203;&#8203;&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/8b6480aa-d3ff-4c3c-a728-1cf25d095121">
+  <div property="ext:idInSnippet" content="3db50792-2ae4-4d7b-b25e-2b72473b098b">1</div>
+  <div property="ext:intentionUri" content="http://zitting/geplande-start">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/0fccf557-6196-44e1-a301-5e54d3a8e01d">
+  <div property="ext:idInSnippet" content="937de4b7-8b0d-4ab3-a14b-dac09f07d27d">0</div>
+  <div property="ext:intentionUri" content="http://zitting/geplande-start">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/dc855451-b120-416e-8a80-90d13db0a981">
+  <div property="ext:idInSnippet" content="1e82363d-afa0-4bb1-9c26-919b50bfc508">4</div>
+  <div property="ext:intentionUri" content="http://installatie/verkiezingsdatum">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/a6aa25df-5476-4a48-82a5-0ff3e6e25f84">
+  <div property="ext:idInSnippet" content="2a4e4948-3d14-4e73-bd22-652cc59f2ed0">3</div>
+  <div property="ext:intentionUri" content="http://installatie/verkiezingsdatum">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/da7cd39a-2611-45c0-8168-dc0e44202288">
+  <div property="ext:idInSnippet" content="56e37396-30b1-4810-8cf1-b496144fdceb">2</div>
+  <div property="ext:intentionUri" content="http://installatie/verkiezingsdatum">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/5d4ab806-3710-43f3-834b-73d1a9b9f01d">
+  <div property="ext:idInSnippet" content="ced537cf-b99a-4571-b109-b019f6299718">25</div>
+  <div property="ext:intentionUri" content="http://agendapunt-7/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/e81e3d91-30ee-4e44-9107-9cd12db12097">
+  <div property="ext:idInSnippet" content="d41b1d60-76e1-44b5-abe5-508e6fcbce13">24</div>
+  <div property="ext:intentionUri" content="http://agendapunt-7/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/b5028046-43ce-4d15-9050-5c82e8b474ec">
+  <div property="ext:idInSnippet" content="606c2164-6ca5-402e-a666-783747eb370b">23</div>
+  <div property="ext:intentionUri" content="http://agendapunt-6/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/b2ea3c9d-6485-47a5-8dca-1fc9986e8384">
+  <div property="ext:idInSnippet" content="ccb1c244-b055-449f-901b-15312457eb02">22</div>
+  <div property="ext:intentionUri" content="http://agendapunt-6/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/4eb4d793-6fbc-4e9c-b018-2a710565c0a6">
+  <div property="ext:idInSnippet" content="80d49dc0-2fa8-43f4-84a6-3d7857062fe3">21</div>
+  <div property="ext:intentionUri" content="http://agendapunt-5/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/3989e822-ce03-4930-bc3f-eadc6011f3f9">
+  <div property="ext:idInSnippet" content="7ce51893-8c8f-4cf6-82bb-df3db8f855e4">20</div>
+  <div property="ext:intentionUri" content="http://agendapunt-5/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/4e879d88-08e4-4c0b-82ee-568d93bbd7b2">
+  <div property="ext:idInSnippet" content="31af7a39-9bd3-4cb5-904e-954393e6f1a3">19</div>
+  <div property="ext:intentionUri" content="http://agendapunt-4/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/068c3169-f54d-47ff-8679-b25939d99819">
+  <div property="ext:idInSnippet" content="f89e9081-eb13-412f-9850-c805b861f395">18</div>
+  <div property="ext:intentionUri" content="http://agendapunt-4/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/20cc00bf-17a0-4888-997d-ca842090461d">
+  <div property="ext:idInSnippet" content="282e9665-2232-4e73-b5d8-9c5a929de32e">17</div>
+  <div property="ext:intentionUri" content="http://agendapunt-3/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/04de86b9-7468-4010-934d-1bf156ec8164">
+  <div property="ext:idInSnippet" content="a00991b6-67fa-4eab-ad76-9196f1c3e7eb">16</div>
+  <div property="ext:intentionUri" content="http://agendapunt-3/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/f64dd9a4-188a-4544-97a2-f2c2b3d86247">
+  <div property="ext:idInSnippet" content="dc674a79-fe13-4980-9be1-8fd052d1b025">15</div>
+  <div property="ext:intentionUri" content="http://agendapunt-2/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/f53c9358-91aa-43fc-8f53-85747e9659ab">
+  <div property="ext:idInSnippet" content="212a9b5d-10ee-4c77-b2f0-2414ebcdbf94">14</div>
+  <div property="ext:intentionUri" content="http://agendapunt-2/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/2d34a9cf-0dfc-40c7-a2c9-ceaa34f222d5">
+  <div property="ext:idInSnippet" content="2e14e859-802c-4f43-9c33-47b0afd0bb93">13</div>
+  <div property="ext:intentionUri" content="http://agendapunt-1/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/e0cba331-793f-4a2f-bcbe-8d3cd615daad">
+  <div property="ext:idInSnippet" content="cc39832c-d130-4e70-b2e2-94bb86c51d2c">12</div>
+  <div property="ext:intentionUri" content="http://agendapunt-1/title">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/59615147-c6b5-46ce-a3ce-778e2ec3b983">
+  <div property="ext:idInSnippet" content="87a46157-abb7-433a-938e-9cacf61be2c4">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-7">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/9e9a8a32-c60f-40ef-a4fe-b0bbba6be93d">
+  <div property="ext:idInSnippet" content="31afd052-6a8b-481b-b60b-3a3ca6498027">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-6">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/9489dcfd-6764-43a9-b3db-29deef0eebd4">
+  <div property="ext:idInSnippet" content="a96955c2-e992-4686-b779-05fc667b611a">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-5">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/64a48d9d-fa66-4732-860f-96b1ac14829f">
+  <div property="ext:idInSnippet" content="76edf311-4702-4414-9db0-b7424d2ced54">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-4">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/16f84f9b-cd96-47a3-9c79-e13e993f2752">
+  <div property="ext:idInSnippet" content="fcf10217-a95d-4de6-9243-2e9e7b5c6e15">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-3">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/01e12be5-3cd2-4756-b029-c6c7094c52e3">
+  <div property="ext:idInSnippet" content="b372dea8-e8dd-4e99-b185-df2de9f1bd52">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-2">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/1267e946-1318-4824-b5d2-07181433eaaf">
+  <div property="ext:idInSnippet" content="0612d0c9-85b2-4cac-bba3-bc3d08572f01">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-1">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/a6af68c4-d4a4-4ac5-bddd-f90c05e1c00b">
+  <div property="ext:idInSnippet" content="0408f85a-a96c-4626-97fe-9cd89e0c6720">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-7">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/3bb10761-b43c-46e2-aed5-6b724a2601a6">
+  <div property="ext:idInSnippet" content="21e64412-46b5-4819-b56e-0745b207c034">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-6">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/872148f6-2259-4ca7-acd9-e031a88b055d">
+  <div property="ext:idInSnippet" content="708909e3-343c-4ff3-8dff-fdb8f06f915b">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-5">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/4afb0da0-fadf-4da9-9c81-70c654ce2ad6">
+  <div property="ext:idInSnippet" content="c2c528c8-41ac-4768-a902-11d493f3bd2a">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-4">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/7234d3a0-fb4d-4b89-8de0-3272c51c3087">
+  <div property="ext:idInSnippet" content="16c5fccf-6af9-440e-94e8-bddcc4a16e9d">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-3">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/37d7e5ec-f040-4ec5-828b-2aa5993b24fa">
+  <div property="ext:idInSnippet" content="117e100f-4fe6-4292-9dfc-0b0a5daf6c11">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-2">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_variable" typeof="ext:Variable" resource="http://variables/48d90ea9-f97f-4059-b112-1ccf54817f2b">
+  <div property="ext:idInSnippet" content="807ff9b9-a776-4b8e-a06a-0d0d51c37b1e">0</div>
+  <div property="ext:intentionUri" content="http://zitting/agendapunt-nummer-1">a</div>
+  <div property="ext:variableState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/f5de902d-29dc-4457-b6e2-ae24ff18e2c8">
+              <div property="ext:scrollToLogicalName" content="datum voordrachtsakten politieraadsleden">datum voordrachtsakten politieraadsleden</div>
+              <div property="ext:idInSnippet" content="846153ae-9f6a-4485-a54a-221b3285e509">846153ae-9f6a-4485-a54a-221b3285e509</div>
+            </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/01954dc5-be86-4a6b-8770-8c76079a948d">
+                  <div property="ext:scrollToLogicalName" content="rangorde schepenen">rangorde schepenen</div>
+                  <div property="ext:idInSnippet" content="738b0fd9-6148-4d0a-bc98-ae7e49fa9c8f">738b0fd9-6148-4d0a-bc98-ae7e49fa9c8f</div>
+                </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/10b78012-8bf2-4cad-935c-95051e993510">
+                    <div property="ext:scrollToLogicalName" content="aantal schepenen">aantal schepenen</div>
+                    <div property="ext:idInSnippet" content="b1d30322-830c-418e-8aba-4020e57fbeaf">b1d30322-830c-418e-8aba-4020e57fbeaf</div>
+                  </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/02111819-ea29-4ca6-8633-254e3be29765">
+                    <div property="ext:scrollToLogicalName" content="datum bezorging akte van voordracht schepenen">datum bezorging akte van voordracht schepenen</div>
+                    <div property="ext:idInSnippet" content="1ffc4031-c030-4195-853b-cf8be751492f">1ffc4031-c030-4195-853b-cf8be751492f</div>
+                  </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/7f07df17-38dc-4026-bb10-1651a1a3ae00">
+              <div property="ext:scrollToLogicalName" content="aan en afwezigen">aan en afwezigen</div>
+              <div property="ext:idInSnippet" content="4c8af5c5-c9ea-4942-b8bc-ed34234d57d1">4c8af5c5-c9ea-4942-b8bc-ed34234d57d1</div>
+            </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/b75d22df-1c7c-4e8e-bb07-149242ac4055">
+                    <div property="ext:scrollToLogicalName" content="onderzoek geloofsbrieven">onderzoek geloofsbrieven</div>
+                    <div property="ext:idInSnippet" content="e5328ad4-1e27-479d-b60f-111df4848401">e5328ad4-1e27-479d-b60f-111df4848401</div>
+                  </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/5eb5c4a3-5c73-4681-b247-e72152041a8a">
+                    <div property="ext:scrollToLogicalName" content="afstand van mandaat">afstand van mandaat</div>
+                    <div property="ext:idInSnippet" content="b990d662-b2df-4674-9242-3548f9bdd5f8">b990d662-b2df-4674-9242-3548f9bdd5f8</div>
+                  </div>&#8203;<div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/561e38ce-5a88-45cb-913c-e60af64fe17b">
+    <div property="ext:scrollToLogicalName" content="datum en locatie installatievergadering">datum en locatie <mark data-editor-highlight="true">installatie</mark>vergadering</div>
+    <div property="ext:idInSnippet" content="0d401f8c-ddc6-41a2-9157-5b8e7e447478">0d401f8c-ddc6-41a2-9157-5b8e7e447478</div>
+  </div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/5678108f-2970-4ba2-a780-45e36d3a513c"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A000041" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="574e5f2e-4354-4ab3-85a2-401f391e3afa">574e5f2e-4354-4ab3-85a2-401f391e3afa</div>
+  <div content="meta-content-7" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/32f569235e6c55d8ae889dd7f6baf63bbfdcf1cb42d4f9e5c1fe4c45b19c418a" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/c6294742-5e52-49ea-92b9-ac14d77fb256"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A000040" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="4e9c59c1-e36d-4efc-ae27-826b7be3e88a">4e9c59c1-e36d-4efc-ae27-826b7be3e88a</div>
+  <div content="meta-content-6" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/6607ba3e1c8c1308573159b70bb12bf7c91769f95641ac0a00905d7b58b9c8cd" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/d2814139-41dd-46e5-b380-b9c8b4934538"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003F" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="949a38b1-7fdc-4150-a55b-612aef870009">949a38b1-7fdc-4150-a55b-612aef870009</div>
+  <div content="meta-content-5" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/884a00eb3934152318210bde7a003c9313a39af5710665614a435b6e9efc9be2" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/6a566afc-d3f1-4e07-a550-e25bd7985b41"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003E" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="ad11ad5c-28e8-4a86-a520-3d24a087df3d">ad11ad5c-28e8-4a86-a520-3d24a087df3d</div>
+  <div content="meta-content-4" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/986f6c9d4f1f6fc02c5e667150dfb583748c8de6f771ba1e8a4ccc2604519271" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/cc97e834-6428-4c71-b04e-81dadc938711"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003B" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="241db5f3-79ed-42a5-a49c-ef1d0097c16a">241db5f3-79ed-42a5-a49c-ef1d0097c16a</div>
+  <div content="meta-content-3" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/74fd11344fa1a41b4b9dfaddf7713bb870b8b024faa6ddc8dd537ab544fbff88" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/3c742971-e619-4aab-8824-e1bd0b5980c0"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003D" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="62ab5dff-1352-4e39-960a-27c364595ee6">62ab5dff-1352-4e39-960a-27c364595ee6</div>
+  <div content="meta-content-2" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/4a98f3467c6bcc7c0713a70b117ea3688263c3e8b3a1c2ec9cb721a191ba91d3" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/8b1eb31a-5bec-43dc-bfa2-0bb791929c01"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003C" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="6976bf81-abf2-4399-92a0-49479bd6b361">6976bf81-abf2-4399-92a0-49479bd6b361</div>
+  <div content="meta-content-1" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/a299a730333cb29122e818466194b0a2bfcbe4762580c42779288cd60b91fc8a" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>&#8203;<div class="ext_tasklist_data" typeof="ext:TasklistData" resource="http://data.lblod.info/id/tasklistsdata/a0e0a5cd-6b9e-44ee-b84b-27cec2b03caf"><meta property="ext:tasklistDataTasklistSolution" resource="http://data.lblod.info/id/tasklist-solutions/5BF69DC779066C000A00003A" typeof="ext:TasklistSolution">
+  <div property="ext:idInSnippet" content="71e11876-3945-45f8-aedf-a3c6d3a2a39f">71e11876-3945-45f8-aedf-a3c6d3a2a39f</div>
+  <div content="meta-content-0" property="ext:tasklistDataTasklist" resource="http://data.lblod.info/id/tasklists/84b51f9bc40aaf2c9973b950a4e50ff3378b6096139a63d174c89eaa5ed3305d" typeof="ext:Tasklist">tasklist</div>
+  <div property="ext:tasklistDataState" content="syncing">syncing</div>
+</div>
+                                       &nbsp;
+                                       </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--START TASKLISTS-->
+
+
+
+
+
+
+
+
+<!--END TASKLISTS-->
+
+<div typeof="besluit:Zitting" resource="http://data.lblod.info/id/zittingen/daa43b35-a874-44b8-9011-80d1f11ab116">
+
+  
+
+  <!-- meta zitting -->
+  <h2 class="h1" property="dc:title" id="0d401f8c-ddc6-41a2-9157-5b8e7e447478">
+    Notulen van <span property="ext:scopedBestuursorgaanText"><mark data-editor-highlight="true">selecteer bestuursorgaan</mark></span>, zitting van <span id="937de4b7-8b0d-4ab3-a14b-dac09f07d27d" property="besluit:geplandeStart" datatype="xsd:date" content="2018-11-22">22 november 2018</span>&#8203; (installatievergadering)
+  </h2>
+  <br>
+
+  <p>
+    Locatie: <span class="mark-highlight-manual">Voer naam locatie in</span>, <span class="mark-highlight-manual">Voer naam zaal in</span>.
+  </p>
+  <br>
+
+  <br>
+  <!-- aanwezigen -->
+  <h3 class="h2">Aanwezigen</h3>
+  <span property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij de zitting.</mark></span>
+
+  <!--
+
+  	Opmerking Veronique:
+  	Opgelet: de meeste aanwezigen zullen er als persoon in zitten. De burgemeester echter zal in veel gevallen wel al benoemd zijn en er dus expliciet als burgemeester in moeten staan.
+
+  	Algemeen directeur:
+		Als deze afwezig is, zal hier een andere naam moeten gezet worden die dan de rol van “secretaris van de vergadering” overneemt > moet dit sowieso niet ergens vermeld staan volgens model (een zitting heeft normaal toch een secretaris)
+
+  -->
+
+  <!-- opening -->
+  <p>De uittredend voorzitter van de gemeenteraad, zit de installatievergadering voor<!-- op <span content="" datatype="xsd:dateTime" ><span typeOf="ext:currentDate">&nbsp;</span></span> -->.</p>
+
+  <!-- moet de naam nog ingegeven worden? Zo nee, uit checklist halen
+  	<p id="f4f9dd0e-08c3-4126-904c-1d17a289b5d1">De uittredend voorzitter van de gemeenteraad, zit de installatievergadering voor op <span content="" datatype="xsd:dateTime" ><span typeOf="ext:currentDate">&nbsp;</span></span>.</p>
+
+	  <div class="ext_scroll_to" typeof="ext:ScrollToLocation" resource="http://scrollToLocation/5c84a9eb-b7f7-4ea2-8c75-d197e267423f">
+	    <div property="ext:scrollToLogicalName" content="naam voorzitter gemeenteraad">naam voorzitter gemeenteraad</div>
+	    <div property="ext:idInSnippet" content="f4f9dd0e-08c3-4126-904c-1d17a289b5d1">f4f9dd0e-08c3-4126-904c-1d17a289b5d1</div>
+	  </div>
+
+  -->
+
+  <!-- Agenda overzicht-->
+  <div property="besluit:heeftAgenda" resource="http://data.lblod.info/id/agendas/94cc3d80-ed84-453e-a292-d62098d1d5b3" typeof="besluit:Agenda">
+    <h3 class="h2">Agenda overzicht</h3>
+    <h4 class="h3" property="http://mu.semte.ch/vocabularies/ext/noHighlight" typeof="http://mu.semte.ch/vocabularies/ext/NoHighlight">Open agendapunten</h4>
+
+    <ul>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c" typeof="besluit:Agendapunt">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="807ff9b9-a776-4b8e-a06a-0d0d51c37b1e">Agendapunt 1</span> <span property="dc:title"><span id="cc39832c-d130-4e70-b2e2-94bb86c51d2c">Kennisneming van de geldigverklaring van de verkiezingen</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="117e100f-4fe6-4292-9dfc-0b0a5daf6c11">Agendapunt 2</span> <span property="dc:title"><span id="212a9b5d-10ee-4c77-b2f0-2414ebcdbf94">Mededeling over de benoeming en eedaflegging van de burgemeester</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="16c5fccf-6af9-440e-94e8-bddcc4a16e9d">Agendapunt 3</span> <span property="dc:title"><span id="a00991b6-67fa-4eab-ad76-9196f1c3e7eb">Installatie van de gemeenteraadsleden en vaststelling van hun rangorde</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="c2c528c8-41ac-4768-a902-11d493f3bd2a">Agendapunt 4</span> <span property="dc:title"><span id="f89e9081-eb13-412f-9850-c805b861f395">Vaststelling van fractievorming</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="708909e3-343c-4ff3-8dff-fdb8f06f915b">Agendapunt 5</span> <span property="dc:title"><span id="7ce51893-8c8f-4cf6-82bb-df3db8f855e4">Verkiezing van de voorzitter van de gemeenteraad</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="21e64412-46b5-4819-b56e-0745b207c034">Agendapunt 6</span> <span property="dc:title"><span id="ccb1c244-b055-449f-901b-15312457eb02">Verkiezing van de schepenen</span></span>
+        </span>
+      </li>
+      <li>
+        <span property="besluit:heeftAgendapunt" resource="http://data.lblod.info/id/agendapunten/d41b1d60-76e1-44b5-abe5-508e6fcbce13" typeof="besluit:Agendapunt">
+          <meta property="besluit:aangebrachtNa" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02">
+          <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+          <span id="0408f85a-a96c-4626-97fe-9cd89e0c6720">Agendapunt 7</span> <span property="dc:title"><span id="d41b1d60-76e1-44b5-abe5-508e6fcbce13">Verkiezing van de Politieraad</span></span>
+        </span>
+      </li>
+    </ul>
+  </div>
+  <br>
+
+  <!-- Agenda behandeling -->
+  <div>
+    <h3 class="h2">Agendapunten</h3>
+    <h4 class="h3">Open zitting</h4>
+
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/6aefbb05-eab1-4132-89fe-b1fdb71cfaf2" typeof="besluit:BehandelingVanAgendapunt">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <span property="dc:subject" resource="http://data.lblod.info/id/agendapunten/cc39832c-d130-4e70-b2e2-94bb86c51d2c"><span id="0612d0c9-85b2-4cac-bba3-bc3d08572f01">Agendapunt 1</span></span>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <br>
+      <br>
+      <h4 class="h6">Aanwezig</h4>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <!--
+      <br>
+      <h4 class="h6">Afwezigen met kennisgeving</h4>
+      <h4 class="h6">Afwezigen zonder kennisgeving</h4>
+      <p><span class="mark-highlight-manual">Geef afwezigen hier in</span></p>
+      -->
+      <br>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/62cfa086-699e-4b4c-ab9d-4d67431b6f90" typeof="besluit:Besluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="2e14e859-802c-4f43-9c33-47b0afd0bb93">Kennisneming van de geldigverklaring van de verkiezingen</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <br>
+        <p>Korte openbare beschrijving: <span property="eli:description">Kennisneming van de geldigverklaring van de verkiezingen.</span></p>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <ul class="bullet-list">
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het decreet van 22 december 2017 over het lokaal bestuur</a>, artikel <a href="http://data.lblod.info/WetgevingArtikel/1234844" property="eli:cites">6</a>;</li>
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1020561" property="eli:cites">het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011</a>, de artikelen <a href="http://data.lblod.info/WetgevingArtikel/1138929" property="eli:cites">203</a> en <a href="http://data.lblod.info/WetgevingArtikel/1138930" property="eli:cites">204</a>;</li>
+                <li>
+                  Gelet op <a href="http://data.lblod.info/WetgevingDocument/1024603" property="eli:cites">het decreet van 4 april 2014 betreffende de organisatie en rechtspleging van sommige Vlaamse bestuursrechtcolleges</a>, artikel <a href="http://data.lblod.info/WetgevingArtikel/1240910" property="eli:cites">28</a>;</li>
+      
+              </ul>
+            </div>
+            <br>
+            <div>
+              <ul class="bullet-list">
+                <li>
+                  Overwegende dat de resultaten van de gemeenteraadsverkiezingen van&nbsp;
+                  <span id="56e37396-30b1-4810-8cf1-b496144fdceb" "="">14 oktober 2018</span>&nbsp;
+                  door de Raad voor Verkiezingsbetwistingen op&nbsp;
+                  <span class="mark-highlight-manual">Voeg datum in</span> werden&nbsp;
+                  goedgekeurd, zoals meegedeeld per brief op&nbsp;
+                  <span class="mark-highlight-manual">Voeg datum in</span>;</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <br>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">Neemt akte van,</p>
+          <div property="prov:value">
+            <p>De goedkeuring van de resultaten van de gemeenteraadsverkiezingen van <span id="2a4e4948-3d14-4e73-bd22-652cc59f2ed0">14 oktober 2018</span> door de Raad voor Verkiezingsbetwistingen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/624ff8a9-32c9-4a5b-9390-ab1f77547530" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/f0bbbe72-f93e-4549-9190-920319f6530e">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/212a9b5d-10ee-4c77-b2f0-2414ebcdbf94"><span id="b372dea8-e8dd-4e99-b185-df2de9f1bd52">Agendapunt 2</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/59f1561b-d3ab-4828-850e-c4f573609c81" typeof="besluit:Besluit ext:BesluitBenoemingBurgemeester">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="dc674a79-fe13-4980-9be1-8fd052d1b025">Mededeling over de benoeming en eedaflegging van de burgemeester</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <p>Korte openbare beschrijving: <span property="eli:description">Mededeling over de benoeming en eedaflegging van de burgemeester.</span></p>
+        <br>
+
+      	<p><mark data-editor-highlight="true">Selecteer scenario benoeming en eedaflegging burgemeester</mark></p>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/ba296ce6-8698-40e2-abb4-bb657e953795" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/27d7ef52-c8f7-4c7f-989f-09a4bc8749b3">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/a00991b6-67fa-4eab-ad76-9196f1c3e7eb"><span id="fcf10217-a95d-4de6-9243-2e9e7b5c6e15">Agendapunt 3</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/f2e2a0de-2d7d-4ef7-9732-620205a2b022" typeof="besluit:Besluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="282e9665-2232-4e73-b5d8-9c5a929de32e">Installatie van de gemeenteraadsleden en vaststelling van hun rangorde</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <p>Korte openbare beschrijving: <span property="eli:description">Installatie van de gemeenteraadsleden (akteneming eventuele afstanden van mandaat en onverenigbaarheden, goedkeuring van de geloofsbrieven en eedaflegging) en vaststelling van de rangorde.</span></p>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <ul class="bullet-list">
+
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het decreet van 22 december 2017 over het lokaal bestuur</a>, de artikelen <a href="http://data.lblod.info/WetgevingArtikel/1234844" property="eli:cites">6 </a>, <a href="http://data.lblod.info/WetgevingArtikel/1234845" property="eli:cites">7 </a>, <a href="http://data.lblod.info/WetgevingArtikel/1234846" property="eli:cites">8 </a>, <a href="http://data.lblod.info/WetgevingArtikel/1234847" property="eli:cites">9 </a>, <a href="http://data.lblod.info/WetgevingArtikel/1234848" property="eli:cites">10</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234849" property="eli:cites">11</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234850" property="eli:cites">12</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234852" property="eli:cites">14</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234887" property="eli:cites">49</a> en <a href="http://data.lblod.info/WetgevingArtikel/1234901" property="eli:cites">59</a>;</li>
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1020561" property="eli:cites">het Lokaal en Provinciaal Kiesdecreet van 8 juli 2011</a>, de artikelen <a href="http://data.lblod.info/WetgevingArtikel/1138733" property="eli:cites">8</a>, <a href="http://data.lblod.info/WetgevingArtikel/1138783" property="eli:cites">58</a>, <a href="http://data.lblod.info/WetgevingArtikel/1138811" property="eli:cites">86</a> en <a href="http://data.lblod.info/WetgevingArtikel/1138894" property="eli:cites">169</a>;</li>
+                <li>Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;</li>
+              </ul>
+            </div>
+            <br>
+
+            <div>
+              <ul class="bullet-list">
+                <li>Overwegende dat de resultaten van de gemeenteraadsverkiezingen van <span id="1e82363d-afa0-4bb1-9c26-919b50bfc508" "="">14 oktober 2018</span> door de Raad voor Verkiezingsbetwistingen op <span class="mark-highlight-manual">Voeg datum in</span> werden goedgekeurd;</li>
+
+                <li id="b990d662-b2df-4674-9242-3548f9bdd5f8">
+                  
+	                <span class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario afstanden van mandaat</span>
+	              </li>
+
+	                <!-- Erika!
+
+	                	installatievergadering-gemeenteraadsleden-afstanden-1-geen-afstanden-mandaat.html
+										installatievergadering-gemeenteraadsleden-afstanden-2-wel-afstanden-mandaat-geen-opvolgers.html
+										installatievergadering-gemeenteraadsleden-afstanden-3-wel-afstanden-mandaat-wel-opvolgers.html
+
+	                	Ook hier: vervang hele "li" <li>Selecteer scenario eventuele einddatum en opvolgers</li>, met li's uit de scenario's, of verwijder li elementen in de alternatieve scenario's en voeg bij "installatievergadering-gemeenteraadsleden-3-wel-afstanden-mandaat-wel-opvolgers.html" de twee puntjes samen tot één zinnetje (vragen aan Veronique, geen idee of dat dat juridisch correct is...).
+
+									-->
+
+                <li class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario afwezigen</li>
+
+	                <!-- Erika!
+
+										installatievergadering-gemeenteraadsleden-afwezigen-1-geen-afwezigen.html
+										installatievergadering-gemeenteraadsleden-afwezigen-2-afwezigen-zonder-reden.html
+										installatievergadering-gemeenteraadsleden-afwezigen-3-afwezigen-met-reden.html
+	                	installatievergadering-gemeenteraadsleden-afwezigen-4-afwezigen-met-en-zonder-reden.html
+
+	                	Ook hier: vervang hele "li" <li>Selecteer scenario afwezigen</li>, met li's uit de scenario's, of verwijder li elementen in de alternatieve scenario's en voeg bij "installatievergadering-gemeenteraadsleden-afwezigen-4-afwezigen-met-en-zonder-reden.html" de twee puntjes samen tot één zinnetje (vragen aan Veronique, geen idee of dat dat juridisch correct is...).
+
+									-->
+
+								<li id="e5328ad4-1e27-479d-b60f-111df4848401">
+                  
+                  <span class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario geloofsbrieven</span>
+                </li>
+
+	                <!-- Erika!
+
+										installatievergadering-gemeenteraadsleden-geloofsbrieven-1-geen-uitzonderingen.html
+										installatievergadering-gemeenteraadsleden-geloofsbrieven-2-wel-uitzonderingen.html
+									-->
+
+                <li>Overwegende dat uit het onderzoek van de geloofsbrieven van de verkozen gemeenteraadsleden door de gemeenteraad, zoals voorgeschreven in <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het decreet van 22 december 2017 over het lokaal bestuur</a> in artikel <a href="http://data.lblod.info/WetgevingArtikel/1234844" property="eli:cites">6</a>, §3 en artikel <a href="http://data.lblod.info/WetgevingArtikel/1234847" property="eli:cites">9</a>, blijkt dat alle verkozenen en hun respectieve opvolgers die worden uitgenodigd heden de eed af te leggen, voldoen aan de verkiesbaarheidsvoorwaarden en op eer verklaard hebben zich niet in een situatie van onverenigbaarheid te bevinden;</li>
+
+                <li class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario onverenigbaarheden</li>
+
+	                <!-- Erika!
+
+										installatievergadering-gemeenteraadsleden-onverenigbaarheden-1-geen-onverenigbaarheden.html
+										installatievergadering-gemeenteraadsleden-onverenigbaarheden-2-wel-onverenigbaarheden-geen-opvolger.html
+										installatievergadering-gemeenteraadsleden-onverenigbaarheden-3-wel-onverenigbaarheden-wel-opvolger.html
+
+	                	Hier lijkt het mij heel moeilijk om de li's niet volledig te vervangen... Laat me zeker weten wat ge denkt
+
+									-->
+
+                <li class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario burgemeester</li>
+
+	                <!-- Erika!
+
+	                	Wordt hier de burgemeester automatisch ingevuld en de data als die data beschikbaar is? Dan moet de template aangepast worden denk ik voor het scenario met burgemeester.
+
+									-->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div>
+          <p class="u-spacer--small">Beslist,</p>
+          <div typeof="besluit:Stemming">
+            <p>met eenparigheid van stemmen:</p>
+          </div>
+          <br>
+          <br>
+          <div id="4c8af5c5-c9ea-4942-b8bc-ed34234d57d1">
+            
+            <mark data-editor-highlight="true">beheer aanstelling gemeenteraadsleden.</mark>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/65a45274-4fda-4eed-ac5e-a0704e1bb6ff" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/99eb1b0c-4a5c-48ce-8145-035b4525d084">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/f89e9081-eb13-412f-9850-c805b861f395"><span id="76edf311-4702-4414-9db0-b7424d2ced54">Agendapunt 4</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/1761aa8a-64b1-417a-b061-7aff25b569d3" typeof="besluit:Besluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="31af7a39-9bd3-4cb5-904e-954393e6f1a3">Vaststelling van fractievorming</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <p>Korte openbare beschrijving: <span property="eli:description">Vaststelling van fractievorming.</span></p>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <ul class="bullet-list">
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">decreet van 22 december 2017 over het lokaal bestuur</a>, artikel <a href="http://data.lblod.info/WetgevingArtikel/1234874" property="eli:cites">36</a>;</li>
+                <li>Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;</li>
+              </ul>
+            </div>
+            <div>
+              <ul class="bullet-list">
+              	<li>Selecteer scenario fracties splitsingen</li>
+              	<!-- Erika!
+
+									installatievergadering-fracties-splitsing-1-geensplitswens.html
+									installatievergadering-fracties-splitsing-2-splitswens.html
+									installatievergadering-fracties-splitsing-3-splitswens-meerderheid.html
+              	-->
+
+              	<li>Selecteer scenario fracties verenigingen</li>
+              	<!-- Erika!
+
+									installatievergadering-fracties-vereniging-1-geenvereniging.html
+									installatievergadering-fracties-vereniging-2-vereniging.html
+              	-->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="u-spacer--small">Beslist,</p>
+          <div>
+            <!-- <h6 class="h5">Besluit</h6> -->
+            <ul class="bullet-list">
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/aeaaa7f1-5c87-4527-82ef-54cf4f4c1071" typeof="besluit:Artikel">
+                <span property="eli:number">Enig artikel.</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <span property="prov:value">
+                  Vast te stellen dat volgende fracties gevormd worden:
+                  <span property="ext:fractievormingText"><mark data-editor-highlight="true">Voeg lijst met fracties hier toe.</mark></span>
+                  <!-- "Link de lijst met fracties" -->
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div id="c13f7cfc-f188-4040-a906-33a0dc09e935" property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/8868156b-32ad-4e28-996b-7074daad8447" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/2360b5f0-641e-4f1b-b4d0-85fd97c0e8f0">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/7ce51893-8c8f-4cf6-82bb-df3db8f855e4"><span id="a96955c2-e992-4686-b779-05fc667b611a">Agendapunt 5</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/f0ddde99-e13d-42be-a20a-c283b2842c26" typeof="besluit:Besluit mandaat:Aanstellingsbesluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="80d49dc0-2fa8-43f4-84a6-3d7857062fe3">Verkiezing van de voorzitter van de gemeenteraad</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <p>Korte openbare beschrijving: <span property="eli:description">Verkiezing van de voorzitter van de gemeenteraad.</span></p>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <ul class="bullet-list">
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het decreet van 22 december 2017 over het lokaal bestuur</a>, de artikelen <a href="http://data.lblod.info/WetgevingArtikel/1234844" property="eli:cites">6 </a> en <a href="http://data.lblod.info/WetgevingArtikel/1234845" property="eli:cites">7 </a>;</li>
+                <li>Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="bullet-list">
+                <li class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario overhandiging akte van voordracht</li>
+	                <!-- Erika!
+										installatievergadering-voorzitter-akte-overhandiging-3-geen-akte.html
+										installatievergadering-voorzitter-akte-overhandiging-2-laattijdige-akte.html
+										installatievergadering-voorzitter-akte-overhandiging-1-binnen-termijn.html
+	                -->
+
+	               	<!-- Wat moeten we doen als de akte van voordracht niet overhandigd werd aan de voorzitter van de gemeenteraad? -->
+
+                <li>Overwegende dat de kandidaat-voorzitter de voorgeschreven eed als gemeenteraadslid heeft afgelegd en er geen specifieke eed als voorzitter van de gemeenteraad dient afgelegd te worden;</li>
+              </ul>
+            </div>
+          </div>
+          <p class="u-spacer--small">Beslist,</p>
+          <div>
+          	<p class="delete-me-mark-highlight-make-me-plugin">Selecteer scenario akte van voordracht kandidaat-voorzitter</p>
+          	<!-- Erika!
+
+          		Kennisname van de tijdige en ontvankelijke akte van voordracht van de kandidaat-voorzitter
+          		installatievergadering-voorzitter-besluit-1-tijdig-ontvankelijk.html
+
+          		Kennisname van het ontbreken van een tijdige en ontvankelijke akte van voordracht van de kandidaat-voorzitter
+							installatievergadering-voorzitter-besluit-2-niet-tijdig-niet-ontvankelijk.html
+						-->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+	  <div>
+	    <p>Conform <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het decreet van 22 december 2017 over het lokaal bestuur</a>, artikel <a href="http://data.lblod.info/WetgevingArtikel/1234862" property="eli:cites">24</a>, neemt de nieuw gekozen voorzitter het voorzitterschap van de installatievergadering over van de uittredende voorzitter.</p>
+	  </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/df2929ad-062f-4687-ae3e-65311043c56d" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/8ee87bfa-65fc-4479-8d47-72019409fd40">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/ccb1c244-b055-449f-901b-15312457eb02"><span id="31afd052-6a8b-481b-b60b-3a3ca6498027">Agendapunt 6</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/40341871-e4be-4426-9440-e0675f7fd18f" typeof="besluit:Besluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="606c2164-6ca5-402e-a666-783747eb370b">Verkiezing van de schepenen</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <br>
+        <p>Korte openbare beschrijving: <span property="eli:description">Verkiezing van de schepenen.</span></p>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <ul class="bullet-list">
+                <li>Gelet op <a href="http://data.lblod.info/WetgevingDocument/1029017" property="eli:cites">het  decreet van 22 december 2017 over het lokaal bestuur</a>, artikelen <a href="http://data.lblod.info/WetgevingArtikel/1234880" property="eli:cites">42</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234881" property="eli:cites">43</a>, <a href="http://data.lblod.info/WetgevingArtikel/1234882" property="eli:cites">44</a> en <a href="http://data.lblod.info/WetgevingArtikel/1234887" property="eli:cites">49</a>;</li>
+                <li>Gelet op de omzendbrief BA-2018/2 van 19 oktober 2018 — Start van de lokale en provinciale bestuursperiode;</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="bullet-list">
+                <li id="1ffc4031-c030-4195-853b-cf8be751492f">
+                  
+                  Overwegende dat een gezamenlijke akte van voordracht van de kandidaat-schepenen werd overhandigd aan de algemeen directeur op&nbsp;
+                  <span class="mark-highlight-manual">Voer datum in</span>&#8203;, zijnde binnen de termijn van acht dagen voor de installatievergadering van de gemeenteraad;
+
+                  <!-- Moet hier ook een alternatief scenario zoals bij gemeenteraadsleden? -->
+                </li>
+
+                <li>
+                  Overwegende dat de algemeen directeur op datum van&nbsp;
+                  <span class="mark-highlight-manual">Voer datum in</span>&#8203; een afschrift van de gezamenlijke akte van voordracht aan de burgemeester heeft bezorgd;
+                </li>
+
+                <li>
+                  Overwegende dat&nbsp;
+                  <span id="f81db3d3-6c68-4f2a-a9a1-873d0c72aa08"><span class="mark-highlight-manual">Voer voorzitter van de gemeenteraad in</span></span>&#8203; tot voorzitter van de gemeenteraad werd verkozen tijdens de <span resource="http://data.lblod.info/id/zittingen/8b0e178f-0b2d-40c1-86d3-731cee91096c">installatievergadering van <span id="3db50792-2ae4-4d7b-b25e-2b72473b098b" property="besluit:geplandeStart" datatype="xsd:date" content="2018-11-22">22 november 2018</span>&#8203;</span> en na zijn installatie de gemeenteraad voorzit;
+                </li>
+
+                <li>Overwegende dat de algemeen directeur de gezamenlijke akte van voordracht van de kandidaat-schepenen ter zitting heeft overhandigd aan de voorzitter van de gemeenteraad;</li>
+
+                <li>Overwegende dat beide geslachten zijn vertegenwoordigd in de voordrachtsakte;</li>
+
+                <li>Overwegende dat de gezamenlijke akte van voordracht van kandidaat-schepenen voldoet aan de decretaal voorziene ontvankelijkheidsvereisten;</li>
+
+                <li>Overwegende dat de voorgedragen kandidaat schepenen de volgende personen zijn:
+                  <ul class="bullet-list">
+                    <li><span property="ext:TODO" var="ext:TODO" class="mark-highlight-manual">Voer persoon in</span></li>
+                  </ul>
+                </li>
+
+                <li>Overwegende dat alle kandidaat-schepenen de eed als gemeenteraadslid hebben afgelegd;</li>
+
+                <li>Overwegende dat de gezamenlijke akte van voordracht van de kandidaat-schepenen geen melding maakt van de einddatum van een schepenmandaat;
+
+                  <!-- Moet hier ook een alternatief scenario zoals bij gemeenteraadsleden? -->
+               	</li>
+
+                <li id="b1d30322-830c-418e-8aba-4020e57fbeaf">
+                  
+                  Overwegende dat door de indiening van een geldige voordrachtsakte het aantal schepenen voor de rest van de legislatuur bepaald is, zijnde <span property="ext:TODO" var="ext:TODO" class="mark-highlight-manual">Voer aantal schepenen in</span>;</li>
+                <li>Overwegende dat de voorzitter van de gemeenteraad dit aantal ter zitting meedeelt aan de gemeenteraad;</li>
+                <li>Overwegende dat de rangorde van de schepenen is bepaald door de rangorde zoals deze op de ontvankelijke voordrachtsakte bepaald;</li>
+                <li>Overwegende dat de voorzitter van de gemeenteraad deze volgorde ter zitting meedeelt aan de gemeenteraad;</li>
+                <li>Overwegende dat de verkozen verklaarde schepenen de decretaal voorziene eed hebben afgelegd in handen van de burgemeester;</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="u-spacer--small">Beslist,</p>
+
+          <div>
+            <!-- <h6 class="h5">Besluit</h6> -->
+            <ul class="bullet-list">
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/6dedd554-3993-41c1-9edd-9643c14333a3" typeof="besluit:Artikel">
+                <span property="eli:number">Artikel 1</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <span property="prov:value">Kennis te nemen van de ontvankelijke gezamenlijke akte van voordracht van de kandidaat-schepenen.</span>
+              </li>
+
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/7fb71981-267d-4519-96b3-7034a55b499e" typeof="besluit:Artikel" id="738b0fd9-6148-4d0a-bc98-ae7e49fa9c8f">
+                
+                <span property="eli:number">Artikel 2</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <div property="prov:value">De voorgedragen kandidaat-schepenen verkozen te verklaren in de rangorde van de gezamenlijke akte van voordracht van de kandidaat-schepenen, meer bepaald:<!--  <em> Hoe ziet het er uit met opvolgers?</em> -->
+
+                  <ul class="bullet-list">
+                    <li>Voornaam en familienaam: <span property="ext:TODO" var="ext:TODO">&lt;persoon&gt;</span> <!-- variable van voorgedragen kandidaat-schepenen -->
+                      <ul class="bullet-list">
+                        <li>Mandaat: &lt;rangorde&gt; schepen</li>
+                        <li>Einddatum: <span property="ext:TODO" datatype="xsd:date" content="datum">&lt;datum&gt;</span>&#8203;</li>
+                        <li>Naam opvolger(s): geen</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <!--                     <table class="data-table data-table--lined data-table--zebra data-table--tight">
+                       <thead>
+                       <tr>
+                       <td>Voornaam &amp; Familienaam</td>
+                       <td>Mandaat</td>
+                       <td>Einde mandaat</td>
+                       <td>Naam opvolger(s)</td>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr>
+                       <td>Voornaam Familienaam</td>
+                       <td>Eerste schepen</td>
+                       <td><span property="ext:TODO" var="ext:TODO" datatype="xsd:date" content="datum">&lt;datum&gt;<! --  [TODO: RDFA] </span>&#8203;</td>
+                       <td><span property="besluit:heeftAanwezigeBijStart" resource="http://data.lblod.info/id/mandatarissen/5a81ab404cac4f1ccb000024" typeof="mandaat:Mandataris">&lt;persoon&gt;<! --  [variable feiten en context] </span></td>
+                       </tr>
+                       <tr>
+                       <td>Voornaam Familienaam</td>
+                       <td>Tweede schepen</td>
+                       <td>Geen</td>
+                       <td>Geen</td>
+                       </tr>
+                       </tbody>
+                       </table> -->
+                </div>
+              </li>
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/866a8973-752a-44f3-99b9-022605be6897" typeof="besluit:Artikel">
+                <span property="eli:number">Artikel 3</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <span property="prov:value">Akte te nemen van de eedaflegging</span>
+              </li>
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/721dc250-08b4-4eb2-bc16-4d366f8ff373" typeof="besluit:Artikel">
+                <span property="eli:number">Artikel 4</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <div property="prov:value">Akte te nemen van de rangorde waarin de schepenen werden geïnstalleerd:
+                  <ul class="bullet-list">
+                    <li>Eerste schepen: &lt;persoon&gt;</li>
+                  </ul>
+                </div>
+              </li>
+              <li property="eli:has_part" resource="http://data.lblod.info/artikels/37c115bd-9b8f-4d9d-931d-763b3d428b13" typeof="besluit:Artikel">
+                <span property="eli:number">Artikel 5</span>
+                <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+                <span property="prov:value">Akte te nemen van het aantal schepenen, geldig voor de ganse duur van de legislatuur, en zoals vastgelegd door het aantal voorgedragen schepenen op ontvankelijke gezamenlijke voordrachtsakte, met name <span property="ext:TODO" var="ext:TODO">&lt;aantal schepenen&gt;<!--  [variable met feiten en context &amp; RDFA] --></span>.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div property="ext:behandelt" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/e5163cf8-c2b9-43a9-a98e-9915cb94dfab" typeof="besluit:BehandelingVanAgendapunt">
+      <meta property="besluit:gebeurtNa" resource="http://data.lblod.info/id/behandelingen-van-agendapunten/bd3a4f02-51e5-4dbb-bf9a-87c4350682cb">
+      <span property="besluit:openbaar" datatype="xsd:boolean" content="true" class="annotation--agendapunt--open__icon"><i class="fa fa-eye"></i></span>
+      <p property="dc:subject" resource="http://data.lblod.info/id/agendapunten/d41b1d60-76e1-44b5-abe5-508e6fcbce13"><span id="87a46157-abb7-433a-938e-9cacf61be2c4">Agendapunt 7</span></p>
+      <br>
+      <h3 class="h5">Aanwezigen bij agendapunt</h3>
+      <p property="ext:insertAanwezigenText"><mark data-editor-highlight="true">Beheer aanwezigen bij agendapunt.</mark></p>
+      <br>
+      <div property="prov:generated" resource="http://data.lblod.info/id/besluiten/67a5db97-0498-4b41-9beb-072dab397e88" typeof="besluit:Besluit">
+        <div>
+          <h5 class="h4" property="eli:title"><span id="ced537cf-b99a-4571-b109-b019f6299718">Verkiezing van de Politieraad</span></h5>
+          <meta property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+        </div>
+        <p>Korte openbare beschrijving: <span property="eli:description">Verkiezing van de Politieraad.</span></p>
+        <br>
+
+        <div>
+          <p class="u-spacer--small">De gemeenteraad,</p>
+          <div property="besluit:motivering" lang="nl">
+            <div>
+              <!-- <h6 class="h5">Juridische gronden</h6> -->
+              <ul class="bullet-list">
+                <li>Gelet op <mark data-editor-highlight="true">de wet van 7 december 1998 tot organisatie van een ge</mark>ïntegreerde politiedienst, gestructureerd op twee niveaus;</li>
+                <li>Gelet op <mark data-editor-highlight="true">het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad</mark>;</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="bullet-list">
+                <li>Overwegende dat het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad artikel 18 bepaalt dat de verkiezing van de leden van de politieraad plaatsheeft tijdens de openbare zitting waarop de gemeenteraad wordt geïnstalleerd of ten laatste binnen tien dagen; Indien die laatste dag een zaterdag, een zondag of een wettelijke feestdag is, wordt die termijn verlengd tot en met de eerstvolgende dag die geen zaterdag, zondag of wettelijke feestdag is;</li>
+
+                <li>Overwegende dat de politieraad van de meergemeentezone overeenkomstig de wet van 7 december 1998 artikel 12, eerste lid, samengesteld is uit <span property="ext:TODO" var="ext:TODO">&lt;aantal leden&gt;<!--  [variable aantal leden] --></span> verkozen leden;</li>
+
+                <li>Overwegende dat de gemeenteraad overeenkomstig de wet van 7 december 1998, artikel 12, tweede lid, dient over te gaan tot verkiezing van <span property="ext:TODO" var="ext:TODO">&lt;aantal gemeenteraadsleden&gt;<!--  [variable aantal gemeenteraadsleden (niet leden)] --></span> leden van de gemeenteraad als lid van de politieraad;</li>
+
+                <li>Overwegende dat elk van de 21 gemeenteraadsleden overeenkomstig&nbsp;
+                  de wet van 7 december 1998, artikel 16, beschikt over 1 stem;</li>
+              </ul>
+            </div>
+
+            
+
+            <div id="846153ae-9f6a-4485-a54a-221b3285e509">
+              <ul class="bullet-list">
+                <li>Gelet op <mark data-editor-highlight="true">de voordrachtsakten ten getale van&nbsp;
+                  </mark><span property="ext:TODO" var="ext:TODO">&lt;aantal leden&gt;<!--  [variable aantal leden] --></span> ingediend overeenkomstig het koninklijk besluit van 20 december 2000, de artikelen 2, 4 en 5, betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad op <span property="ext:TODO">&lt;datum&gt;</span>&#8203;.</li>
+              </ul>
+            </div>
+
+            <div>
+              <ul class="bullet-list">
+                <li>Overwegende dat, respectievelijk deze akten de hierna vermelde kandidaten voordragen en ondertekend zijn door de volgende verkozenen voor de gemeenteraad:
+                  <!-- <p class="u-font--italic smaller">Hier, uit elke voordrachtsakte, de namen van de kandidaten effectieve leden en hun kandidaten-opvolgers vermelden, alsmede de namen van de verkozenen voor de gemeenteraad die de voordracht deden.</p> -->
+                  <ul class="numbered-list">
+                    <li><span var="ext:TODO">&lt;persoon&gt;<!--  [variable juridische gronden] --></span> (effectief), <span var="ext:TODO">&lt;persoon&gt;<!--  [variable juridische gronden] --></span>   (1ste opvolger), <span var="ext:TODO">&lt;persoon&gt;<!--  [variable juridische gronden] --></span> (2de opvolger)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <!-- <h6 class="h5">Juridische gronden</h6> -->
+              <ul class="bullet-list">
+                <li>Gelet op <mark data-editor-highlight="true">de kandidatenlijst door de burgemeester opgemaakt</mark>, overeenkomstig het voornoemd koninklijk besluit op grond van gezegde voordrachtsakten, artikel 7, en luidend als volgt:
+                  <ul class="numbered-list">
+                    <li><span var="ext:TODO">&lt;persoon&gt;<!-- variable feiten en context hiervoor] --></span> (effectief), <span var="ext:TODO">&lt;persoon&gt;<!-- variable feiten en context hiervoor] --></span>   (1ste opvolger), <span var="ext:TODO">&lt;persoon&gt;<!-- variable feiten en context hiervoor] --></span> (2de opvolger)</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <br>
+
+        <div>
+          <p>Stelt vast dat&nbsp;
+            <span var="ext:TODO">&lt;persoon&gt;<!--  [variable jongste leden persoon A] --></span> en&nbsp;
+            <span var="ext:TODO">&lt;persoon&gt;<!--  [variable jongste leden persoon B] --></span> gemeenteraadsleden (de jongste in leeftijd), de burgemeester bijstaan bij de verrichtingen van de stemming en van de stemopneming&nbsp;
+            (het koninklijk besluit van 20 december 2000, artikel 10);</p>
+        </div>
+
+        <!-- <p class="u-spacer--small">Stelt vast dat,</p>
+
+             <div property="prov:value">
+             <p property="eli:has_part" resource="http://data.lblod.info/artikels/0c399694-7b7a-4d11-b35c-32ae8e5afe2c" property="ext:TODO"><span property="besluit:heeftAanwezigeBijStart" resource="http://data.lblod.info/id/mandatarissen/5a81ab404cac4f1ccb000024" typeof="mandaat:Mandataris">&lt;persoon&gt; [TODO: variable jongste leden]</span> en <span property="besluit:heeftAanwezigeBijStart" resource="http://data.lblod.info/id/mandatarissen/5a81ab404cac4f1ccb000024" typeof="mandaat:Mandataris">&lt;persoon&gt; [TODO: variable jongste leden]</span> gemeenteraadsleden (de jongste in leeftijd), de burgemeester bijstaan bij de verrichtingen van de stemming en van de stemopneming (<a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">het koninklijk besluit van 20 december 2000, artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">10</span></a>); [TODO: ABB data aanleveren, idem als bij verkiezing leden RVMW]</p>
+             </div> -->
+
+        <!-- <div>
+             <h6 class="h5">Besluit</h6>
+             <ul class="bullet-list">
+             <li property="eli:has_part" resource="http://data.lblod.info/artikels/0c399694-7b7a-4d11-b35c-32ae8e5afe2c" typeof="besluit:Artikel">
+             <span property="eli:number">Enig artikel.</span>
+             <meta content="meta-content-31 property="eli:language" resource="http://publications.europa.eu/resource/authority/language/NLD">
+             <span property="prov:value"> De gemeenteraad neemt kennis van het ontslag van &lt;mandataris&gt; met ingang van <span property="ext:TODO" var="ext:TODO" datatype="xsd:date" content="datum">&lt;datum&gt;</span>&#8203;. </span>
+             </li>
+             </ul>
+             </div> -->
+        <br>
+        <span property="ext:insertStemmingText"><mark data-editor-highlight="true">Beheer de stemmingen bij verkiezingen politieraad.</mark></span>
+        <div typeof="besluit:Stemming">
+          <p>Gaat in openbare vergadering en bij geheime stemming over tot de verkiezing van de effectieve leden en hun opvolgers van de politieraad</p>
+          <ul class="bullet-list">
+            <li><span property="ext:TODO" var="ext:TODO">&lt;aantal raadsleden&gt;<!--  [variable raadsleden] --></span> raadsleden nemen deel aan de stemmingen en ontvangen ieder 1 stembiljet,</li>
+            <li><span property="ext:TODO" var="ext:TODO">&lt;aantal stembiljetten&gt;</span> stembiljetten worden overhandigd aan de burgemeester en zijn bijzitters,</li>
+            <li><span property="ext:TODO" var="ext:TODO">&lt;aantal stembiljetten&gt;<!-- variable geldige stemmen --></span> stembiljetten werden in de stembus aangetroffen.</li>
+          </ul>
+          <br>
+          <p>De stemopneming van deze biljetten geeft volgend resultaat:</p>
+          <ul class="bullet-list">
+            <li>&lt;aantal stemmen&gt; nietige stembiljetten,</li>
+            <li>&lt;aantal stemmen&gt; blanco stembiljetten,</li>
+            <li>&lt;aantal stemmen&gt; geldige stembiljetten.</li>
+          </ul>
+          <br>
+          <p>De op deze <span property="ext:TODO" var="ext:TODO">&lt;aantal stemmen&gt;<!-- variable geldige stemmen --></span> geldige stembiljetten uitgebrachte stemmen werden toegekend als volgt:</p>
+          <br>
+          <p>Kandidaten effectieve leden en aantal bekomen stemmen:</p>
+          <ul class="bullet-list">
+            <li>Naam en voornaam: &lt;aantal stemmen&gt;</li>
+          </ul>
+          <p>Totaal aantal stemmen: &lt;aantal stemmen&gt;<!-- optellen mogelijk? --></p>
+
+          <!--             <table class="data-table data-table--lined data-table--zebra data-table--tight">
+               <thead>
+               <tr>
+               <td>Voornaam Familienaam van het kandidaat-werkend lid</td>
+               <td>Aantal bekomen stemmen</td>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>Voornaam Familienaam</td>
+               <td><span property="ext:TODO" var="ext:TODO">&lt;aantal stemmen&gt;</span></td>
+               </tr>
+               <tr>
+               <td>Voornaam Familienaam</td>
+               <td><span property="ext:TODO" var="ext:TODO">&lt;aantal stemmen&gt;</span></td>
+               </tr>
+               <tr>
+               <th>Totaal aantal stemmen</th>
+               <th><span property="ext:TODO" var="ext:TODO">&lt;aantal stemmen&gt;</span></th>
+               </tr>
+               </tbody>
+               </table> -->
+          <br>
+
+          <div>
+            <p property="ext:TODO">Stelt vast dat de stemmen werden uitgebracht op naam van regelmatig voorgedragen kandidaten effectieve leden.<!--  [TO ASK ander scenario vragen aan Domien --></p>
+            <!-- <p class="u-font--italic smaller">Nagaan of de stemmen uitsluitend werden uitgebracht op naam van personen vermeld op de kandidatenlijst. In tegenovergesteld geval moet dit worden vastgesteld en mag de betrokkene niet verkozen worden verklaard.</p> -->
+          </div>
+
+          <div>
+            <p property="ext:TODO">Stelt vast dat <span property="ext:TODO" var="ext:TODO">&lt;aantal stemmen&gt;</span> kandidaat effectieve leden, die het grootste aantal stemmen hebben bekomen, verkozen worden.</p>
+          </div>
+
+          <div>
+            <p property="ext:TODO">Stelt vast dat <span property="ext:TODO" var="ext:TODO">0</span> kandidaat effectieve leden wegens staking van stemmen een keuze moet worden gedaan overeenkomstig de wet van 7 december 1998, artikel 17.</p>
+          </div>
+        </div>
+
+        <div>
+          <!-- <h6 class="h5">Juridische gronden</h6> -->
+          <ul class="bullet-list">
+            <li>Gelet op de wet van 7 december 1998, artikel 18 eerste lid, wordt voorrang verleend aan <!--  [TO ASK: vragen aan Domien welke info hier moet komen --></li>
+          </ul>
+        </div>
+
+        <div property="prov:value">
+          <p class="u-spacer--small">Bijgevolg stelt de burgemeester vast dat volgende personen verkozen zijn tot effectief lid van de politieraad:</p>
+
+          <ul class="bullet-list">
+            <li><span>&lt;persoon&gt;</span>
+              <ul class="bullet-list">
+                <li>Eerste opvolger: <span>&lt;persoon&gt;</span></li>
+              </ul>
+            </li>
+          </ul>
+
+          <!--               <table class="data-table data-table--lined data-table--zebra data-table--tight">
+               <thead>
+               <tr>
+               <th>Rang</th>
+               <th>Verkozen zijn tot effectief lid van de politieraad</th>
+               <th>De kandidaten die als opvolgers voor elk hiernaast vermeld verkozen effectief werden voorgedragen van rechtswege en in de volgorde van de voordrachtsakte de opvolgers zijn van deze verkozen effectieve
+               leden.</th>
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+               <td>1</td>
+               <td>Voornaam Familienaam</td>
+               <td class="datatable--nested">
+               <table>
+               <tbody>
+               <tr>
+               <td>1ste opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               </tbody>
+               </table>
+               </td>
+               </tr>
+               <tr>
+               <td>2</td>
+               <td>Voornaam Familienaam</td>
+               <td class="datatable--nested">
+               <table>
+               <tbody>
+               <tr>
+               <td>1ste opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               <tr>
+               <td>2de opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               </tbody>
+               </table>
+               </td>
+               </tr>
+               <tr>
+               <td>3</td>
+               <td>Voornaam Familienaam</td>
+               <td class="datatable--nested">
+               <table>
+               <tbody>
+               <tr>
+               <td>1ste opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               <tr>
+               <td>2de opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               <tr>
+               <td>3de opvolger</td>
+               <td>Voornaam Familienaam</td>
+               </tr>
+               </tbody>
+               </table>
+               </td>
+               </tr>
+               </tbody>
+               </table> -->
+          <br>
+        </div>
+
+        <div property="prov:value">
+          <p class="u-spacer--small">Stelt vast dat de verkiesbaarheidsvoorwaarden<!-- (1) -->, vervult zijn door:</p>
+          <ul class="bullet-list">
+            <li>de <span property="ext:TODO" var="ext:TODO">&lt;aantal&gt;</span> verkozen kandidaat effectieve leden.
+              <!-- <p class="u-font--italic smaller">Eventueel: met uitzondering van <span property="besluit:heeftAanwezigeBijStart" resource="http://data.lblod.info/id/mandatarissen/5a81ab404cac4f1ccb000024" typeof="mandaat:Mandataris">&lt;persoon&gt;</span> die de voorwaarde van <a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">de wet van 7 december 1998 artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">14</span></a> van niet vervult;</p> -->
+            </li>
+            <li>
+              de <span property="ext:TODO" var="ext:TODO">&lt;aantal&gt;</span>  kandidaten van rechtswege de opvolgers van deze <span property="ext:TODO" var="ext:TODO">&lt;aantal&gt;</span> kandidaten effectieve leden
+              <!-- <p class="u-font--italic smaller">Eventueel: met uitzondering van <span property="besluit:heeftAanwezigeBijStart" resource="http://data.lblod.info/id/mandatarissen/5a81ab404cac4f1ccb000024" typeof="mandaat:Mandataris">&lt;persoon&gt;</span> die de voorwaarde van <a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">de wet van 7 december 1998 artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">14</span></a> van niet vervult;</p> -->
+            </li>
+          </ul>
+          <br>
+
+          <p class="u-spacer--small">Stelt vast dat:</p>
+          <ul class="bullet-list">
+            <li>geen enkel effectief lid zich bevindt in een van de gevallen van onverenigbaarheid bepaald in <span>&lt;persoon&gt;</span> die de voorwaarde van de wet van 7 december 1998 artikel 15; <!-- [TO ASK: ander scenario] --></li>
+          </ul>
+          <br>
+
+          <!--           <p>Dit proces-verbaal zal overeenkomstig <a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">de wet van 7 december 1998, artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">18bis</span></a> en
+
+               <a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad, artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">15</span>;</a> in dubbel exemplaar naar de bestendige deputatie (of het college bedoeld <a href="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE" property="eli:cites">de bijzondere wet van 12 januari 1989 met betrekking tot de Brusselse Instellingen, artikel <span resource="http://codex.opendata.api.vlaanderen.be/api/WetgevingDocument/REFERENCE/ARTIKEL" property="eli:cites">83quinquies</span>, § 2</a>) worden gezonden.</p>
+               </div> -->
+
+          <div property="prov:value">
+            <p>Dit proces-verbaal zal overeenkomstig&nbsp;
+              de wet van 7 december 1998 artikel 18bis en het koninklijk besluit van 20 december 2000 betreffende de verkiezing in elke gemeenteraad van de leden van de politieraad artikel 15 in dubbel exemplaar naar de  deputatie (of het college bedoeld de bijzondere wet van 12 januari 1989 met betrekking tot de Brusselse Instellingen, artikel 83quinquies, § 2) worden gezonden. <!-- [TO ASK: ander scenario] --></p>
+            <br>
+            <p>Origineel werd getekend door:</p>
+            <ul class="bullet-list">
+              <li><span id="f47d45bd-8966-4289-92b2-35ccecc513a3" class="mark-highlight-manual">Voer naam burgemeester in</span>, burgemeester</li>
+              <li><span var="ext:TODO">&lt;persoon&gt;<!-- variable jongste leden persoon A] --></span> en <span var="ext:TODO">&lt;persoon&gt;<!--  [variable jongste leden persoon B] --></span>, de jongste twee gemeenteraadsleden</li>
+              <li><span> (Algemeen Directeur)</span></li>
+              <li>Volgende gemeenteraadsleden: NIHIL</li>
+            </ul>
+          </div>
+
+          <!-- <p class="u-font--italic smaller">(1) Inzake de onverenigbaarheden maakt de raad slechts een gewone opsomming. De onverenigbaarheden moeten immers nog bestaan op het ogenblik van de eedaflegging om de installatie van het betrokken lid te verhinderen.</p> -->
+        </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+    </div>
+
+    <!-- Sluiting zitting-->
+    <h3 class="h2">Sluiting van de zitting</h3>
+    <!-- <p>De voorzittter van de raad sluit de zitting op <span property="prov:endedAtTime" content="" datatype="xsd:dateTime"><span typeOf="ext:currentDate">&nbsp;</span></span>.</p> -->
+    <p>Namens de Raad,</p>
+    <br>
+    <p><span class="mark-highlight-manual">Voer algemeen directeur in</span></p>
+    <p><strong>Algemeen directeur</strong></p>
+    <br>
+    <p><span id="1ffbeaac-fa73-44d9-9bf6-d16884340b50"><span class="mark-highlight-manual">Voer voorzitter van de gemeenteraad in</span></span></p>
+    <p><strong>Voorzitter van de gemeenteraad</strong></p>
+  </div></div>              <!---->
+
+&nbsp;
+
+<!-- components -->
+<!---->
+
+&nbsp;
+
+<!-- components -->
+<!----></div>            </div>
+          </div>
+          <div class="col--2-12">
+            <div class="editor-commands">
+						  <div class="button-group">
+              	<button id="ember2315" class="annotation-suggestion--trigger button--alt button ember-view"><!---->  +
+
+<!----></button>
+						  </div>
+            </div>
+            <div class="editor-loading-events">
+              <div id="ember2316" class="ember-view">  	<div class="grid grid--collapse">
+			<div class="col--2-12 u-align-center">
+			<i class="vi vi-check vi-u-s"></i>
+			</div>
+			<div class="col--10-12">
+				<p class="small">
+					Klaar met verwerken
+				</p>
+			</div>
+		</div>
+
+  </div>
+            </div>
+            <div class="editor-hints">
+<div id="ember2317" class="ember-view"><!----></div><!---->              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!---->
+
+</div>
+</div><iframe style="display:none;" src="https://widgets.vlaanderen.be/widget/live/5d47450609154d5c86f588f3b36ce9ba/shared-ga"></iframe><div class="pika-single is-hidden is-bound" style="position: static; left: auto; top: auto;"></div></body></html>
