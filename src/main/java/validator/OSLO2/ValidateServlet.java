@@ -199,17 +199,20 @@ public class ValidateServlet extends HttpServlet {
             }
             // TODO: catch the IO exception and render a pretty error page
             dataStream = httpCon.getInputStream();
-            ContentType ct = ContentType.create(httpCon.getContentType());
+            String contentype = httpCon.getContentType();
+            ContentType ct = ContentType.create(contentype);
  
+            System.out.println("content type:" + contentype);
             
-
     	    // If extension not found in Content-Type header
     	    if (ct == null || RDFLanguages.contentTypeToLang(ct) == null) {
     			String urlString = request.getParameter("dataURI");
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
+    			System.out.println("set extension 1: " + extension);
     	    } else {
     	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
+    	    	System.out.println("set extension 2: " + extension);
     	    }
 					
 		} else {
@@ -247,7 +250,7 @@ public class ValidateServlet extends HttpServlet {
 			//Rio.write(rdf4jmodel, writer, RDFFormat.TURTLE); 
 
 			String html2trig = out.toString();
-			System.out.println(html2trig);
+			//System.out.println(html2trig);
 			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			dataModel.read(is, null, "Turtle");
 	       
@@ -270,7 +273,7 @@ public class ValidateServlet extends HttpServlet {
 				}    
 			}
 			String html2trig = out.toString();
-			System.out.println(html2trig);
+			//System.out.println(html2trig);
 			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			dataModel.read(is, null, "Turtle");
 		} else {
