@@ -208,8 +208,10 @@ public class ValidateServlet extends HttpServlet {
     			String urlString = request.getParameter("dataURI");
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
+    			System.out.println("here:" + extension);
     	    } else {
     	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
+    	    	System.out.println("there:" + extension);
     	    }
 					
 		} else {
@@ -217,6 +219,7 @@ public class ValidateServlet extends HttpServlet {
 			dataStream = request.getPart("data").getInputStream();
 			fileName = getSubmittedFileName(request.getPart("data"));
 			extension = checkForFileLang(fileName);
+			System.out.println("there2:" + extension);
 		}
 		
 		// Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
