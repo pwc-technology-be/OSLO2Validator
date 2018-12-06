@@ -90,6 +90,11 @@
 	    <artifactId>semargl-rdf4j</artifactId>
 	    <version>0.7</version>
 	</dependency>
+	<dependency>
+    <groupId>org.semarglproject</groupId>
+    <artifactId>semargl-rdfa</artifactId>
+    <version>0.7</version>
+</dependency>
         <dependency>
             <groupId>nu.validator</groupId>
             <artifactId>htmlparser</artifactId>

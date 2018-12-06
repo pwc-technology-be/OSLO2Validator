@@ -79,7 +79,7 @@
 								          <div class="upload__element">
 								            <input class="upload__element__input" type="file" id="data" name="data"
 								            data-upload-error-message-filesize="Het bestand mag max :maxFsz zijn."
-								            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld, .html" />
+								            data-upload-max-size="20000000" accept=".ttl, .rdf, .xml, .json, .jsonld, .html, .htm, .xhtml" />
 								            <label class="upload__element__label" for="data">
 								              <i class="vi vi-paperclip"></i><span id="file-name">Bijlage toevoegen</span>
 								            </label>

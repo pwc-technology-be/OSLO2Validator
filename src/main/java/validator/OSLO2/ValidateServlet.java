@@ -217,7 +217,6 @@ public class ValidateServlet extends HttpServlet {
 			dataStream = request.getPart("data").getInputStream();
 			fileName = getSubmittedFileName(request.getPart("data"));
 			extension = checkForFileLang(fileName);
-			System.out.println("there2:" + extension);
 		}
 		
 		// Upload the data in the Model. First set the prefixes of the model to those of the shapes model to avoid mismatches.
@@ -252,6 +251,28 @@ public class ValidateServlet extends HttpServlet {
 			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
 			dataModel.read(is, null, "Turtle");
 	       
+		} else if(Objects.equals(extension, "xhtml")) {
+			System.out.println("parsing xhtml");
+			OutputStream out = new ByteArrayOutputStream();
+			CharOutputSink charOutputSink = new CharOutputSink("UTF-8");
+			charOutputSink.connect(out);
+			StreamProcessor streamProcessor = new StreamProcessor(RdfaParser.connect(TurtleSerializer.connect(charOutputSink)));
+			try {
+				streamProcessor.process(new ByteArrayInputStream(ByteStreams.toByteArray(dataStream)), "http://example.com");
+			} catch (Exception e) {
+				nu.validator.htmlparser.sax.HtmlParser reader = new nu.validator.htmlparser.sax.HtmlParser(XmlViolationPolicy.ALTER_INFOSET);
+		        streamProcessor.setProperty(StreamProcessor.XML_READER_PROPERTY, reader);
+		        try {
+					streamProcessor.process(new ByteArrayInputStream(ByteStreams.toByteArray(dataStream)), "http://example.com");
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}    
+			}
+			String html2trig = out.toString();
+			System.out.println(html2trig);
+			InputStream is = new ByteArrayInputStream(html2trig.getBytes());
+			dataModel.read(is, null, "Turtle");
 		} else {
 			dataModel.read(dataStream, null, extension);
 		}
@@ -408,6 +429,7 @@ public class ValidateServlet extends HttpServlet {
 	 * <li>extension .rdf --> FileUtils.langXML.</li>
 	 * <li>extension .xml --> FileUtils.langXML.</li>
 	 * <li>extension .jsonld --> JSONLD</li>
+	 * <li>extension .html,htm --> html</li>
 	 * </ul>
 	 * 
 	 * @param filename
@@ -423,6 +445,8 @@ public class ValidateServlet extends HttpServlet {
 			return "JSONLD";
 		} else if (filename.endsWith(".html") || filename.endsWith(".htm")) {
 			return "html";
+		} else if (filename.endsWith(".xhtml")) {
+			return "xhtml";
 		} else {
 			return "";
 		}
