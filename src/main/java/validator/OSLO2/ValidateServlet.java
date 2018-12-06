@@ -52,7 +52,7 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.RDFLanguages;
 import org.apache.jena.sparql.resultset.ResultsFormat;
 import org.apache.jena.util.FileUtils;
-
+import org.apache.tika.Tika;
 import org.semarglproject.rdf.ParseException;
 import org.semarglproject.rdf.TurtleSerializer;
 import org.semarglproject.rdf.rdfa.RdfaParser;
@@ -211,7 +211,9 @@ public class ValidateServlet extends HttpServlet {
     			extension = FilenameUtils.getExtension(url.getPath());
     			System.out.println("set extension 1: " + extension);
     			if(Objects.equals(extension, "")) {
-    				extension = MimeTypes.getExtensionFromMimeType(contentype);
+    				Tika tika = new Tika();
+    				extension = tika.detect(dataStream);
+    				//extension = MimeTypes.getExtensionFromMimeType(contentype);
     				System.out.println("set extension 1.1: " + extension);
     			}
     	    } else {
