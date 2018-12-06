@@ -212,8 +212,9 @@ public class ValidateServlet extends HttpServlet {
     			System.out.println("set extension 1: " + extension);
     			if(Objects.equals(extension, "")) {
     				Tika tika = new Tika();
-    				InputStream inputStreamCloned = clone(dataStream);
+    				InputStream inputStreamCloned = getCopy(dataStream);
     				String mimetype = tika.detect(inputStreamCloned);
+    				dataStream = inputStreamCloned; 
     				extension = MimeTypes.getExtensionFromMimeType(mimetype);
     				System.out.println("set mimetype 1.1: " + mimetype);
     				System.out.println("set extension 1.1: " + extension);
@@ -477,9 +478,8 @@ public class ValidateServlet extends HttpServlet {
 		return stringBuilder.toString();
 	}
 	
-	public static InputStream clone(final InputStream inputStream) {
+	public static InputStream getCopy(final InputStream inputStream) {
         try {
-            inputStream.mark(0);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int readLength = 0;
