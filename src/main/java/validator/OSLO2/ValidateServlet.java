@@ -212,8 +212,9 @@ public class ValidateServlet extends HttpServlet {
     			System.out.println("set extension 1: " + extension);
     			if(Objects.equals(extension, "")) {
     				Tika tika = new Tika();
-    				InputStream detectMimeTypeStream = IOUtils.toBufferedInputStream(dataStream);
-    				String mimetype = tika.detect(detectMimeTypeStream);
+    				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+    				org.apache.commons.io.IOUtils.copy(dataStream, baos);
+    				String mimetype = tika.detect(baos.toString().getBytes());
     				extension = MimeTypes.getExtensionFromMimeType(mimetype);
     				System.out.println("set mimetype 1.1: " + mimetype);
     				System.out.println("set extension 1.1: " + extension);
