@@ -486,7 +486,6 @@ public class ValidateServlet extends HttpServlet {
             while ((readLength = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, readLength);
             }
-            inputStream.reset();
             outputStream.flush();
             return new ByteArrayInputStream(outputStream.toByteArray());
         }
