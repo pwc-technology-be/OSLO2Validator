@@ -216,7 +216,7 @@ public class ValidateServlet extends HttpServlet {
     				String mimetype = tika.detect(inputStreamCloned);
     				extension = MimeTypes.getExtensionFromMimeType(mimetype);
     				System.out.println("set mimetype 1.1: " + mimetype);
-    				System.out.println("set extension 1.1.: " + extension);
+    				System.out.println("set extension 1.1: " + extension);
     			}
     	    } else {
     	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
