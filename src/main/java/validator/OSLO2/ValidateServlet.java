@@ -212,8 +212,8 @@ public class ValidateServlet extends HttpServlet {
     			System.out.println("set extension 1: " + extension);
     			if(Objects.equals(extension, "")) {
     				Tika tika = new Tika();
-    				extension = tika.detect(dataStream);
-    				//extension = MimeTypes.getExtensionFromMimeType(contentype);
+    				String mimetype = tika.detect(dataStream);
+    				extension = MimeTypes.getExtensionFromMimeType(mimetype);
     				System.out.println("set extension 1.1: " + extension);
     			}
     	    } else {
