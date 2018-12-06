@@ -208,10 +208,8 @@ public class ValidateServlet extends HttpServlet {
     			String urlString = request.getParameter("dataURI");
     			URL url = new URL(urlString);
     			extension = FilenameUtils.getExtension(url.getPath());
-    			System.out.println("here:" + extension);
     	    } else {
     	    	extension = RDFLanguages.contentTypeToLang(ct).getName();
-    	    	System.out.println("there:" + extension);
     	    }
 					
 		} else {
@@ -423,6 +421,8 @@ public class ValidateServlet extends HttpServlet {
 			return FileUtils.langXML;
 		} else if (filename.endsWith(".jsonld") || filename.endsWith(".json")) {
 			return "JSONLD";
+		} else if (filename.endsWith(".html") || filename.endsWith(".htm")) {
+			return "html";
 		} else {
 			return "";
 		}
