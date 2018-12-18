@@ -84,7 +84,7 @@
 				            Hieronder ziet u een overzicht van de validatieresultaten.
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
-				        		<table id="resultaten" class="display" style="width:80%">
+				        		<table id="resultaten" class="display" style="width:100%">
 				                    <thead style="background: linear-gradient(white, rgb(234, 234, 234));">
 				                        <tr>
 				                            <th>Focus Node</th>
