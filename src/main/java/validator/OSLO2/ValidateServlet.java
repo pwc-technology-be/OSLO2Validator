@@ -1,8 +1,10 @@
 package validator.OSLO2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -356,7 +358,9 @@ public class ValidateServlet extends HttpServlet {
 		ByteArrayOutputStream resultStream = formatOutput(model, queryStr, "CSV");
 		String output = resultStream.toString();
 		resultStream.close();
-		
+	    BufferedWriter writer = new BufferedWriter(new FileWriter("test.log"));
+	    writer.write(output);
+	    writer.close();
 		// Split the CSV string on newline character, add to ArrayList and remove empty lines
     	List<String> linesList = Arrays.asList(output.split("[\\n\\r]"));
     	ArrayList<String> lines = new ArrayList<String>();
