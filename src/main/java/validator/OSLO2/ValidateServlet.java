@@ -367,9 +367,11 @@ public class ValidateServlet extends HttpServlet {
     	// If last value is empty, this cannot be changed. It is handled later
     	List<List<String>> items = new ArrayList<>();
     	for (int i = 0; i < lines.size(); i++) {
-    		while (lines.get(i).contains(",,")) {
-    			lines.set(i, lines.get(i).replaceAll(",,", ",NA,"));
+    		String templine = lines.get(i);
+    		while (templine.contains(",,")) {
+    			templine = templine.replaceAll(",,", ",NA,");
     		}
+    		lines.set(i, templine);
     	}
     	
     	// Split each line on "," and if the last value was empty, complete with NA
