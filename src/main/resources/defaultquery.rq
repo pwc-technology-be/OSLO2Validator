@@ -17,7 +17,8 @@ prefix message: <http://www.w3.org/ns/shacl#message>
  		?vr sh:resultSeverity ?resultSeverity .
  	}
  	OPTIONAL { 		
- 		?vr sh:value ?value.
+ 		?vr sh:value ?valueRaw.
+ 		BIND(REPLACE(?value, "\\s+", "") AS ?value).
  	}
  	OPTIONAL { 		 
  		?vr sh:sourceConstraint ?sourceConstraint .
