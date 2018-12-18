@@ -163,7 +163,8 @@
                 "sPaginationType": "full_numbers",
                 "bJQueryUI": true,
                 "responsive": true,
-                buttons: ['copy', 'csv', 'excel']
+                buttons: ['copy', 'csv', 'excel'],
+                'columnDefs': [{'max-width': '20%', 'targets': 0}]
             });
 
 	      var editor1 = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
