@@ -355,6 +355,7 @@ public class ValidateServlet extends HttpServlet {
 		String queryStr = FileUtils.readWholeFileAsUTF8(is);
 		ByteArrayOutputStream resultStream = formatOutput(model, queryStr, "CSV");
 		String output = resultStream.toString();
+		System.out.println("output:" + output);
 		resultStream.close();
 		
 		// Split the CSV string on newline character, add to ArrayList and remove empty lines
