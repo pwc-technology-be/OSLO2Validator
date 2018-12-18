@@ -84,7 +84,7 @@
 				            Hieronder ziet u een overzicht van de validatieresultaten.
 				            <div class="typography">
 				              	<!--Put Content for second tab here-->
-				        		<table id="resultaten" class="display">
+				        		<table id="resultaten" class="display" style="width:80%">
 				                    <thead style="background: linear-gradient(white, rgb(234, 234, 234));">
 				                        <tr>
 				                            <th>Focus Node</th>
@@ -163,8 +163,7 @@
                 "sPaginationType": "full_numbers",
                 "bJQueryUI": true,
                 "responsive": true,
-                buttons: ['copy', 'csv', 'excel'],
-                'columnDefs': [{'max-width': '20%', 'targets': 0}]
+                buttons: ['copy', 'csv', 'excel']
             });
 
 	      var editor1 = CodeMirror.fromTextArea(document.getElementById("result-ttl"), {
