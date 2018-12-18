@@ -390,25 +390,15 @@ public class ValidateServlet extends HttpServlet {
     	List<ValidationResult> validationList = new ArrayList<ValidationResult>();
     	//Start at 1 because the first row contains the headers and we do not want to include those.
     	for (int j = 1; j < items.size(); j++) {
-    		System.out.println("index:" + j);
     		ValidationResult validationResult = new ValidationResult();
     		List<String> tempitem = items.get(j);
-    		System.out.println("size:" + tempitem.size());
-    		System.out.println("0:" + tempitem.get(0));
     		validationResult.setFocusNode(tempitem.get(0));
-    		System.out.println("1:" + tempitem.get(1));
     		validationResult.setResultMessage(tempitem.get(1));
-    		System.out.println("2:" + tempitem.get(2));
     		validationResult.setResultPath(tempitem.get(2));
-    		System.out.println("3:" + tempitem.get(3));
     		validationResult.setResultSeverity(tempitem.get(3));
-    		System.out.println("4:" + tempitem.get(4));
     		validationResult.setValue(tempitem.get(4));
-    		System.out.println("5:" + tempitem.get(5));
     		validationResult.setSourceConstraint(tempitem.get(5));
-    		System.out.println("6:" + tempitem.get(6));
     		validationResult.setSourceConstraintComponent(tempitem.get(6));
-    		System.out.println("7:" + tempitem.get(7));
     		validationResult.setSourceShape(tempitem.get(7));
 
     		
