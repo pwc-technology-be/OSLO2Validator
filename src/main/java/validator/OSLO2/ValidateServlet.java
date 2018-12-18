@@ -369,8 +369,10 @@ public class ValidateServlet extends HttpServlet {
     	for (int i = 0; i < lines.size(); i++) {
     		String templine = lines.get(i);
     		while (templine.contains(",,")) {
+    			System.out.println("templine index:" + i);
+    			System.out.println("templine before:" + templine);
     			templine = templine.replaceAll(",,", ",NA,");
-    			System.out.println("index:" + i);
+    			System.out.println("templine after:" + templine);
     		}
     		lines.set(i, templine);
     	}
