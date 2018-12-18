@@ -18,7 +18,7 @@ prefix message: <http://www.w3.org/ns/shacl#message>
  	}
  	OPTIONAL { 		
  		?vr sh:value ?valueRaw.
- 		BIND(REPLACE(?value, "\\s+", "") AS ?value).
+ 		BIND(REPLACE(?valueRaw, "\\s+", "") AS ?value).
  	}
  	OPTIONAL { 		 
  		?vr sh:sourceConstraint ?sourceConstraint .
